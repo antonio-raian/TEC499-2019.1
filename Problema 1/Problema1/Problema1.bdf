@@ -1,0 +1,171 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+*/
+(header "graphic" (version "1.4"))
+(pin
+	(input)
+	(rect -8 128 184 144)
+	(text "INPUT" (rect 149 0 177 10)(font "Arial" (font_size 6)))
+	(text "botoes_in_port[7..0]" (rect 5 0 102 12)(font "Arial" ))
+	(pt 192 8)
+	(drawing
+		(line (pt 108 12)(pt 133 12))
+		(line (pt 108 4)(pt 133 4))
+		(line (pt 137 8)(pt 192 8))
+		(line (pt 108 12)(pt 108 4))
+		(line (pt 133 4)(pt 137 8))
+		(line (pt 133 12)(pt 137 8))
+	)
+	(text "VCC" (rect 152 7 172 17)(font "Arial" (font_size 6)))
+)
+(pin
+	(input)
+	(rect 16 184 184 200)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "clk_clk" (rect 5 0 39 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+)
+(pin
+	(input)
+	(rect 16 264 184 280)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "reset_reset_n" (rect 5 0 72 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+)
+(pin
+	(output)
+	(rect -16 144 184 160)
+	(text "OUTPUT" (rect 161 6 199 16)(font "Arial" (font_size 6)))
+	(text "botoes_out_port[7..0]" (rect 5 4 110 16)(font "Arial" ))
+	(pt 200 8)
+	(drawing
+		(line (pt 200 8)(pt 148 8))
+		(line (pt 148 12)(pt 122 12))
+		(line (pt 148 4)(pt 122 4))
+		(line (pt 148 4)(pt 148 12))
+		(line (pt 122 12)(pt 118 8))
+		(line (pt 118 8)(pt 122 4))
+		(line (pt 122 4)(pt 118 8))
+	)
+	(rotate180)
+)
+(pin
+	(output)
+	(rect 8 224 184 240)
+	(text "OUTPUT" (rect 137 6 175 16)(font "Arial" (font_size 6)))
+	(text "leds_export[7..0]" (rect 5 4 87 16)(font "Arial" ))
+	(pt 176 8)
+	(drawing
+		(line (pt 176 8)(pt 124 8))
+		(line (pt 124 12)(pt 98 12))
+		(line (pt 124 4)(pt 98 4))
+		(line (pt 124 4)(pt 124 12))
+		(line (pt 98 12)(pt 94 8))
+		(line (pt 94 8)(pt 98 4))
+		(line (pt 98 4)(pt 94 8))
+	)
+	(rotate180)
+)
+(symbol
+	(rect 184 64 472 304)
+	(text "Problema1Qsys" (rect 99 -1 208 15)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 224 25 236)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "botoes_in_port[7..0]" (rect 0 0 113 14)(font "Arial" (font_size 8)))
+		(text "botoes_in_port[7..0]" (rect 4 61 117 75)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 112 72)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "clk_clk" (rect 0 0 37 14)(font "Arial" (font_size 8)))
+		(text "clk_clk" (rect 4 117 41 131)(font "Arial" (font_size 8)))
+		(line (pt 0 128)(pt 112 128))
+	)
+	(port
+		(pt 0 208)
+		(input)
+		(text "reset_reset_n" (rect 0 0 80 14)(font "Arial" (font_size 8)))
+		(text "reset_reset_n" (rect 4 197 84 211)(font "Arial" (font_size 8)))
+		(line (pt 0 208)(pt 112 208))
+	)
+	(port
+		(pt 0 88)
+		(output)
+		(text "botoes_out_port[7..0]" (rect 0 0 121 14)(font "Arial" (font_size 8)))
+		(text "botoes_out_port[7..0]" (rect 4 77 125 91)(font "Arial" (font_size 8)))
+		(line (pt 0 88)(pt 112 88)(line_width 3))
+	)
+	(port
+		(pt 0 168)
+		(output)
+		(text "leds_export[7..0]" (rect 0 0 95 14)(font "Arial" (font_size 8)))
+		(text "leds_export[7..0]" (rect 4 157 99 171)(font "Arial" (font_size 8)))
+		(line (pt 0 168)(pt 112 168)(line_width 3))
+	)
+	(drawing
+		(text "botoes" (rect 74 43 118 58)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "in_port" (rect 117 67 150 79)(font "Arial" (color 0 0 0)))
+		(text "out_port" (rect 117 83 157 95)(font "Arial" (color 0 0 0)))
+		(text "clk" (rect 97 99 114 114)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 117 123 131 135)(font "Arial" (color 0 0 0)))
+		(text "leds" (rect 89 139 117 154)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 117 163 147 175)(font "Arial" (color 0 0 0)))
+		(text "reset" (rect 83 179 116 194)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 117 203 153 215)(font "Arial" (color 0 0 0)))
+		(text " Problema1Qsys " (rect 218 224 304 236)(font "Arial" ))
+		(line (pt 112 32)(pt 176 32))
+		(line (pt 176 32)(pt 176 224))
+		(line (pt 112 224)(pt 176 224))
+		(line (pt 112 32)(pt 112 224))
+		(line (pt 113 52)(pt 113 92))
+		(line (pt 114 52)(pt 114 92))
+		(line (pt 113 108)(pt 113 132))
+		(line (pt 114 108)(pt 114 132))
+		(line (pt 113 148)(pt 113 172))
+		(line (pt 114 148)(pt 114 172))
+		(line (pt 113 188)(pt 113 212))
+		(line (pt 114 188)(pt 114 212))
+		(line (pt 0 0)(pt 288 0))
+		(line (pt 288 0)(pt 288 240))
+		(line (pt 0 240)(pt 288 240))
+		(line (pt 0 0)(pt 0 240))
+	)
+)

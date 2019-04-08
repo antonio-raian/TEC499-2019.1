@@ -1,0 +1,129 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "botoes_out_port[7]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_out_port[6]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_out_port[5]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_out_port[4]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_out_port[3]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_out_port[2]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_out_port[1]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_out_port[0]",
+					"strict" : false
+				},
+				{
+					"name" : "leds_export[7]",
+					"strict" : false
+				},
+				{
+					"name" : "leds_export[6]",
+					"strict" : false
+				},
+				{
+					"name" : "leds_export[5]",
+					"strict" : false
+				},
+				{
+					"name" : "leds_export[4]",
+					"strict" : false
+				},
+				{
+					"name" : "leds_export[3]",
+					"strict" : false
+				},
+				{
+					"name" : "leds_export[2]",
+					"strict" : false
+				},
+				{
+					"name" : "leds_export[1]",
+					"strict" : false
+				},
+				{
+					"name" : "leds_export[0]",
+					"strict" : false
+				},
+				{
+					"name" : "clk_clk",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_in_port[7]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_in_port[0]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_in_port[1]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_in_port[4]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_in_port[3]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_in_port[2]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_in_port[5]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_in_port[6]",
+					"strict" : false
+				},
+				{
+					"name" : "reset_reset_n",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tms",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tck",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdi",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdo",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
