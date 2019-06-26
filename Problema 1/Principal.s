@@ -14,7 +14,11 @@ main:
 	bne r5, r0, sobe
 	br main
 desce:
-
+	
 sobe:
+
+seleciona:
+
+volta:
 
 .end

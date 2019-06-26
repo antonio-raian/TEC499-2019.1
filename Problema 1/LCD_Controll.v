@@ -1,9 +1,6 @@
 module LCD_Controll ctrl (
 		Clock,
-		sobe,
-		desce,
-		selec,
-		volta,
+		entrada,
 		LCD_RS,
 		LCD_EN,
 		LCD_RW,
@@ -12,10 +9,7 @@ module LCD_Controll ctrl (
 	);
 
 	input Clock;
-	input sobe;
-	input desce;
-	input selec;
-	input volta;
+	input [3:0] entrada;
 
 	output LCD_RS;
 	output LCD_EN;
@@ -36,14 +30,18 @@ module LCD_Controll ctrl (
 	assign LCD_DATA = data_out;
 
 	//Estados da maquina
-	parameter [3:0] s_LED1 = 4'h0,
-		s_LED2 = 4'h1,
-		s_LED3 = 4'h2,
-		s_LED4 = 4'h3,
-		s_LED5 = 4'h4,
-		CURSOR = 4'h5,
-		ESCREVE = 4'h6,
-		LIMPAR = 4'h7;
+	parameter [3:0] M_LED1 = 4'h0, 
+		M_LED2 = 4'h1,
+		M_LED3 = 4'h2,
+		M_LED4 = 4'h3,
+		M_LED5 = 4'h4,
+		L_LED1 = 4'h5,
+		L_LED2 = 4'h6,
+		L_LED3 = 4'h7,
+		L_LED4 = 4'h8,
+		L_LED5 = 4'h9,
+		ESCREVE = 4'h10,
+		LIMPAR = 4'h11;
 
 	initial begin
 		state=>s_LED1;
@@ -68,9 +66,75 @@ module LCD_Controll ctrl (
 	assign foo[11] = "S";
 	assign foo[12] = "O";
 
+	always @(posedge Clock) begin
+		case(state)
+			M_LED1:
+				if(entrada == 4'b1000) begin
+					state <= M_LED5
+				end else if(entrada == 4'b0100)begin
+					state <= M_LED2
+				end else if(entrada == 4'b0010)begin
+					state <= L_LED1
+				end
+			M_LED2:
+				if(entrada == 4'b1000) begin
+					state <= M_LED1
+				end else if(entrada == 4'b0100)begin
+					state <= M_LED3
+				end else if(entrada == 4'b0010)begin
+					state <= L_LED2
+				end
+			M_LED3:
+				if(entrada == 4'b1000) begin
+					state <= M_LED2
+				end else if(entrada == 4'b0100)begin
+					state <= M_LED4
+				end else if(entrada == 4'b0010)begin
+					state <= L_LED3
+				end
+			M_LED4:
+				if(entrada == 4'b1000) begin
+					state <= M_LED3
+				end else if(entrada == 4'b0100)begin
+					state <= M_LED5
+				end else if(entrada == 4'b0010)begin
+					state <= L_LED4
+				end 
+			M_LED5:
+				if(entrada == 4'b1000) begin
+					state <= M_LED4
+				end else if(entrada == 4'b0100)begin
+					state <= M_LED1
+				end else if(entrada == 4'b0010)begin
+					state <= L_LED5
+				end 
+			L_LED1:
+				if(entrada == 4'b0001) begin
+					state <= M_LED1
+				end
+			L_LED2:
+				if(entrada == 4'b0001) begin
+					state <= M_LED2
+				end 
+			L_LED3:
+				if(entrada == 4'b0001) begin
+					state <= M_LED3
+				end 
+			L_LED4:
+				if(entrada == 4'b0001) begin
+					state <= M_LED4
+				end 
+			L_LED5:
+				if(entrada == 4'b0001) begin
+					state <= M_LED5
+				end 
+			ESCREVE:
+			LIMPAR:
+	end
+
 	always @(state)
 		case (state)
-			s_LED1:
+			M_LED1:
 				begin
 					next <= state;
 					if(aux == 2'b00) begin
@@ -79,11 +143,15 @@ module LCD_Controll ctrl (
 						state <= CURSOR;
 					end
 				end
-			s_LED2:
-			s_LED3:
-			s_LED4:
-			s_LED5:
-			CURSOR:
+			M_LED2:
+			M_LED3:
+			M_LED4:
+			M_LED5:
+			L_LED1:
+			L_LED2:
+			L_LED3:
+			L_LED4:
+			L_LED5:
 			ESCREVE:
 				begin
 					rs = 1'b1;
