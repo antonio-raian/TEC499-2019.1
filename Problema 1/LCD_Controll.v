@@ -1,11 +1,11 @@
 module LCD_Controll ctrl (
-		Clock,
-		entrada,
-		LCD_RS,
-		LCD_EN,
-		LCD_RW,
-		LCD_DATA,
-		LED
+		Clock, //Pino do clock
+		entrada, //Posião de memória de entrada
+		LCD_RS, //Pino do RS do display
+		LCD_EN, //Pino de enable do display
+		LCD_RW, //Pino de RW do display
+		LCD_DATA, //Pinos de dados do display
+		LED //Pino do led
 	);
 
 	input Clock;
@@ -18,16 +18,17 @@ module LCD_Controll ctrl (
 	output [7:0] LCD_DATA;
 
 	reg	rs;
-	reg	en;
 	reg	rw;
 	reg [3:0] state;
 	reg [3:0] next;
 	reg [7:0] data_out;
+	reg [4:0] led;
 
 	assign LCD_RS = rs;
-	assign LCD_EN = en;
+	assign LCD_EN = Clock;
 	assign LCD_RW = rw;
 	assign LCD_DATA = data_out;
+	assign LED = led;
 
 	//Estados da maquina
 	parameter [3:0] M_LED1 = 4'h0, 
@@ -47,10 +48,10 @@ module LCD_Controll ctrl (
 		state=>s_LED1;
 	end
 
-	wire [7:0] foo [0:12];
+	reg [5:0] count = 6'b0000000; //Variável pra poder mudar a o tipo de caractere na exibição
 
-	int i = 0;
-	reg [2:0] aux = 2'b00;
+	//Array que amazena o valor ASCII do caracter
+	wire [7:0] foo [0:13];
 
 	assign foo[0]  = "L";
 	assign foo[1]  = "E";
@@ -65,98 +66,355 @@ module LCD_Controll ctrl (
 	assign foo[10] = "E";
 	assign foo[11] = "S";
 	assign foo[12] = "O";
+	assign foo[13] = " ";
 
+	//A cada ciclo do clock ele verifica o estado
+	//Se estiverem no estado M verifica o valor da entrada e se for um dos determinados ele migra pra outro estado
 	always @(posedge Clock) begin
 		case(state)
-			M_LED1:
+			M_LED1:begin
 				if(entrada == 4'b1000) begin
-					state <= M_LED5
+					state <= M_LED5;
+					count <= 0;
 				end else if(entrada == 4'b0100)begin
-					state <= M_LED2
+					state <= M_LED2;
 				end else if(entrada == 4'b0010)begin
-					state <= L_LED1
+					state <= L_LED1;
 				end
-			M_LED2:
+			end
+			M_LED2:begin
 				if(entrada == 4'b1000) begin
-					state <= M_LED1
+					state <= M_LED1;
 				end else if(entrada == 4'b0100)begin
-					state <= M_LED3
+					state <= M_LED3;
 				end else if(entrada == 4'b0010)begin
-					state <= L_LED2
+					state <= L_LED2;
 				end
-			M_LED3:
+			end				
+			M_LED3:begin
 				if(entrada == 4'b1000) begin
-					state <= M_LED2
+					state <= M_LED2;
 				end else if(entrada == 4'b0100)begin
-					state <= M_LED4
+					state <= M_LED4;
 				end else if(entrada == 4'b0010)begin
-					state <= L_LED3
+					state <= L_LED3;
 				end
-			M_LED4:
+			end
+			M_LED4: begin
 				if(entrada == 4'b1000) begin
-					state <= M_LED3
+					state <= M_LED3;
 				end else if(entrada == 4'b0100)begin
-					state <= M_LED5
+					state <= M_LED5;
 				end else if(entrada == 4'b0010)begin
-					state <= L_LED4
+					state <= L_LED4;
 				end 
-			M_LED5:
+			end
+			M_LED5:begin
 				if(entrada == 4'b1000) begin
-					state <= M_LED4
+					state <= M_LED4;
 				end else if(entrada == 4'b0100)begin
-					state <= M_LED1
+					state <= M_LED1;
 				end else if(entrada == 4'b0010)begin
-					state <= L_LED5
+					state <= L_LED5;
 				end 
-			L_LED1:
+			end				
+			L_LED1: begin
 				if(entrada == 4'b0001) begin
-					state <= M_LED1
+					state <= M_LED1;
 				end
-			L_LED2:
+			end				
+			L_LED2:begin
 				if(entrada == 4'b0001) begin
-					state <= M_LED2
+					state <= M_LED2;
 				end 
-			L_LED3:
+			end
+			L_LED3:begin
 				if(entrada == 4'b0001) begin
-					state <= M_LED3
+					state <= M_LED3;
 				end 
-			L_LED4:
+			end
+			L_LED4:begin
 				if(entrada == 4'b0001) begin
-					state <= M_LED4
+					state <= M_LED4;
 				end 
-			L_LED5:
+			end
+			L_LED5:begin
 				if(entrada == 4'b0001) begin
-					state <= M_LED5
+					state <= M_LED5;
 				end 
-			ESCREVE:
-			LIMPAR:
+			end
+		endcase
 	end
 
+	//Sempre que o estado mudar ele faz alguma coisa
+	//Se o estado estiver nos M deve escrever no data_out "LED (numero)"
+	//Se o estado estiver nos L deve escrever no data_out "ACESO (numero)"
 	always @(state)
 		case (state)
-			M_LED1:
-				begin
-					next <= state;
-					if(aux == 2'b00) begin
-						state <= EXCREVE;
-					end else if(aux == 2'b01) begin
-						state <= CURSOR;
-					end
+			M_LED1: begin
+				if (count == 6'h0) begin
+					data_out <= foo[0];
+					count <= count+1;
 				end
-			M_LED2:
-			M_LED3:
-			M_LED4:
-			M_LED5:
-			L_LED1:
-			L_LED2:
-			L_LED3:
-			L_LED4:
-			L_LED5:
-			ESCREVE:
-				begin
-					rs = 1'b1;
-					en = 1'b1;
-					rw = 1'b0;
-
-					state <= next;
+				if (count == 6'h1) begin
+					data_out <= foo[1];
+					count <= count+1;
 				end
+				if (count == 6'h2) begin
+					data_out <= foo[2];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[3];
+					count <= count+1;
+				end
+			end
+			M_LED2:begin
+				if (count == 6'h0) begin
+					data_out <= foo[0];
+					count <= count+1;
+				end
+				if (count == 6'h1) begin
+					data_out <= foo[1];
+					count <= count+1;
+				end
+				if (count == 6'h2) begin
+					data_out <= foo[2];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[4];
+					count <= count+1;
+				end
+			end
+			M_LED3:begin
+				if (count == 6'h0) begin
+					data_out <= foo[0];
+					count <= count+1;
+				end
+				if (count == 6'h1) begin
+					data_out <= foo[1];
+					count <= count+1;
+				end
+				if (count == 6'h2) begin
+					data_out <= foo[2];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[5];
+					count <= count+1;
+				end
+			end
+			M_LED4:begin
+				if (count == 6'h0) begin
+					data_out <= foo[0];
+					count <= count+1;
+				end
+				if (count == 6'h1) begin
+					data_out <= foo[1];
+					count <= count+1;
+				end
+				if (count == 6'h2) begin
+					data_out <= foo[2];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[6];
+					count <= count+1;
+				end
+			end
+			M_LED5:begin
+				if (count == 6'h0) begin
+					data_out <= foo[0];
+					count <= count+1;
+				end
+				if (count == 6'h1) begin
+					data_out <= foo[1];
+					count <= count+1;
+				end
+				if (count == 6'h2) begin
+					data_out <= foo[2];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[7];
+					count <= count+1;
+				end
+			end
+			L_LED1:begin
+				led <= 5'00001;
+				if (count == 6'h0) begin
+					data_out <= foo[8];
+					count <= count+1;
+				end
+				if (count == 6'h1) begin
+					data_out <= foo[9];
+					count <= count+1;
+				end
+				if (count == 6'h2) begin
+					data_out <= foo[10];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[11];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[12];
+					count <= count+1;
+				end
+				if (count == 6'h5) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h6) begin
+					data_out <= foo[3];
+					count <= count+1;
+				end
+			end
+			L_LED2:begin
+				led <= 5'00010;
+				if (count == 6'h0) begin
+					data_out <= foo[8];
+					count <= count+1;
+				end
+				if (count == 6'h1) begin
+					data_out <= foo[9];
+					count <= count+1;
+				end
+				if (count == 6'h2) begin
+					data_out <= foo[10];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[11];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[12];
+					count <= count+1;
+				end
+				if (count == 6'h5) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h6) begin
+					data_out <= foo[4];
+					count <= count+1;
+				end
+			end
+			L_LED3:begin
+				led <= 5'00100;
+				if (count == 6'h0) begin
+					data_out <= foo[8];
+					count <= count+1;
+				end
+				if (count == 6'h1) begin
+					data_out <= foo[9];
+					count <= count+1;
+				end
+				if (count == 6'h2) begin
+					data_out <= foo[10];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[11];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[12];
+					count <= count+1;
+				end
+				if (count == 6'h5) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h6) begin
+					data_out <= foo[5];
+					count <= count+1;
+				end
+			end
+			L_LED4:begin
+				led <= 5'01000;
+				if (count == 6'h0) begin
+					data_out <= foo[8];
+					count <= count+1;
+				end
+				if (count == 6'h1) begin
+					data_out <= foo[9];
+					count <= count+1;
+				end
+				if (count == 6'h2) begin
+					data_out <= foo[10];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[11];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[12];
+					count <= count+1;
+				end
+				if (count == 6'h5) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h6) begin
+					data_out <= foo[6];
+					count <= count+1;
+				end
+			end
+			L_LED5:begin
+				led <= 5'10000;
+				if (count == 6'h0) begin
+					data_out <= foo[8];
+					count <= count+1;
+				end
+				if (count == 6'h1) begin
+					data_out <= foo[9];
+					count <= count+1;
+				end
+				if (count == 6'h2) begin
+					data_out <= foo[10];
+					count <= count+1;
+				end
+				if (count == 6'h3) begin
+					data_out <= foo[11];
+					count <= count+1;
+				end
+				if (count == 6'h4) begin
+					data_out <= foo[12];
+					count <= count+1;
+				end
+				if (count == 6'h5) begin
+					data_out <= foo[13];
+					count <= count+1;
+				end
+				if (count == 6'h6) begin
+					data_out <= foo[7];
+					count <= count+1;
+				end
+			end
+		endcase
+endmodule
