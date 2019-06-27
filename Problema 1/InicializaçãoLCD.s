@@ -39,7 +39,7 @@ desce:
 
 sobe:
 	movi r8, 1000
-	stw r8, 0[r10]
+	custom 0, r2, r0, r8 #Manda pro modulo o valor q estiver no r8 para a segunda entrada
 	movi r8, 0
 	br loop
 

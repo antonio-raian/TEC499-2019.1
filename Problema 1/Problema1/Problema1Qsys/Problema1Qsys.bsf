@@ -68,7 +68,7 @@ refer to the applicable agreement for further details.
 		(text "export" (rect 117 163 270 336)(font "Arial" (color 0 0 0)))
 		(text "reset" (rect 83 179 196 371)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "reset_n" (rect 117 203 276 416)(font "Arial" (color 0 0 0)))
-		(text " Problema1Qsys " (rect 218 224 526 458)(font "Arial" ))
+		(text " system " (rect 253 224 554 458)(font "Arial" ))
 		(line (pt 112 32)(pt 176 32)(line_width 1))
 		(line (pt 176 32)(pt 176 224)(line_width 1))
 		(line (pt 112 224)(pt 176 224)(line_width 1))

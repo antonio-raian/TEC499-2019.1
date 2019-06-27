@@ -1,21 +1,29 @@
-module LCD_Controll ctrl (
-		Clock, //Pino do clock
-		entrada, //Posião de memória de entrada
+module LCD_Controll(
+		clk,
+		clk_en,
+		reset,
+		dataa, 
+		datab,
 		LCD_RS, //Pino do RS do display
 		LCD_EN, //Pino de enable do display
 		LCD_RW, //Pino de RW do display
-		LCD_DATA, //Pinos de dados do display
-		LED //Pino do led
+		LCD_D, //Pinos de dados do display
+		LEDM_C,
+		LEDM_R 
 	);
 
-	input Clock;
-	input [3:0] entrada;
+	input clk;
+	input clk_en;
+	input reset;
+	input [31:0] dataa;
+	input [31:0] datab;
 
 	output LCD_RS;
 	output LCD_EN;
 	output LCD_RW;
-	output LED;
-	output [7:0] LCD_DATA;
+	output [7:0] LEDM_R;
+	output [4:0] LEDM_C;
+	output [7:0] LCD_D;
 
 	reg	rs;
 	reg	rw;
@@ -25,10 +33,13 @@ module LCD_Controll ctrl (
 	reg [4:0] led;
 
 	assign LCD_RS = rs;
-	assign LCD_EN = Clock;
+	assign LCD_EN = clock_50MHz;
 	assign LCD_RW = rw;
-	assign LCD_DATA = data_out;
-	assign LED = led;
+	assign LCD_D = data_out;
+	assign LEDM_R[4:0] = ~led;
+	assign LEDM_R[7:5] = 3'b111;
+	
+	assign LEDM_C[4:0] = 5'b11111;
 
 	//Estados da maquina
 	parameter [3:0] M_LED1 = 4'h0, 
@@ -45,7 +56,7 @@ module LCD_Controll ctrl (
 		LIMPAR = 4'h11;
 
 	initial begin
-		state=>s_LED1;
+		state <= M_LED1;
 	end
 
 	reg [5:0] count = 6'b0000000; //Variável pra poder mudar a o tipo de caractere na exibição
@@ -68,9 +79,9 @@ module LCD_Controll ctrl (
 	assign foo[12] = "O";
 	assign foo[13] = " ";
 
-	//A cada ciclo do clock ele verifica o estado
+	//A cada ciclo do clock_50MHz ele verifica o estado
 	//Se estiverem no estado M verifica o valor da entrada e se for um dos determinados ele migra pra outro estado
-	always @(posedge Clock) begin
+	always @(posedge clock_50MHz) begin
 		case(state)
 			M_LED1:begin
 				if(entrada == 4'b1000) begin
@@ -262,7 +273,7 @@ module LCD_Controll ctrl (
 				end
 			end
 			L_LED1:begin
-				led <= 5'00001;
+				led <= 5'b00001;
 				if (count == 6'h0) begin
 					data_out <= foo[8];
 					count <= count+1;
@@ -293,7 +304,7 @@ module LCD_Controll ctrl (
 				end
 			end
 			L_LED2:begin
-				led <= 5'00010;
+				led <= 5'b00010;
 				if (count == 6'h0) begin
 					data_out <= foo[8];
 					count <= count+1;
@@ -324,7 +335,7 @@ module LCD_Controll ctrl (
 				end
 			end
 			L_LED3:begin
-				led <= 5'00100;
+				led <= 5'b00100;
 				if (count == 6'h0) begin
 					data_out <= foo[8];
 					count <= count+1;
@@ -355,7 +366,7 @@ module LCD_Controll ctrl (
 				end
 			end
 			L_LED4:begin
-				led <= 5'01000;
+				led <= 5'b01000;
 				if (count == 6'h0) begin
 					data_out <= foo[8];
 					count <= count+1;
@@ -386,7 +397,7 @@ module LCD_Controll ctrl (
 				end
 			end
 			L_LED5:begin
-				led <= 5'10000;
+				led <= 5'b10000;
 				if (count == 6'h0) begin
 					data_out <= foo[8];
 					count <= count+1;
