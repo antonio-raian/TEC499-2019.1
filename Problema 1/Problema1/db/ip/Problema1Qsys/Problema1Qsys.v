@@ -4,11 +4,10 @@
 
 `timescale 1 ps / 1 ps
 module Problema1Qsys (
-		input  wire [7:0] botoes_in_port,  // botoes.in_port
-		output wire [7:0] botoes_out_port, //       .out_port
-		input  wire       clk_clk,         //    clk.clk
-		output wire [7:0] leds_export,     //   leds.export
-		input  wire       reset_reset_n    //  reset.reset_n
+		input  wire [3:0] botoes_export, // botoes.export
+		input  wire       clk_clk,       //    clk.clk
+		output wire [4:0] leds_export,   //   leds.export
+		input  wire       reset_reset_n  //  reset.reset_n
 	);
 
 	wire  [31:0] nios2_gen2_0_data_master_readdata;                           // mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
@@ -45,11 +44,8 @@ module Problema1Qsys (
 	wire         mm_interconnect_0_onchip_memory2_0_s1_write;                 // mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
 	wire  [31:0] mm_interconnect_0_onchip_memory2_0_s1_writedata;             // mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
 	wire         mm_interconnect_0_onchip_memory2_0_s1_clken;                 // mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
-	wire         mm_interconnect_0_botoes_s1_chipselect;                      // mm_interconnect_0:Botoes_s1_chipselect -> Botoes:chipselect
 	wire  [31:0] mm_interconnect_0_botoes_s1_readdata;                        // Botoes:readdata -> mm_interconnect_0:Botoes_s1_readdata
 	wire   [1:0] mm_interconnect_0_botoes_s1_address;                         // mm_interconnect_0:Botoes_s1_address -> Botoes:address
-	wire         mm_interconnect_0_botoes_s1_write;                           // mm_interconnect_0:Botoes_s1_write -> Botoes:write_n
-	wire  [31:0] mm_interconnect_0_botoes_s1_writedata;                       // mm_interconnect_0:Botoes_s1_writedata -> Botoes:writedata
 	wire         mm_interconnect_0_leds_s1_chipselect;                        // mm_interconnect_0:LEDs_s1_chipselect -> LEDs:chipselect
 	wire  [31:0] mm_interconnect_0_leds_s1_readdata;                          // LEDs:readdata -> mm_interconnect_0:LEDs_s1_readdata
 	wire   [1:0] mm_interconnect_0_leds_s1_address;                           // mm_interconnect_0:LEDs_s1_address -> LEDs:address
@@ -61,15 +57,11 @@ module Problema1Qsys (
 	wire         rst_controller_reset_out_reset_req;                          // rst_controller:reset_req -> [nios2_gen2_0:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 
 	Problema1Qsys_Botoes botoes (
-		.clk        (clk_clk),                                //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
-		.address    (mm_interconnect_0_botoes_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_0_botoes_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_0_botoes_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_0_botoes_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_0_botoes_s1_readdata),   //                    .readdata
-		.in_port    (botoes_in_port),                         // external_connection.export
-		.out_port   (botoes_out_port)                         //                    .export
+		.clk      (clk_clk),                              //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),      //               reset.reset_n
+		.address  (mm_interconnect_0_botoes_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_botoes_s1_readdata), //                    .readdata
+		.in_port  (botoes_export)                         // external_connection.export
 	);
 
 	Problema1Qsys_LEDs leds (
@@ -155,10 +147,7 @@ module Problema1Qsys (
 		.nios2_gen2_0_instruction_master_read           (nios2_gen2_0_instruction_master_read),                        //                                         .read
 		.nios2_gen2_0_instruction_master_readdata       (nios2_gen2_0_instruction_master_readdata),                    //                                         .readdata
 		.Botoes_s1_address                              (mm_interconnect_0_botoes_s1_address),                         //                                Botoes_s1.address
-		.Botoes_s1_write                                (mm_interconnect_0_botoes_s1_write),                           //                                         .write
 		.Botoes_s1_readdata                             (mm_interconnect_0_botoes_s1_readdata),                        //                                         .readdata
-		.Botoes_s1_writedata                            (mm_interconnect_0_botoes_s1_writedata),                       //                                         .writedata
-		.Botoes_s1_chipselect                           (mm_interconnect_0_botoes_s1_chipselect),                      //                                         .chipselect
 		.jtag_uart_0_avalon_jtag_slave_address          (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address),     //            jtag_uart_0_avalon_jtag_slave.address
 		.jtag_uart_0_avalon_jtag_slave_write            (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write),       //                                         .write
 		.jtag_uart_0_avalon_jtag_slave_read             (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read),        //                                         .read

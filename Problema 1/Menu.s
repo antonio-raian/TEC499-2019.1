@@ -15,20 +15,25 @@
 
 .equ botoes, 0x2030
 
+.equ btn_sobe, 0001
+.equ btn_desce, 0010
+.equ btn_seleciona, 0100
+.equ btn_volta, 1000
+
 #USA r10 LETRAS
-.equ L, 01001100
-.equ E, 01000101
-.equ D, 01000100
+.equ L, 0x4c
+.equ E, 0x45
+.equ D, 0x44
 .equ 1, 00110001
 .equ 2, 00110010
 .equ 3, 00110011
 .equ 4, 00110100
 .equ 5, 00110101
-.equ A, 01000001
-.equ C, 01000011
-.equ S, 01010011
-.equ O, 01001111
-.equ espaco, 
+.equ A, 0x41
+.equ C, 0x43
+.equ S, 0x53
+.equ O, 0x4f
+.equ espaco, 0x20
 
 .text
 #USA r3 PRA RETORNO DO MODULO
@@ -36,7 +41,7 @@
 #USA r5 PRA VALOR 1
 
 main:
-	movi R5, 1
+	movi r5, 1
 	movi r4, botoes 	#r4 tem a posição inicial dos botões na memória
 	movi r2, menu_led1 	#r2 guarda o estado atual
 	call lcd_init
@@ -62,15 +67,18 @@ menu1:
 	custom 0, r3, r0, r10
 	call delay_50us
 	
-	#botão sobe	
-	ldw r3, 0[r4]	#r3 tem o valor q está na memória de r4
-	bne r3, r0, menu5
+	#botão sobe
+	movi r12, btn_sobe
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu5
 	#botão desce
-	ldw r3, 4[r4]
-	bne r3, r0, menu2
+	movi r12, btn_desce
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu2
 	#botão select
-	ldw r3, 8[r4]
-	bne r3, r0, led1
+	movi r12, btn_seleciona
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, led1
 	br menu1
 
 menu2:
@@ -80,14 +88,17 @@ menu2:
 	movi r11, r2
 	custom 0, r10, r10, r11
 	#botão sobe	
-	ldw r3, 0[r4]
-	bne r3, r0, menu1
+	movi r12, btn_sobe
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu1
 	#botão desce
-	ldw r3, 4[r4]
-	bne r3, r0, menu3
+	movi r12, btn_desce
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu3
 	#botão select
-	ldw r3, 8[r4]
-	bne r3, r0, led2
+	movi r12, btn_seleciona
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, led2
 	br menu2
 
 menu3:
@@ -97,15 +108,17 @@ menu3:
 	movi r11, r2
 	custom 0, r10, r10, r11
 	#botão sobe	
-	ldw r3, 0[r4]
-	bne r3, r0, menu2
+	movi r12, btn_sobe
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu2
 	#botão desce
-	ldw r3, 4[r4]
-	bne r3, r0, menu4
+	movi r12, btn_desce
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu4
 	#botão select
-	ldw r3, 8[r4]
-	bne r3, r0, led3
-	br menu3
+	movi r12, btn_seleciona
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, led3
 
 menu4:
 	call limpa
@@ -114,14 +127,17 @@ menu4:
 	movi r11, r2
 	custom 0, r10, r10, r11
 	#botão sobe	
-	ldw r3, 0[r4]
-	bne r3, r0, menu3
+	movi r12, btn_sobe
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu3
 	#botão desce
-	ldw r3, 4[r4]
-	bne r3, r0, menu5
+	movi r12, btn_desce
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu5
 	#botão select
-	ldw r3, 8[r4]
-	bne r3, r0, led4
+	movi r12, btn_seleciona
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, led4
 	br menu4
 
 menu5:
@@ -131,14 +147,17 @@ menu5:
 	movi r11, r2
 	custom 0, r10, r10, r11
 	#botão sobe	
-	ldw r3, 0[r4]
-	bne r3, r0, menu4
+	movi r12, btn_sobe
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu4
 	#botão desce
-	ldw r3, 4[r4]
-	bne r3, r0, menu1
+	movi r12, btn_desce
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu1
 	#botão select
-	ldw r3, 8[r4]
-	bne r3, r0, led5
+	movi r12, btn_seleciona
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, led5
 	br menu5
 
 led1:
@@ -189,8 +208,9 @@ led1:
 	call delay_50us
 
 	#botão back
-	ldw r3, 12[r4]
-	bne r3, r0, menu1
+	movi r12, btn_volta
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu1
 	br led1
 
 led2:
@@ -200,8 +220,9 @@ led2:
 	movi r11, r2
 	custom 0, r10, r10, r11 #Envia o dado para acender os LEDs e exibir no LCD "ACENDENDO LED2"
 	#botão back
-	ldw r3, 12[r4]
-	bne r3, r0, menu2
+	movi r12, btn_volta
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu2
 	br led2
 
 led3:
@@ -211,8 +232,9 @@ led3:
 	movi r11, r2
 	custom 0, r10, r10, r11 #Envia o dado para acender os LEDs e exibir no LCD "ACENDENDO LED3"
 	#botão back
-	ldw r3, 12[r4]
-	bne r3, r0, menu3
+	movi r12, btn_volta
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu3
 	br led3
 
 led4:
@@ -222,8 +244,9 @@ led4:
 	movi r11, r2
 	custom 0, r10, r10, r11 #Envia o dado para acender os LEDs e exibir no LCD "ACENDENDO LED4"
 	#botão back
-	ldw r3, 12[r4]
-	bne r3, r0, menu4
+	movi r12, btn_volta
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu4
 	br led4
 
 led5:
@@ -233,8 +256,9 @@ led5:
 	movi r11, r2
 	custom 0, r10, r10, r11 #Envia o dado para acender os LEDs e exibir no LCD "ACENDENDO LED5"
 	#botão back
-	ldw r3, 12[r4]
-	bne r3, r0, menu5
+	movi r12, btn_volta
+	ldbio r3, 0[r4]	#r3 tem o valor q está na memória de r4
+	beq r12, r3, menu5
 	br led5
 
 limpa: #Limpa o display para uma nova escrita

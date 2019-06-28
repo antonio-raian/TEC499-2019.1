@@ -22,10 +22,7 @@ module Problema1Qsys_mm_interconnect_0 (
 		input  wire        nios2_gen2_0_instruction_master_read,           //                                         .read
 		output wire [31:0] nios2_gen2_0_instruction_master_readdata,       //                                         .readdata
 		output wire [1:0]  Botoes_s1_address,                              //                                Botoes_s1.address
-		output wire        Botoes_s1_write,                                //                                         .write
 		input  wire [31:0] Botoes_s1_readdata,                             //                                         .readdata
-		output wire [31:0] Botoes_s1_writedata,                            //                                         .writedata
-		output wire        Botoes_s1_chipselect,                           //                                         .chipselect
 		output wire [0:0]  jtag_uart_0_avalon_jtag_slave_address,          //            jtag_uart_0_avalon_jtag_slave.address
 		output wire        jtag_uart_0_avalon_jtag_slave_write,            //                                         .write
 		output wire        jtag_uart_0_avalon_jtag_slave_read,             //                                         .read
@@ -810,11 +807,10 @@ module Problema1Qsys_mm_interconnect_0 (
 		.uav_lock               (botoes_s1_agent_m0_lock),                        //                         .lock
 		.uav_debugaccess        (botoes_s1_agent_m0_debugaccess),                 //                         .debugaccess
 		.av_address             (Botoes_s1_address),                              //      avalon_anti_slave_0.address
-		.av_write               (Botoes_s1_write),                                //                         .write
 		.av_readdata            (Botoes_s1_readdata),                             //                         .readdata
-		.av_writedata           (Botoes_s1_writedata),                            //                         .writedata
-		.av_chipselect          (Botoes_s1_chipselect),                           //                         .chipselect
+		.av_write               (),                                               //              (terminated)
 		.av_read                (),                                               //              (terminated)
+		.av_writedata           (),                                               //              (terminated)
 		.av_begintransfer       (),                                               //              (terminated)
 		.av_beginbursttransfer  (),                                               //              (terminated)
 		.av_burstcount          (),                                               //              (terminated)
@@ -823,6 +819,7 @@ module Problema1Qsys_mm_interconnect_0 (
 		.av_waitrequest         (1'b0),                                           //              (terminated)
 		.av_writebyteenable     (),                                               //              (terminated)
 		.av_lock                (),                                               //              (terminated)
+		.av_chipselect          (),                                               //              (terminated)
 		.av_clken               (),                                               //              (terminated)
 		.uav_clken              (1'b0),                                           //              (terminated)
 		.av_debugaccess         (),                                               //              (terminated)

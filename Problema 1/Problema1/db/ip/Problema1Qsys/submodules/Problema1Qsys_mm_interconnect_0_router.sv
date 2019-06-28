@@ -173,6 +173,11 @@ module Problema1Qsys_mm_interconnect_0_router
 
 
 
+    // -------------------------------------------------------
+    // Write and read transaction signals
+    // -------------------------------------------------------
+    wire read_transaction;
+    assign read_transaction  = sink_data[PKT_TRANS_READ];
 
 
     Problema1Qsys_mm_interconnect_0_router_default_decode the_default_decode(
@@ -211,7 +216,7 @@ module Problema1Qsys_mm_interconnect_0_router
     end
 
     // ( 0x2030 .. 0x2040 )
-    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 14'h2030   ) begin
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 14'h2030  && read_transaction  ) begin
             src_channel = 5'b01000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end
