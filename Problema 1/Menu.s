@@ -1,13 +1,7 @@
 .data
-#--------------Mapeamento do LCD --------------------
-	v0: #pino V10
-	rs: #pino U9
-	rw: #pino U8
-	en: #pino V9
-	dados: #V8, V7, V6, V5, V4, Y4, V3, Y3
-
 .global main
 
+#USA r2 PRA ARMAZENAR O ESTADO ATUAL
 .equ menu_led1, 0x01
 .equ menu_led2, 0x02
 .equ menu_led3, 0x03
@@ -21,26 +15,53 @@
 
 .equ botoes, 0x2030
 
+#USA r10 LETRAS
+.equ L, 01001100
+.equ E, 01000101
+.equ D, 01000100
+.equ 1, 00110001
+.equ 2, 00110010
+.equ 3, 00110011
+.equ 4, 00110100
+.equ 5, 00110101
+.equ A, 01000001
+.equ C, 01000011
+.equ S, 01010011
+.equ O, 01001111
+.equ espaco, 
+
 .text
+#USA r3 PRA RETORNO DO MODULO
+#USA r4 PRA BOTOES
+#USA r5 PRA VALOR 1
 
 main:
-	movi v0, 1
+	movi R5, 1
 	movi r4, botoes 	#r4 tem a posição inicial dos botões na memória
-	movi r10, 200
-	movi r2, menu_led1 #r2 guarda o estado atual
+	movi r2, menu_led1 	#r2 guarda o estado atual
 	call lcd_init
-	mov r11, r2
-	movi r10, 1
-	custom 0, r10, r10, r11 #Escreve no display o estado inicial
 	br menu1
 	br end
 
 menu1:
 	call limpa
-	movi r2, menu_led1
+
+	movi r10, L
+	custom 0, r3, r0, r10
+	call delay_50us
+	movi r10, E
+	custom 0, r3, r0, r10
+	call delay_50us
+	movi r10, D
+	custom 0, r3, r0, r10
+	call delay_50us
+	movi r10, espaco
+	custom 0, r3, r0, r10
+	call delay_50us
 	movi r10, 1
-	movi r11, r2
-	custom 0, r10, r10, r11
+	custom 0, r3, r0, r10
+	call delay_50us
+	
 	#botão sobe	
 	ldw r3, 0[r4]	#r3 tem o valor q está na memória de r4
 	bne r3, r0, menu5
@@ -122,10 +143,51 @@ menu5:
 
 led1:
 	call limpa
-	movi r2, ativo_led1
+
+	movi r10, A
+	custom 0, r3, r0, r10
+	call delay_50us
+
+	movi r10, C
+	custom 0, r3, r0, r10
+	call delay_50us
+	
+	movi r10, E
+	custom 0, r3, r0, r10
+	call delay_50us
+	
+	movi r10, S
+	custom 0, r3, r0, r10
+	call delay_50us
+	
+	movi r10, O
+	custom 0, r3, r0, r10
+	call delay_50us
+	
+	movi r10, espaco
+	custom 0, r3, r0, r10
+	call delay_50us
+	
+	movi r10, L
+	custom 0, r3, r0, r10
+	call delay_50us
+	
+	movi r10, E
+	custom 0, r3, r0, r10
+	call delay_50us
+	
+	movi r10, D
+	custom 0, r3, r0, r10
+	call delay_50us
+	
+	movi r10, espaco
+	custom 0, r3, r0, r10
+	call delay_50us
+	
 	movi r10, 1
-	movi r11, r2
-	custom 0, r10, r10, r11 #Envia o dado para acender os LEDs e exibir no LCD "ACENDENDO LED1"
+	custom 0, r3, r0, r10
+	call delay_50us
+
 	#botão back
 	ldw r3, 12[r4]
 	bne r3, r0, menu1
@@ -176,7 +238,7 @@ led5:
 	br led5
 
 limpa: #Limpa o display para uma nova escrita
-	movi r11, 0001 #Valor dos pinos para limpar o display (CORRIGIR)
+	movi r11, 00000001 #Valor dos pinos para limpar o display
 	custom 0, r10, r0, r11
 	ret
 	
@@ -192,15 +254,7 @@ lcd_init:
 	ret
 
 config:
-	movi rs, 0
-	movi rw, 0
-	movi en, 0
-	call delay_50us
-	movi en, 1
-	call delay_50us
-	mov dados, r3	
-	call delay_50us
-	movi en, 0
+	custom 0, r10, r0, r3
 	call delay_50us
 	ret
 
