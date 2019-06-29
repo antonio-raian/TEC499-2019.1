@@ -1,0 +1,129 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "lcd_controller_rs",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_controller_en",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_controller_lcd[7]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_controller_lcd[6]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_controller_lcd[5]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_controller_lcd[4]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_controller_lcd[3]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_controller_lcd[2]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_controller_lcd[1]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_controller_lcd[0]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_coluna_export[4]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_coluna_export[3]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_coluna_export[2]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_coluna_export[1]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_coluna_export[0]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_linha_export[4]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_linha_export[3]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_linha_export[2]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_linha_export[1]",
+					"strict" : false
+				},
+				{
+					"name" : "m_led_linha_export[0]",
+					"strict" : false
+				},
+				{
+					"name" : "clk_clk",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_export[0]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_export[1]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_export[2]",
+					"strict" : false
+				},
+				{
+					"name" : "botoes_export[3]",
+					"strict" : false
+				},
+				{
+					"name" : "reset_reset_n",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tms",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tck",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdi",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdo",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
