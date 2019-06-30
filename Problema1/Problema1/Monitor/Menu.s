@@ -1,18 +1,6 @@
 .data
 .global main
 
-#USA r2 PRA ARMAZENAR O ESTADO ATUAL
-.equ menu_led1, 0x01
-.equ menu_led2, 0x02
-.equ menu_led3, 0x03
-.equ menu_led4, 0x04
-.equ menu_led5, 0x05
-.equ ativo_led1, 0x06
-.equ ativo_led2, 0x07
-.equ ativo_led3, 0x08
-.equ ativo_led4, 0x09
-.equ ativo_led5, 0x0a
-
 .equ botoes, 0x0840
 .equ mled_coluna, 0x0850
 .equ mled_linha, 0x0830
@@ -22,15 +10,14 @@
 .equ btn_seleciona, 0100
 .equ btn_volta, 1000
 
-#USA r10 LETRAS
 .equ L, 0x4C
 .equ E, 0x45
 .equ D, 0x44
-.equ d1, 0x31
-.equ d2, 0x32
-.equ d3, 0x33
-.equ d4, 0x34
-.equ d5, 0x35
+.equ Um, 0x31
+.equ Dois, 0x32
+.equ Tres, 0x33
+.equ Quatro, 0x34
+.equ Cinco, 0x35
 .equ A, 0x41
 .equ C, 0x43
 .equ S, 0x53
@@ -38,35 +25,25 @@
 .equ espaco, 0x20
 
 .text
-#USA r3 PRA RETORNO DO MODULO
-#USA r4 PRA BOTOES
-#USA r5 PRA VALOR 1
+
+# REGISTRADORES UTILIZADOS
+#USA r2 PARA VERIFICAR SE OS BOTÕES FORAM PRESSIONADOS
+#USA r3 PARA RETORNO DO MODULO
+#USA r4 PARA A POSIÇÃO DE MEMÓRIA DOS BOTOES
+#USA r5 PARA VALOR 1
+#USA r8 PARA LOOP DE VERIFICAÇÃO DOS BOTÕES
+#USA r10 PARA LETRAS
 
 main:
 	movi r5, 1
 	movia r4, botoes 	#r4 tem a posição inicial dos botões na memória
-	movia r2, menu_led1 	#r2 guarda o estado atual
 	call lcd_init
 	br menu1
 
 menu1:
-	#botão sobe
-	movia r12, btn_sobe
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu5
-	#botão desce
-	movia r12, btn_desce
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu2
-	#botão select
-	movia r12, btn_seleciona
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, led1
-	
-	beq r13, r5, menu1
-	addi r13, r0, 1
+	#LIMPA O DISPLAY
 	call limpa
-
+	#ESCREVE "LED 1" NO DISPLAY
 	movia r10, L
 	custom 0, r3, r5, r10
 	movia r10, E
@@ -75,28 +52,28 @@ menu1:
 	custom 0, r3, r5, r10
 	movia r10, espaco
 	custom 0, r3, r5, r10
-	movia r10, d1
+	movia r10, Um
 	custom 0, r3, r5, r10
-	br menu1
+
+	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
+	nextpc r8
+	movia r2, btn_sobe 	#BOTÃO SOBE 
+	ldbio r3, 0(r4)	
+	beq r2, r3, menu5
+	
+	movia r2, btn_desce #BOTÃO DESCE
+	ldbio r3, 0(r4)
+	beq r2, r3, menu2
+	
+	movia r2, btn_seleciona #BOTÃO SELECT
+	ldbio r3, 0(r4)
+	beq r2, r3, led1
+	callr r8
 
 menu2:
-	#botão sobe	
-	movia r12, btn_sobe
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu1
-	#botão desce
-	movia r12, btn_desce
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu3
-	#botão select
-	movia r12, btn_seleciona
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, led2
-
-	beq r14, r5, menu2
-	addi r14, r0, 1
+	#LIMPA O DISPLAY
 	call limpa
-	
+	#ESCREVE "LED 2" NO DISPLAY
 	movia r10, L
 	custom 0, r3, r5, r10
 	movia r10, E
@@ -105,28 +82,28 @@ menu2:
 	custom 0, r3, r5, r10
 	movia r10, espaco
 	custom 0, r3, r5, r10
-	movia r10, d2
+	movia r10, Dois
 	custom 0, r3, r5, r10
-	br menu2
+
+	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
+	nextpc r8
+	movia r2, btn_sobe #BOTÃO SOBE
+	ldbio r3, 0(r4)	
+	beq r2, r3, menu1
+	
+	movia r2, btn_desce #BOTÃO DESCE
+	ldbio r3, 0(r4)
+	beq r2, r3, menu3
+	
+	movia r2, btn_seleciona #BOTÃO SELECT
+	ldbio r3, 0(r4)
+	beq r2, r3, led2
+	callr r8
 
 menu3:
-	#botão sobe	
-	movia r12, btn_sobe
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu2
-	#botão desce
-	movia r12, btn_desce
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu4
-	#botão select
-	movia r12, btn_seleciona
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, led3
-
-	beq r15, r5, menu3
-	addi r15, r0, 1
+	#LIMPA O DISPLAY
 	call limpa
-	
+	#ESCREVE "LED 3" NO DISPLAY
 	movia r10, L
 	custom 0, r3, r5, r10
 	movia r10, E
@@ -135,28 +112,28 @@ menu3:
 	custom 0, r3, r5, r10
 	movia r10, espaco
 	custom 0, r3, r5, r10
-	movia r10, d3
+	movia r10, Tres
 	custom 0, r3, r5, r10
-	br menu3
+	
+	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO	
+	nextpc r8
+	movia r2, btn_sobe #BOTÃO SOBE
+	ldbio r3, 0(r4)	
+	beq r2, r3, menu2
+
+	movia r2, btn_desce #BOTÃO DESCE
+	ldbio r3, 0(r4)
+	beq r2, r3, menu4
+	
+	movia r2, btn_seleciona #BOTÃO SELECT
+	ldbio r3, 0(r4)	
+	beq r2, r3, led3
+	callr r8
 
 menu4:
-	#botão sobe	
-	movia r12, btn_sobe
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu3
-	#botão desce
-	movia r12, btn_desce
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu5
-	#botão select
-	movia r12, btn_seleciona
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, led4
-
-	beq r16, r5, menu4
-	addi r16, r0, 1
+	#LIMPA O DISPLAY
 	call limpa
-	
+	#ESCREVE "LED 4" NO DISPLAY
 	movia r10, L
 	custom 0, r3, r5, r10
 	movia r10, E
@@ -165,29 +142,28 @@ menu4:
 	custom 0, r3, r5, r10
 	movia r10, espaco
 	custom 0, r3, r5, r10
-	movia r10, d4
+	movia r10, Quatro
 	custom 0, r3, r5, r10
 
-	br menu4
+	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO	
+	nextpc r8
+	movia r2, btn_sobe #BOTÃO SOBE
+	ldbio r3, 0(r4)
+	beq r2, r3, menu3
+
+	movia r2, btn_desce #BOTÃO DESCE
+	ldbio r3, 0(r4)
+	beq r2, r3, menu5
+
+	movia r2, btn_seleciona #BOTÃO SELECIONA
+	ldbio r3, 0(r4)
+	beq r2, r3, led4
+	callr r8
 
 menu5:
-	#botão sobe	
-	movia r12, btn_sobe
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu4
-	#botão desce
-	movia r12, btn_desce
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu1
-	#botão select
-	movia r12, btn_seleciona
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, led5
-
-	beq r17, r5, menu5
-	addi r17, r0, 1
+	#LIMPA O DISPLAY
 	call limpa
-	
+	#ESCREVE "LED 5" NO DISPLAY
 	movia r10, L
 	custom 0, r3, r5, r10
 	movia r10, E
@@ -196,9 +172,23 @@ menu5:
 	custom 0, r3, r5, r10
 	movia r10, espaco
 	custom 0, r3, r5, r10
-	movia r10, d5
+	movia r10, Cinco
 	custom 0, r3, r5, r10
-	br menu5
+
+	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
+	nextpc r8	
+	movia r2, btn_sobe #BOTÃO SOBE
+	ldbio r3, 0(r4)	
+	beq r2, r3, menu4
+	
+	movia r2, btn_desce #BOTÃO DESCE
+	ldbio r3, 0(r4)	
+	beq r2, r3, menu1
+
+	movia r2, btn_seleciona #BOTÃO SELECT
+	ldbio r3, 0(r4)	
+	beq r2, r3, led5
+	callr r8
 
 led1:
 	call limpa
@@ -233,7 +223,7 @@ led1:
 	movia r10, espaco
 	custom 0, r3, r5, r10
 	
-	movia r10, d1
+	movia r10, Um
 	custom 0, r3, r5, r10
 
 	movia r6, mled_coluna
@@ -244,11 +234,12 @@ led1:
 	movi r7, 01111
 	stbio r7, 0(r6)
 
-	#botão back
-	movia r12, btn_volta
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu1
-	br led1
+	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
+	nextpc r8
+	movia r2, btn_volta #BOTÃO VOLTA
+	ldbio r3, 0(r4)
+	beq r2, r3, menu1
+	callr r8
 
 led2:
 	call limpa
@@ -283,7 +274,7 @@ led2:
 	movia r10, espaco
 	custom 0, r3, r5, r10
 	
-	movia r10, d2
+	movia r10, Dois
 	custom 0, r3, r5, r10
 
 	movia r6, mled_coluna
@@ -294,11 +285,12 @@ led2:
 	movi r7, 10111
 	stbio r7, 0(r6)
 
-	#botão back
-	movia r12, btn_volta
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu2
-	br led2
+	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
+	nextpc r8
+	movia r2, btn_volta #BOTÃO VOLTA
+	ldbio r3, 0(r4)
+	beq r2, r3, menu2
+	callr r8
 
 led3:
 	call limpa
@@ -333,7 +325,7 @@ led3:
 	movia r10, espaco
 	custom 0, r3, r5, r10
 	
-	movia r10, d3
+	movia r10, Tres
 	custom 0, r3, r5, r10
 
 	movia r6, mled_coluna
@@ -344,11 +336,12 @@ led3:
 	movi r7, 11011
 	stbio r7, 0(r6)
 
-	#botão back
-	movia r12, btn_volta
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu3
-	br led3
+	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
+	nextpc r8
+	movia r2, btn_volta #BOTÃO VOLTA
+	ldbio r3, 0(r4)
+	beq r2, r3, menu3
+	callr r8
 
 led4:
 	call limpa
@@ -383,7 +376,7 @@ led4:
 	movia r10, espaco
 	custom 0, r3, r5, r10
 	
-	movia r10, d4
+	movia r10, Quatro
 	custom 0, r3, r5, r10
 
 	movia r6, mled_coluna
@@ -394,11 +387,12 @@ led4:
 	movi r7, 11101
 	stbio r7, 0(r6)
 
-	#botão back
-	movia r12, btn_volta
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu4
-	br led4
+	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
+	nextpc r8
+	movia r2, btn_volta #BOTÃO VOLTA
+	ldbio r3, 0(r4)
+	beq r2, r3, menu4
+	callr r8
 
 led5:
 	call limpa
@@ -433,7 +427,7 @@ led5:
 	movia r10, espaco
 	custom 0, r3, r5, r10
 	
-	movia r10, d5
+	movia r10, Cinco
 	custom 0, r3, r5, r10
 
 	movia r6, mled_coluna
@@ -444,13 +438,14 @@ led5:
 	movi r7, 11110
 	stbio r7, 0(r6)
 
-	#botão back
-	movia r12, btn_volta
-	ldbio r3, 0(r4)	#r3 tem o valor q está na memória de r4
-	beq r12, r3, menu5
-	br led5
+	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
+	nextpc r8
+	movia r2, btn_volta #BOTÃO VOLTA
+	ldbio r3, 0(r4)
+	beq r2, r3, menu1
+	callr r8
 
-limpa: #Limpa o display para uma nova escrita e a matriz de LED
+limpa: #Limpa o display para uma nova escrita e apaga a matriz de LED
 	movi r11, 00000001 #Valor dos pinos para limpar o display
 	custom 0, r10, r0, r11
 
