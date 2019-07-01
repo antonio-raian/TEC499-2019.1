@@ -5,10 +5,10 @@
 .equ mled_coluna, 0x0850
 .equ mled_linha, 0x0830
 
-.equ btn_sobe, 0001
-.equ btn_desce, 0010
-.equ btn_seleciona, 0100
-.equ btn_volta, 1000
+.equ btn_sobe, 1
+.equ btn_desce, 2
+.equ btn_seleciona, 4
+.equ btn_volta, 8
 
 .equ L, 0x4C
 .equ E, 0x45
@@ -55,18 +55,17 @@ menu1:
 	movia r10, Um
 	custom 0, r3, r5, r10
 
+	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
 	nextpc r8
-	movia r2, btn_sobe 	#BOTÃO SOBE 
-	ldbio r3, 0(r4)	
+	ldbuio r3, 0(r4)
+	movia r2, btn_sobe 	#BOTÃO SOBE 	
 	beq r2, r3, menu5
 	
 	movia r2, btn_desce #BOTÃO DESCE
-	ldbio r3, 0(r4)
 	beq r2, r3, menu2
 	
 	movia r2, btn_seleciona #BOTÃO SELECT
-	ldbio r3, 0(r4)
 	beq r2, r3, led1
 	callr r8
 
@@ -85,18 +84,18 @@ menu2:
 	movia r10, Dois
 	custom 0, r3, r5, r10
 
+	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
 	nextpc r8
-	movia r2, btn_sobe #BOTÃO SOBE
-	ldbio r3, 0(r4)	
+	ldbuio r3, 0(r4)
+	
+	movia r2, btn_sobe #BOTÃO SOBE	
 	beq r2, r3, menu1
 	
 	movia r2, btn_desce #BOTÃO DESCE
-	ldbio r3, 0(r4)
 	beq r2, r3, menu3
 	
 	movia r2, btn_seleciona #BOTÃO SELECT
-	ldbio r3, 0(r4)
 	beq r2, r3, led2
 	callr r8
 
@@ -114,19 +113,19 @@ menu3:
 	custom 0, r3, r5, r10
 	movia r10, Tres
 	custom 0, r3, r5, r10
-	
+
+	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO	
 	nextpc r8
-	movia r2, btn_sobe #BOTÃO SOBE
-	ldbio r3, 0(r4)	
+	ldbuio r3, 0(r4)
+
+	movia r2, btn_sobe #BOTÃO SOBE	
 	beq r2, r3, menu2
 
 	movia r2, btn_desce #BOTÃO DESCE
-	ldbio r3, 0(r4)
 	beq r2, r3, menu4
 	
 	movia r2, btn_seleciona #BOTÃO SELECT
-	ldbio r3, 0(r4)	
 	beq r2, r3, led3
 	callr r8
 
@@ -145,18 +144,18 @@ menu4:
 	movia r10, Quatro
 	custom 0, r3, r5, r10
 
+	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO	
 	nextpc r8
+	ldbuio r3, 0(r4)
+
 	movia r2, btn_sobe #BOTÃO SOBE
-	ldbio r3, 0(r4)
 	beq r2, r3, menu3
 
 	movia r2, btn_desce #BOTÃO DESCE
-	ldbio r3, 0(r4)
 	beq r2, r3, menu5
 
 	movia r2, btn_seleciona #BOTÃO SELECIONA
-	ldbio r3, 0(r4)
 	beq r2, r3, led4
 	callr r8
 
@@ -175,18 +174,17 @@ menu5:
 	movia r10, Cinco
 	custom 0, r3, r5, r10
 
+	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
-	nextpc r8	
+	nextpc r8
+	ldbuio r3, 0(r4)	
 	movia r2, btn_sobe #BOTÃO SOBE
-	ldbio r3, 0(r4)	
 	beq r2, r3, menu4
 	
 	movia r2, btn_desce #BOTÃO DESCE
-	ldbio r3, 0(r4)	
 	beq r2, r3, menu1
 
 	movia r2, btn_seleciona #BOTÃO SELECT
-	ldbio r3, 0(r4)	
 	beq r2, r3, led5
 	callr r8
 
@@ -231,13 +229,15 @@ led1:
 	stbio r7, 0(r6)
 
 	movia r6, mled_linha
-	movi r7, 01111
+	movi r7, 15
 	stbio r7, 0(r6)
 
+	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
 	nextpc r8
+	ldbuio r3, 0(r4)
+
 	movia r2, btn_volta #BOTÃO VOLTA
-	ldbio r3, 0(r4)
 	beq r2, r3, menu1
 	callr r8
 
@@ -282,13 +282,15 @@ led2:
 	stbio r7, 0(r6)
 
 	movia r6, mled_linha
-	movi r7, 10111
+	movi r7, 23
 	stbio r7, 0(r6)
 
+	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
 	nextpc r8
+	ldbuio r3, 0(r4)
+
 	movia r2, btn_volta #BOTÃO VOLTA
-	ldbio r3, 0(r4)
 	beq r2, r3, menu2
 	callr r8
 
@@ -333,13 +335,15 @@ led3:
 	stbio r7, 0(r6)
 
 	movia r6, mled_linha
-	movi r7, 11011
+	movi r7, 27
 	stbio r7, 0(r6)
 
+	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
 	nextpc r8
+	ldbuio r3, 0(r4)
+
 	movia r2, btn_volta #BOTÃO VOLTA
-	ldbio r3, 0(r4)
 	beq r2, r3, menu3
 	callr r8
 
@@ -384,13 +388,15 @@ led4:
 	stbio r7, 0(r6)
 
 	movia r6, mled_linha
-	movi r7, 11101
+	movi r7, 29
 	stbio r7, 0(r6)
 
+	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
 	nextpc r8
+	ldbuio r3, 0(r4)
+
 	movia r2, btn_volta #BOTÃO VOLTA
-	ldbio r3, 0(r4)
 	beq r2, r3, menu4
 	callr r8
 
@@ -435,15 +441,24 @@ led5:
 	stbio r7, 0(r6)
 
 	movia r6, mled_linha
-	movi r7, 11110
+	movi r7, 30
 	stbio r7, 0(r6)
 
+	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
 	nextpc r8
+	ldbuio r3, 0(r4)
+
 	movia r2, btn_volta #BOTÃO VOLTA
-	ldbio r3, 0(r4)
 	beq r2, r3, menu1
 	callr r8
+
+delay: #DELAY DE 10ms
+	movi r7, 500000
+wait:
+	subi r7, r7, 1
+	bne r7, r0, wait
+	ret
 
 limpa: #Limpa o display para uma nova escrita e apaga a matriz de LED
 	movi r11, 00000001 #Valor dos pinos para limpar o display
