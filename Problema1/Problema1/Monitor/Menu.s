@@ -1,9 +1,9 @@
 .data
 .global main
 
-.equ botoes, 0x0840
-.equ mled_coluna, 0x0850
-.equ mled_linha, 0x0830
+.equ botoes, 0x2050
+.equ mled_coluna, 0x2040
+.equ mled_linha, 0x2030
 
 .equ btn_sobe, 1
 .equ btn_desce, 2
@@ -454,7 +454,7 @@ led5:
 	callr r8
 
 delay: #DELAY DE 10ms
-	movi r7, 500000
+	movia r7, 500000
 wait:
 	subi r7, r7, 1
 	bne r7, r0, wait
