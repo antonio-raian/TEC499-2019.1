@@ -261,7 +261,7 @@ led1:
 	stbio r7, 0(r6)
 
 	movia r12, Um
-	call mqtt_pub
+	call esp_send
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -317,7 +317,7 @@ led2:
 	stbio r7, 0(r6)
 
 	movia r12, Dois
-	call mqtt_pub
+	call esp_send
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -373,7 +373,7 @@ led3:
 	stbio r7, 0(r6)
 
 	movia r12, Tres
-	call mqtt_pub
+	call esp_send
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -429,7 +429,7 @@ led4:
 	stbio r7, 0(r6)
 
 	movia r12, Quatro
-	call mqtt_pub
+	call esp_send
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -485,7 +485,7 @@ led5:
 	stbio r7, 0(r6)
 
 	movia r12, Cinco
-	call mqtt_pub
+	call esp_send
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -744,6 +744,8 @@ esp_send:
 	call escreve_uart
 	movia r3, Oito
 	call escreve_uart
+
+	call mqtt_pub
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
