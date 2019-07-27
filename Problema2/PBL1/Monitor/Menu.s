@@ -24,6 +24,12 @@
 .equ S, 0x53
 .equ O, 0x4F
 .equ espaco, 0x20
+.equ T, 0x45
+.equ o, 0x6F
+.equ p, 0x70
+.equ i, 0x69
+.equ c, 0x63
+
 
 .text
 
@@ -35,6 +41,7 @@
 #USA r8 PARA LOOP DE VERIFICAÇÃO DOS BOTÕES
 #USA r9 PARA A POSIÇÃO DE MEMÓRIA DA UART
 #USA r10 PARA LETRAS
+#USA r12 PARA CONTEÚDO DA MENSAGEM MQTT
 
 main:
 	movi r5, 1
@@ -235,6 +242,9 @@ led1:
 	movi r7, 30
 	stbio r7, 0(r6)
 
+	movia r12, Um
+	call mqtt_pub
+
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
 	nextpc r8
@@ -287,6 +297,9 @@ led2:
 	movia r6, mled_linha
 	movi r7, 29
 	stbio r7, 0(r6)
+
+	movia r12, Dois
+	call mqtt_pub
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -341,6 +354,9 @@ led3:
 	movi r7, 27
 	stbio r7, 0(r6)
 
+	movia r12, Tres
+	call mqtt_pub
+
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
 	nextpc r8
@@ -394,6 +410,9 @@ led4:
 	movi r7, 23
 	stbio r7, 0(r6)
 
+	movia r12, Quatro
+	call mqtt_pub
+
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
 	nextpc r8
@@ -446,6 +465,9 @@ led5:
 	movia r6, mled_linha
 	movi r7, 15
 	stbio r7, 0(r6)
+
+	movia r12, Cinco
+	call mqtt_pub
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -510,6 +532,44 @@ escreve_uart:
 	beq r10, r0, escreve_uart
 	stwio r3, 0(r9)
 
+	ret
+
+#Envia os dados de publicação do mqtt para a UART
+#r12 deve conter o conteúdo da mensagem
+mqtt_pub:
+	subi sp, sp, 8
+	stbio ra, 0(sp) #armazena o endereço de retorno
+
+	movia r3, 0x30 #PUBLISH = 00110000
+	call escreve_uart
+	movia r3, 0x09 #REMAIN BYTES = 00001001
+	call escreve_uart
+	mov r3, r0    #Length MSB = 00000000 (CONFERIR)
+	call escreve_uart
+	movia r3, 0x03 #Length LSB = 00000011 (CONFERIR)
+	call escreve_uart
+	movia r3, 0x2F # / = 00101111
+	call escreve_uart
+	movia r3, S
+	call escreve_uart
+	movia r3, D
+	call escreve_uart
+	movia r3, T
+	call escreve_uart
+	movia r3, o
+	call escreve_uart
+	movia r3, p
+	call escreve_uart
+	movia r3, i
+	call escreve_uart
+	movia r3, c
+	call escreve_uart
+	movia r3, r12
+	call escreve_uart
+
+
+	ldbio ra, 0(sp)
+	addi sp, sp, 8
 	ret
 
 .end
