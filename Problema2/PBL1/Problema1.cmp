@@ -8,7 +8,9 @@
 			lcd_controller_rs    : out std_logic;                                       -- rs
 			lcd_controller_en    : out std_logic;                                       -- en
 			lcd_controller_dados : out std_logic_vector(7 downto 0);                    -- dados
-			lcd_controller_rw    : out std_logic                                        -- rw
+			lcd_controller_rw    : out std_logic;                                       -- rw
+			uart_RXD             : in  std_logic                    := 'X';             -- RXD
+			uart_TXD             : out std_logic                                        -- TXD
 		);
 	end component Problema1;
 

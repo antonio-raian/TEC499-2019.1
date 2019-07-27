@@ -14,7 +14,8 @@
    <frequency preferredWidth="250" />
   </columns>
  </clocktable>
- <library expandedCategories="Project,Library" />
+ <library
+   expandedCategories="Library/University Program,Project,Library/University Program/Communications,Library" />
  <window x="78" y="0" width="1100" height="728" />
  <generation simulation="NONE" path="_PROJECT_NAME_" block_symbol_file="1" />
  <hdlexample language="VERILOG" />

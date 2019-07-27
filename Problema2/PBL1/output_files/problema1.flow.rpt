@@ -1,6 +1,6 @@
 Flow report for problema1
-Wed Jul  3 10:34:12 2019
-Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Fri Jul 26 18:04:16 2019
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -40,22 +40,22 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Wed Jul  3 10:34:12 2019           ;
-; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Flow Status                        ; Successful - Fri Jul 26 18:04:05 2019           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; problema1                                       ;
 ; Top-level Entity Name              ; Problema1                                       ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Device                             ; EP4CE30F23C7                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 1,618                                           ;
-;     Total combinational functions  ; 1,455                                           ;
-;     Dedicated logic registers      ; 834                                             ;
-; Total registers                    ; 834                                             ;
-; Total pins                         ; 27                                              ;
+; Total logic elements               ; 1,836 / 28,848 ( 6 % )                          ;
+;     Total combinational functions  ; 1,750 / 28,848 ( 6 % )                          ;
+;     Dedicated logic registers      ; 1,015 / 28,848 ( 4 % )                          ;
+; Total registers                    ; 1015                                            ;
+; Total pins                         ; 29 / 329 ( 9 % )                                ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 43,008                                          ;
-; Embedded Multiplier 9-bit elements ; 0                                               ;
-; Total PLLs                         ; 0                                               ;
+; Total memory bits                  ; 45,056 / 608,256 ( 7 % )                        ;
+; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                                 ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                   ;
 +------------------------------------+-------------------------------------------------+
 
 
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/03/2019 10:33:38 ;
+; Start date & time ; 07/26/2019 18:02:42 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; problema1           ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
 ; Assignment Name                     ; Value                                                       ; Default Value ; Entity Name                                                     ; Section Id ;
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 105425942609.156216081806407                                ; --            ; --                                                              ; --         ;
+; COMPILER_SIGNATURE_ID               ; 167304660809379.156417496203492                             ; --            ; --                                                              ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1                                                       ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_Botoes                                                ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_LedColuna                                             ; --         ;
@@ -149,35 +149,44 @@ applicable agreement for further details.
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                         ; --            ; --                                                              ; --         ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                       ; --            ; --                                                              ; --         ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                ; --            ; --                                                              ; --         ;
-; SLD_INFO                            ; QSYS_NAME Problema1 HAS_SOPCINFO 1 GENERATION_ID 1561745689 ; --            ; Problema1                                                       ; --         ;
+; SLD_INFO                            ; QSYS_NAME Problema1 HAS_SOPCINFO 1 GENERATION_ID 1564173963 ; --            ; Problema1                                                       ; --         ;
 ; SOPCINFO_FILE                       ; Problema1/synthesis/../../Problema1.sopcinfo                ; --            ; --                                                              ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                          ; --            ; --                                                              ; --         ;
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:33     ; 1.0                     ; 409 MB              ; 00:00:33                           ;
-; Total                ; 00:00:33     ; --                      ; --                  ; 00:00:33                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:35     ; 1.0                     ; 4735 MB             ; 00:00:23                           ;
+; Fitter                    ; 00:00:34     ; 1.0                     ; 5025 MB             ; 00:00:26                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 4580 MB             ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:09     ; 1.0                     ; 4683 MB             ; 00:00:06                           ;
+; Total                     ; 00:01:23     ; --                      ; --                  ; 00:00:59                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                          ;
-+----------------------+------------------+------------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name          ; OS Version ; Processor type ;
-+----------------------+------------------+------------------+------------+----------------+
-; Analysis & Synthesis ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
-+----------------------+------------------+------------------+------------+----------------+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off problema1 -c problema1
+quartus_fit --read_settings_files=off --write_settings_files=off problema1 -c problema1
+quartus_asm --read_settings_files=off --write_settings_files=off problema1 -c problema1
+quartus_sta problema1 -c problema1
 
 
 

@@ -1,16 +1,16 @@
-Fitter Status : Successful - Fri Jun 28 15:22:39 2019
+Fitter Status : Successful - Fri Jul 26 18:03:55 2019
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
 Revision Name : problema1
 Top-level Entity Name : Problema1
 Family : Cyclone IV E
 Device : EP4CE30F23C7
 Timing Models : Final
-Total logic elements : 1,538 / 28,848 ( 5 % )
-    Total combinational functions : 1,456 / 28,848 ( 5 % )
-    Dedicated logic registers : 834 / 28,848 ( 3 % )
-Total registers : 834
-Total pins : 27 / 329 ( 8 % )
+Total logic elements : 1,836 / 28,848 ( 6 % )
+    Total combinational functions : 1,750 / 28,848 ( 6 % )
+    Dedicated logic registers : 1,015 / 28,848 ( 4 % )
+Total registers : 1015
+Total pins : 29 / 329 ( 9 % )
 Total virtual pins : 0
-Total memory bits : 43,008 / 608,256 ( 7 % )
+Total memory bits : 45,056 / 608,256 ( 7 % )
 Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )
 Total PLLs : 0 / 4 ( 0 % )

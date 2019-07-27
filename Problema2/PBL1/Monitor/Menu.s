@@ -4,6 +4,7 @@
 .equ botoes, 0x0840
 .equ mled_coluna, 0x0850
 .equ mled_linha, 0x0830
+.equ uart, 0x0868
 
 .equ btn_sobe, 1
 .equ btn_desce, 2
@@ -32,11 +33,13 @@
 #USA r4 PARA A POSIÇÃO DE MEMÓRIA DOS BOTOES
 #USA r5 PARA VALOR 1
 #USA r8 PARA LOOP DE VERIFICAÇÃO DOS BOTÕES
+#USA r9 PARA A POSIÇÃO DE MEMÓRIA DA UART
 #USA r10 PARA LETRAS
 
 main:
 	movi r5, 1
 	movia r4, botoes 	#r4 tem a posição inicial dos botões na memória
+	movia r9, uart
 	call lcd_init
 	br menu1
 
@@ -496,6 +499,16 @@ lcd_init:
 	custom 0, r10, r0, r3
 	movia r3, 0x01
 	custom 0, r10, r0, r3
+
+	ret
+
+#Envia o dado presente em r3 para a UART
+#r9 contém o endereço base da UART
+escreve_uart:
+	ldwio r10, 4(r9)
+	andhi r10, r10, 0x00ff
+	beq r10, r0, escreve_uart
+	stwio r3, 0(r9)
 
 	ret
 
