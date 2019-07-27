@@ -1,36 +1,50 @@
 .data
 .global main
+	.equ botoes, 0x0840
+	.equ mled_coluna, 0x0850
+	.equ mled_linha, 0x0830
+	.equ uart, 0x0868
 
-.equ botoes, 0x0840
-.equ mled_coluna, 0x0850
-.equ mled_linha, 0x0830
-.equ uart, 0x0868
+	.equ btn_sobe, 1
+	.equ btn_desce, 2
+	.equ btn_seleciona, 4
+	.equ btn_volta, 8
 
-.equ btn_sobe, 1
-.equ btn_desce, 2
-.equ btn_seleciona, 4
-.equ btn_volta, 8
-
-.equ L, 0x4C
-.equ E, 0x45
-.equ D, 0x44
-.equ Um, 0x31
-.equ Dois, 0x32
-.equ Tres, 0x33
-.equ Quatro, 0x34
-.equ Cinco, 0x35
-.equ A, 0x41
-.equ C, 0x43
-.equ S, 0x53
-.equ O, 0x4F
-.equ espaco, 0x20
-.equ T, 0x45
-.equ o, 0x6F
-.equ p, 0x70
-.equ i, 0x69
-.equ c, 0x63
-
-
+	.equ A, 0x41
+	.equ C, 0x43
+	.equ D, 0x44
+	.equ E, 0x45
+	.equ I, 0x49
+	.equ J, 0x4A
+	.equ L, 0x4C
+	.equ M, 0X4D
+	.equ N, 0x4E
+	.equ O, 0x4F
+	.equ P, 0x50
+	.equ R, 0x52
+	.equ S, 0x53
+	.equ T, 0x54
+	.equ W, 0x57
+	.equ Zero, 0x30
+	.equ Um, 0x31
+	.equ Dois, 0x32
+	.equ Tres, 0x33
+	.equ Quatro, 0x34
+	.equ Cinco, 0x35
+	.equ Seis, 0x36
+	.equ Sete, 0x37
+	.equ Oito, 0x38
+	.equ Nove, 0x39
+	.equ o, 0x6F
+	.equ p, 0x70
+	.equ i, 0x69
+	.equ c, 0x63
+	.equ espaco, 0x20
+	.equ aspas, 0X22
+	.equ mais, 0x2B
+	.equ virgula, 0x2C
+	.equ igual, 0x3D
+	.equ ponto, 0x2E
 .text
 
 # REGISTRADORES UTILIZADOS
@@ -42,12 +56,16 @@
 #USA r9 PARA A POSIÇÃO DE MEMÓRIA DA UART
 #USA r10 PARA LETRAS
 #USA r12 PARA CONTEÚDO DA MENSAGEM MQTT
+#USA r13 PARA TAMANHO DA MENSAGEM UART
 
 main:
 	movi r5, 1
 	movia r4, botoes 	#r4 tem a posição inicial dos botões na memória
 	movia r9, uart
 	call lcd_init
+	call init_wifi_mode
+	call connect_wifi
+	call init_TCP_connection
 	br menu1
 
 menu1:
@@ -554,19 +572,178 @@ mqtt_pub:
 	call escreve_uart
 	movia r3, D
 	call escreve_uart
-	movia r3, T
-	call escreve_uart
-	movia r3, o
-	call escreve_uart
-	movia r3, p
-	call escreve_uart
-	movia r3, i
-	call escreve_uart
-	movia r3, c
-	call escreve_uart
 	movia r3, r12
 	call escreve_uart
 
+	ldbio ra, 0(sp)
+	addi sp, sp, 8
+	ret
+
+#Inicia o ESP em modo wifi
+init_wifi_mode:
+	subi sp, sp, 8
+	stbio ra, 0(sp) #armazena o endereço de retorno
+
+	movi r3, r0 #Limpa o r3
+	movia r3, A
+	call escreve_uart
+	movia r3, T
+	call escreve_uart
+	movia r3, mais
+	call escreve_uart
+	movia r3, C
+	call escreve_uart
+	movia r3, W
+	call escreve_uart
+	movia r3, M
+	call escreve_uart
+	movia r3, O
+	call escreve_uart
+	movia r3, D
+	call escreve_uart
+	movia r3, E
+	call escreve_uart
+	movia r3, igual
+	call escreve_uart
+	movia r3, Tres
+	call escreve_uart
+
+	ldbio ra, 0(sp)
+	addi sp, sp, 8
+	ret
+
+#Conecta à rede do bocker
+#Esse tem que ser feito no lab
+connect_wifi:
+	subi sp, sp, 8
+	stbio ra, 0(sp) #armazena o endereço de retorno
+	movi r3, r0 #Limpa o r3
+
+	movia r3, A
+	call escreve_uart
+	movia r3, T
+	call escreve_uart
+	movia r3, mais
+	call escreve_uart
+	movia r3, C
+	call escreve_uart
+	movia r3, W
+	call escreve_uart
+	movia r3, J
+	call escreve_uart
+	movia r3, A
+	call escreve_uart
+	movia r3, P
+	call escreve_uart
+	movia r3, igual
+	call escreve_uart
+	movia r3, aspas
+	call escreve_uart
+	
+	#Aqui vem o SSID
+
+	movia r3, aspas
+	call escreve_uart
+	movia r3, virgula
+	call escreve_uart
+	movia r3, aspas
+	call escreve_uart
+
+	#Aqui vem a senha
+	
+	movia r3, aspas
+	call escreve_uart
+
+	ldbio ra, 0(sp)
+	addi sp, sp, 8
+	ret
+
+init_TCP_connection:
+	subi sp, sp, 8
+	stbio ra, 0(sp) #armazena o endereço de retorno
+	movi r3, r0 #Limpa o r3
+
+	movia r3, A
+	call escreve_uart
+	movia r3, T
+	call escreve_uart
+	movia r3, mais
+	call escreve_uart
+	movia r3, C
+	call escreve_uart
+	movia r3, I
+	call escreve_uart
+	movia r3, P
+	call escreve_uart
+	movia r3, S
+	call escreve_uart
+	movia r3, T
+	call escreve_uart
+	movia r3, A
+	call escreve_uart
+	movia r3, R
+	call escreve_uart
+	movia r3, T
+	call escreve_uart
+	movia r3, igual
+	call escreve_uart
+	movia r3, aspas
+	call escreve_uart
+	movia r3, T
+	call escreve_uart
+	movia r3, C
+	call escreve_uart
+	movia r3, P	
+	call escreve_uart
+	movia r3, aspas
+	call escreve_uart
+	movia r3, virgula
+	call escreve_uart
+	movia r3, aspas
+	call escreve_uart
+
+	#COLOCAR AQ O IP
+
+	movia r3, aspas
+	call escreve_uart
+	movia r3, virgula
+	call escreve_uart
+	
+	#COLOCAR AQ A PORTA
+
+	ldbio ra, 0(sp)
+	addi sp, sp, 8
+	ret
+
+esp_send:
+	subi sp, sp, 8
+	stbio ra, 0(sp) #armazena o endereço de retorno
+	movi r3, r0 #Limpa o r3
+
+	movia r3, A
+	call escreve_uart
+	movia r3, T
+	call escreve_uart
+	movia r3, mais
+	call escreve_uart
+	movia r3, C
+	call escreve_uart
+	movia r3, I
+	call escreve_uart
+	movia r3, P
+	call escreve_uart
+	movia r3, S
+	call escreve_uart
+	movia r3, E
+	call escreve_uart
+	movia r3, N
+	call escreve_uart
+	movia r3, D
+	call escreve_uart
+	movia r3, igual
+	call escreve_uart
+	movia r3, Oito
+	call escreve_uart
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
