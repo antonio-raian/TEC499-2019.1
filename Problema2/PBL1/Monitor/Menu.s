@@ -39,12 +39,15 @@
 	.equ p, 0x70
 	.equ i, 0x69
 	.equ c, 0x63
+	.equ n, 0x6E
+	.equ r, 0x72
 	.equ espaco, 0x20
 	.equ aspas, 0X22
 	.equ mais, 0x2B
 	.equ virgula, 0x2C
 	.equ igual, 0x3D
 	.equ ponto, 0x2E
+	.equ barra, 0x2F
 .text
 
 # REGISTRADORES UTILIZADOS
@@ -566,9 +569,9 @@ mqtt_pub:
 	call escreve_uart
 	movia r3, 0x03 #Length LSB = 00000011 (CONFERIR)
 	call escreve_uart
-	movia r3, 0x2F # / = 00101111
-	call escreve_uart
 	movia r3, S
+	call escreve_uart
+	movia r3, barra
 	call escreve_uart
 	movia r3, D
 	call escreve_uart
@@ -605,7 +608,7 @@ init_wifi_mode:
 	call escreve_uart
 	movia r3, igual
 	call escreve_uart
-	movia r3, Tres
+	movia r3, Um
 	call escreve_uart
 
 	ldbio ra, 0(sp)
@@ -653,6 +656,15 @@ connect_wifi:
 	
 	movia r3, aspas
 	call escreve_uart
+
+	#/r/n para marcar o fim do comando AT
+	movia r3, barra
+	call escreve_uart
+	movia r3, r
+	call escreve_uart
+	movia r3, barra
+	call escreve_uart
+	movia r3, n
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
@@ -711,6 +723,15 @@ init_TCP_connection:
 	
 	#COLOCAR AQ A PORTA
 
+	#/r/n para marcar o fim do comando AT
+	movia r3, barra
+	call escreve_uart
+	movia r3, r
+	call escreve_uart
+	movia r3, barra
+	call escreve_uart
+	movia r3, n
+
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
 	ret
@@ -746,6 +767,15 @@ esp_send:
 	call escreve_uart
 
 	call mqtt_pub
+
+	#/r/n para marcar o fim do comando AT
+	movia r3, barra
+	call escreve_uart
+	movia r3, r
+	call escreve_uart
+	movia r3, barra
+	call escreve_uart
+	movia r3, n
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
