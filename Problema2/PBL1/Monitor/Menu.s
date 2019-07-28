@@ -14,6 +14,7 @@
 	.equ C, 0x43
 	.equ D, 0x44
 	.equ E, 0x45
+	.equ G, 0x47
 	.equ I, 0x49
 	.equ J, 0x4A
 	.equ L, 0x4C
@@ -21,6 +22,7 @@
 	.equ N, 0x4E
 	.equ O, 0x4F
 	.equ P, 0x50
+	.equ Q, 0x51
 	.equ R, 0x52
 	.equ S, 0x53
 	.equ T, 0x54
@@ -35,12 +37,14 @@
 	.equ Sete, 0x37
 	.equ Oito, 0x38
 	.equ Nove, 0x39
+	.equ d, 0x64
 	.equ o, 0x6F
 	.equ p, 0x70
 	.equ i, 0x69
 	.equ c, 0x63
 	.equ n, 0x6E
 	.equ r, 0x72
+	.equ s, 0x73
 	.equ espaco, 0x20
 	.equ aspas, 0X22
 	.equ mais, 0x2B
@@ -555,27 +559,92 @@ escreve_uart:
 
 	ret
 
+mqtt_connect:
+	subi sp, sp, 8
+	stbio ra, 0(sp) #armazena o endereço de retorno
+
+	#MQTT PACKET
+
+	#FIXED HEADER
+	movia r3, 0x10 #CONNECT = 00010000
+	call escreve_uart
+	movia r3, 0x11 #REMAIN BYTES(17) = 00010001 
+	call escreve_uart
+	
+	#VARIABLE HEADER
+	movia r3, 0x00 #Length MSB = 00000000 
+	call escreve_uart
+	movia r3, 0x06 #Length LSB = 00000110 (6)
+	call escreve_uart
+	movia r3, M    #Protocol Name
+	call escreve_uart
+	movia r3, Q
+	call escreve_uart
+	movia r3, I
+	call escreve_uart
+	movia r3, s
+	call escreve_uart
+	movia r3, d
+	call escreve_uart
+	movia r3, p
+	call escreve_uart
+	movia r3, 0x03 #Protocol Version Number (Version 3)
+	call escreve_uart
+	movia r3, 0x02 #Connect Flags = 00000010
+	call escreve_uart 
+	movia r3, 0x00   #Keep Alive Timer MSB (0)
+	call escreve_uart
+	movia r3, 0x3C #Keep Alive Timer LSB (60)
+	call escreve_uart
+
+	#PAYLOAD
+	movia r3, 0x00 #Message Length MSB (0)
+	call escreve_uart
+	movia r3, 0x03 #Message Length LSB (3)
+	call escreve_uart
+	movia r3, G    #Client ID
+	call escreve_uart
+	movia r3, P
+	call escreve_uart
+	movia r3, Um
+	call escreve_uart
+
+	ldbio ra, 0(sp)
+	addi sp, sp, 8
+	ret
+
 #Envia os dados de publicação do mqtt para a UART
 #r12 deve conter o conteúdo da mensagem
 mqtt_pub:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
 
+	#MQTT PACKET
+
+	#FIXED HEADER
 	movia r3, 0x30 #PUBLISH = 00110000
 	call escreve_uart
-	movia r3, 0x09 #REMAIN BYTES = 00001001
+	movia r3, 0x06 #REMAIN BYTES = 00000110
 	call escreve_uart
-	mov r3, r0    #Length MSB = 00000000 (CONFERIR)
+
+	#VARIABLE HEADER
+	movia r3, 0x00 #Length MSB = 00000000
 	call escreve_uart
-	movia r3, 0x03 #Length LSB = 00000011 (CONFERIR)
+	movia r3, 0x03 #Length LSB = 00000011
 	call escreve_uart
-	movia r3, S
+	movia r3, S    #Topic name = S/D
 	call escreve_uart
 	movia r3, barra
 	call escreve_uart
 	movia r3, D
 	call escreve_uart
-	movia r3, r12
+
+	#PAYLOAD
+	movia r3, 0x00 #Length MSB = 00000000
+	call escreve_uart
+	movia r3, 0x01 #Length LSB = 00000001
+	call escreve_uart
+	mov r3, r12  #Número que será enviado
 	call escreve_uart
 
 	ldbio ra, 0(sp)
@@ -587,7 +656,6 @@ init_wifi_mode:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
 
-	movi r3, r0 #Limpa o r3
 	movia r3, A
 	call escreve_uart
 	movia r3, T
