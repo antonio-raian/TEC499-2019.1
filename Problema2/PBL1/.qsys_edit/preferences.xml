@@ -9,14 +9,14 @@
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="269" />
-   <clocksource preferredWidth="269" />
-   <frequency preferredWidth="250" />
+   <clockname preferredWidth="363" />
+   <clocksource preferredWidth="363" />
+   <frequency preferredWidth="344" />
   </columns>
  </clocktable>
  <library
-   expandedCategories="Library/University Program,Project,Library/University Program/Communications,Library" />
- <window x="78" y="0" width="1100" height="728" />
+   expandedCategories="Library/Verification/Debug &amp; Performance,Library/Bridges,Library/Interface Protocols,Library/Bridges/Memory-Mapped,Library/Interface Protocols/Serial,Library,Project,Library/Verification" />
+ <window x="-8" y="-8" width="1382" height="744" />
  <generation simulation="NONE" path="_PROJECT_NAME_" block_symbol_file="1" />
  <hdlexample language="VERILOG" />
 </preferences>

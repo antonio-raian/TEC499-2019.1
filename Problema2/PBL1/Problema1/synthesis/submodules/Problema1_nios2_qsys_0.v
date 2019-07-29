@@ -500,12 +500,12 @@ defparam Problema1_nios2_qsys_0_ociram_sp_ram.lpm_file = "Problema1_nios2_qsys_0
 //synthesis read_comments_as_HDL on
 //defparam Problema1_nios2_qsys_0_ociram_sp_ram.lpm_file = "Problema1_nios2_qsys_0_ociram_default_contents.mif";
 //synthesis read_comments_as_HDL off
-  assign cfgrom_readdata = (MonAReg[4 : 2] == 3'd0)? 32'h00002020 :
+  assign cfgrom_readdata = (MonAReg[4 : 2] == 3'd0)? 32'h00000020 :
     (MonAReg[4 : 2] == 3'd1)? 32'h00000e0e :
     (MonAReg[4 : 2] == 3'd2)? 32'h00040000 :
     (MonAReg[4 : 2] == 3'd3)? 32'h00000000 :
     (MonAReg[4 : 2] == 3'd4)? 32'h20000000 :
-    (MonAReg[4 : 2] == 3'd5)? 32'h00002000 :
+    (MonAReg[4 : 2] == 3'd5)? 32'h00000000 :
     (MonAReg[4 : 2] == 3'd6)? 32'h00000000 :
     32'h00000000;
 
@@ -595,9 +595,9 @@ module Problema1_nios2_qsys_0_nios2_avalon_reg (
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
-          oci_ienable <= 32'b00000000000000000000000000000001;
+          oci_ienable <= 32'b00000000000000000000000000100001;
       else if (take_action_oci_intr_mask_reg)
-          oci_ienable <= writedata | ~(32'b00000000000000000000000000000001);
+          oci_ienable <= writedata | ~(32'b00000000000000000000000000100001);
     end
 
 
@@ -4174,14 +4174,14 @@ module Problema1_nios2_qsys_0 (
   assign E_ci_multi_clock = clk;
   assign E_ci_multi_reset = ~reset_n;
   //custom_instruction_master, which is an e_custom_instruction_master
-  assign iactive = d_irq[31 : 0] & 32'b00000000000000000000000000000001;
+  assign iactive = d_irq[31 : 0] & 32'b00000000000000000000000000100001;
   assign F_pc_sel_nxt = R_ctrl_exception                          ? 2'b00 :
     R_ctrl_break                              ? 2'b01 :
     (W_br_taken | R_ctrl_uncond_cti_non_br)   ? 2'b10 :
     2'b11;
 
-  assign F_pc_no_crst_nxt = (F_pc_sel_nxt == 2'b00)? 2056 :
-    (F_pc_sel_nxt == 2'b01)? 8 :
+  assign F_pc_no_crst_nxt = (F_pc_sel_nxt == 2'b00)? 8 :
+    (F_pc_sel_nxt == 2'b01)? 1544 :
     (F_pc_sel_nxt == 2'b10)? E_arith_result[13 : 2] :
     F_pc_plus_one;
 
@@ -4192,7 +4192,7 @@ module Problema1_nios2_qsys_0 (
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
-          F_pc <= 2048;
+          F_pc <= 0;
       else if (F_pc_en)
           F_pc <= F_pc_nxt;
     end
@@ -4799,9 +4799,9 @@ defparam Problema1_nios2_qsys_0_register_bank_b.lpm_file = "Problema1_nios2_qsys
 
   assign W_bstatus_reg_nxt = E_valid ? W_bstatus_reg_inst_nxt : W_bstatus_reg;
   assign W_ienable_reg_nxt = ((E_wrctl_ienable & E_valid) ? 
-    E_src1[31 : 0] : W_ienable_reg) & 32'b00000000000000000000000000000001;
+    E_src1[31 : 0] : W_ienable_reg) & 32'b00000000000000000000000000100001;
 
-  assign W_ipending_reg_nxt = iactive & W_ienable_reg & oci_ienable & 32'b00000000000000000000000000000001;
+  assign W_ipending_reg_nxt = iactive & W_ienable_reg & oci_ienable & 32'b00000000000000000000000000100001;
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)

@@ -689,6 +689,11 @@ init_wifi_mode:
 	movia r3, Um
 	call uart_write
 
+	movi r3, 13 # /r
+	call uart_write
+	movi r3, 10 # /n
+	call uart_write
+
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
 	ret
@@ -781,13 +786,9 @@ connect_wifi:
 	call uart_write
 
 	#/r/n para marcar o fim do comando AT
-	movia r3, barra
+	movi r3, 13 # /r
 	call uart_write
-	movia r3, r
-	call uart_write
-	movia r3, barra
-	call uart_write
-	movia r3, n
+	movi r3, 10 # /n
 	call uart_write
 
 	ldbio ra, 0(sp)
@@ -869,8 +870,6 @@ init_TCP_connection:
 	call uart_write
 	movia r3, virgula
 	call uart_write
-	movia r3, aspas
-	call uart_write
 	
 	#PORTA (1886)
 	movia r3, Um
@@ -881,17 +880,11 @@ init_TCP_connection:
 	call uart_write
 	movia r3, Seis
 	call uart_write
-	movia r3, aspas
-	call uart_write
 
 	#/r/n para marcar o fim do comando AT
-	movia r3, barra
+	movi r3, 13 # /r
 	call uart_write
-	movia r3, r
-	call uart_write
-	movia r3, barra
-	call uart_write
-	movia r3, n
+	movi r3, 10 # /n
 	call uart_write
 
 	ldbio ra, 0(sp)
@@ -930,13 +923,9 @@ esp_send:
 	call uart_write
 
 	#/r/n para marcar o fim do comando AT
-	movia r3, barra
+	movi r3, 13 # /r
 	call uart_write
-	movia r3, r
-	call uart_write
-	movia r3, barra
-	call uart_write
-	movia r3, n
+	movi r3, 10 # /n
 	call uart_write
 
 	ldbio ra, 0(sp)
