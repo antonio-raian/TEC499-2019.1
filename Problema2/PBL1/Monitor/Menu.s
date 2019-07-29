@@ -1,9 +1,9 @@
 .data
 .global main
-	.equ botoes, 0x0840
-	.equ mled_coluna, 0x0850
-	.equ mled_linha, 0x0830
-	.equ uart, 0x0868
+	.equ botoes, 0x2040
+	.equ mled_coluna, 0x2050
+	.equ mled_linha, 0x2030
+	.equ uart, 0x2078
 
 	.equ btn_sobe, 1
 	.equ btn_desce, 2
@@ -599,7 +599,7 @@ mqtt_connect:
 	call uart_write
 	movia r3, 0x02 #Connect Flags = 00000010
 	call uart_write 
-	movia r3, 0x00   #Keep Alive Timer MSB (0)
+	movia r3, 0x00 #Keep Alive Timer MSB (0)
 	call uart_write
 	movia r3, 0x3C #Keep Alive Timer LSB (60)
 	call uart_write
@@ -797,7 +797,6 @@ connect_wifi:
 init_TCP_connection:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
-	movi r3, r0 #Limpa o r3
 
 	movia r3, A
 	call uart_write
