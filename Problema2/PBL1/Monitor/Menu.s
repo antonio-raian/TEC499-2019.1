@@ -15,6 +15,7 @@
 	.equ D, 0x44
 	.equ E, 0x45
 	.equ G, 0x47
+	.equ H, 0x48
 	.equ I, 0x49
 	.equ J, 0x4A
 	.equ L, 0x4C
@@ -38,15 +39,17 @@
 	.equ Oito, 0x38
 	.equ Nove, 0x39
 	.equ d, 0x64
+	.equ e, 0x65
 	.equ o, 0x6F
 	.equ p, 0x70
 	.equ i, 0x69
 	.equ c, 0x63
+	.equ l, 0x6C
 	.equ n, 0x6E
 	.equ r, 0x72
 	.equ s, 0x73
 	.equ espaco, 0x20
-	.equ aspas, 0X22
+	.equ aspas, 0x22
 	.equ mais, 0x2B
 	.equ virgula, 0x2C
 	.equ igual, 0x3D
@@ -73,6 +76,7 @@ main:
 	call init_wifi_mode
 	call connect_wifi
 	call init_TCP_connection
+	call mqtt_connect
 	br menu1
 
 menu1:
@@ -268,7 +272,7 @@ led1:
 	stbio r7, 0(r6)
 
 	movia r12, Um
-	call esp_send
+	call mqtt_pub
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -324,7 +328,7 @@ led2:
 	stbio r7, 0(r6)
 
 	movia r12, Dois
-	call esp_send
+	call mqtt_pub
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -380,7 +384,7 @@ led3:
 	stbio r7, 0(r6)
 
 	movia r12, Tres
-	call esp_send
+	call mqtt_pub
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -436,7 +440,7 @@ led4:
 	stbio r7, 0(r6)
 
 	movia r12, Quatro
-	call esp_send
+	call mqtt_pub
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -492,7 +496,7 @@ led5:
 	stbio r7, 0(r6)
 
 	movia r12, Cinco
-	call esp_send
+	call mqtt_pub
 
 	call delay
 	#LOOP PARA VERIFICAR SE O BOTÃO "VOLTA" FOI PRESSIONADO
@@ -551,10 +555,10 @@ lcd_init:
 
 #Envia o dado presente em r3 para a UART
 #r9 contém o endereço base da UART
-escreve_uart:
+uart_write:
 	ldwio r10, 4(r9)
 	andhi r10, r10, 0x00ff
-	beq r10, r0, escreve_uart
+	beq r10, r0, uart_write
 	stwio r3, 0(r9)
 
 	ret
@@ -563,51 +567,54 @@ mqtt_connect:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
 
+	movi r13, 19
+	call esp_send
+
 	#MQTT PACKET
 
 	#FIXED HEADER
 	movia r3, 0x10 #CONNECT = 00010000
-	call escreve_uart
+	call uart_write
 	movia r3, 0x11 #REMAIN BYTES(17) = 00010001 
-	call escreve_uart
+	call uart_write
 	
 	#VARIABLE HEADER
 	movia r3, 0x00 #Length MSB = 00000000 
-	call escreve_uart
+	call uart_write
 	movia r3, 0x06 #Length LSB = 00000110 (6)
-	call escreve_uart
+	call uart_write
 	movia r3, M    #Protocol Name
-	call escreve_uart
+	call uart_write
 	movia r3, Q
-	call escreve_uart
+	call uart_write
 	movia r3, I
-	call escreve_uart
+	call uart_write
 	movia r3, s
-	call escreve_uart
+	call uart_write
 	movia r3, d
-	call escreve_uart
+	call uart_write
 	movia r3, p
-	call escreve_uart
+	call uart_write
 	movia r3, 0x03 #Protocol Version Number (Version 3)
-	call escreve_uart
+	call uart_write
 	movia r3, 0x02 #Connect Flags = 00000010
-	call escreve_uart 
+	call uart_write 
 	movia r3, 0x00   #Keep Alive Timer MSB (0)
-	call escreve_uart
+	call uart_write
 	movia r3, 0x3C #Keep Alive Timer LSB (60)
-	call escreve_uart
+	call uart_write
 
 	#PAYLOAD
 	movia r3, 0x00 #Message Length MSB (0)
-	call escreve_uart
+	call uart_write
 	movia r3, 0x03 #Message Length LSB (3)
-	call escreve_uart
+	call uart_write
 	movia r3, G    #Client ID
-	call escreve_uart
+	call uart_write
 	movia r3, P
-	call escreve_uart
+	call uart_write
 	movia r3, Um
-	call escreve_uart
+	call uart_write
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
@@ -619,33 +626,36 @@ mqtt_pub:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
 
+	movi r13, 10
+	call esp_send
+
 	#MQTT PACKET
 
 	#FIXED HEADER
 	movia r3, 0x30 #PUBLISH = 00110000
-	call escreve_uart
-	movia r3, 0x06 #REMAIN BYTES = 00000110
-	call escreve_uart
+	call uart_write
+	movia r3, 0x08 #REMAIN BYTES = 00001000
+	call uart_write
 
 	#VARIABLE HEADER
 	movia r3, 0x00 #Length MSB = 00000000
-	call escreve_uart
+	call uart_write
 	movia r3, 0x03 #Length LSB = 00000011
-	call escreve_uart
+	call uart_write
 	movia r3, S    #Topic name = S/D
-	call escreve_uart
+	call uart_write
 	movia r3, barra
-	call escreve_uart
+	call uart_write
 	movia r3, D
-	call escreve_uart
+	call uart_write
 
 	#PAYLOAD
 	movia r3, 0x00 #Length MSB = 00000000
-	call escreve_uart
+	call uart_write
 	movia r3, 0x01 #Length LSB = 00000001
-	call escreve_uart
-	mov r3, r12  #Número que será enviado
-	call escreve_uart
+	call uart_write
+	mov r3, r12    #Número que será enviado
+	call uart_write
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
@@ -657,82 +667,128 @@ init_wifi_mode:
 	stbio ra, 0(sp) #armazena o endereço de retorno
 
 	movia r3, A
-	call escreve_uart
+	call uart_write
 	movia r3, T
-	call escreve_uart
+	call uart_write
 	movia r3, mais
-	call escreve_uart
+	call uart_write
 	movia r3, C
-	call escreve_uart
+	call uart_write
 	movia r3, W
-	call escreve_uart
+	call uart_write
 	movia r3, M
-	call escreve_uart
+	call uart_write
 	movia r3, O
-	call escreve_uart
+	call uart_write
 	movia r3, D
-	call escreve_uart
+	call uart_write
 	movia r3, E
-	call escreve_uart
+	call uart_write
 	movia r3, igual
-	call escreve_uart
+	call uart_write
 	movia r3, Um
-	call escreve_uart
+	call uart_write
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
 	ret
 
-#Conecta à rede do bocker
+#Conecta à rede do broker
 #Esse tem que ser feito no lab
 connect_wifi:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
-	movi r3, r0 #Limpa o r3
 
 	movia r3, A
-	call escreve_uart
+	call uart_write
 	movia r3, T
-	call escreve_uart
+	call uart_write
 	movia r3, mais
-	call escreve_uart
+	call uart_write
 	movia r3, C
-	call escreve_uart
+	call uart_write
 	movia r3, W
-	call escreve_uart
+	call uart_write
 	movia r3, J
-	call escreve_uart
+	call uart_write
 	movia r3, A
-	call escreve_uart
+	call uart_write
 	movia r3, P
-	call escreve_uart
+	call uart_write
 	movia r3, igual
-	call escreve_uart
+	call uart_write
 	movia r3, aspas
-	call escreve_uart
+	call uart_write
 	
-	#Aqui vem o SSID
+	#SSID (WLessLEDS)
+	movia r3, W
+	call uart_write
+	movia r3, L
+	call uart_write
+	movia r3, e
+	call uart_write
+	movia r3, s
+	call uart_write
+	movia r3, s
+	call uart_write
+	movia r3, L
+	call uart_write
+	movia r3, E
+	call uart_write
+	movia r3, D
+	call uart_write
+	movia r3, S
+	call uart_write
+
 
 	movia r3, aspas
-	call escreve_uart
+	call uart_write
 	movia r3, virgula
-	call escreve_uart
+	call uart_write
 	movia r3, aspas
-	call escreve_uart
+	call uart_write
 
-	#Aqui vem a senha
-	
+	#SENHA (HelloWorldMP31)
+	movia r3, H
+	call uart_write
+	movia r3, e
+	call uart_write
+	movia r3, l
+	call uart_write
+	movia r3, l
+	call uart_write
+	movia r3, o
+	call uart_write
+	movia r3, W
+	call uart_write
+	movia r3, o
+	call uart_write
+	movia r3, r
+	call uart_write
+	movia r3, l
+	call uart_write
+	movia r3, d
+	call uart_write
+	movia r3, M
+	call uart_write
+	movia r3, P
+	call uart_write
+	movia r3, Tres
+	call uart_write
+	movia r3, Um
+	call uart_write
 	movia r3, aspas
-	call escreve_uart
+	call uart_write
 
 	#/r/n para marcar o fim do comando AT
 	movia r3, barra
-	call escreve_uart
+	call uart_write
 	movia r3, r
-	call escreve_uart
+	call uart_write
 	movia r3, barra
-	call escreve_uart
+	call uart_write
 	movia r3, n
+	call uart_write
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
@@ -744,106 +800,145 @@ init_TCP_connection:
 	movi r3, r0 #Limpa o r3
 
 	movia r3, A
-	call escreve_uart
+	call uart_write
 	movia r3, T
-	call escreve_uart
+	call uart_write
 	movia r3, mais
-	call escreve_uart
+	call uart_write
 	movia r3, C
-	call escreve_uart
+	call uart_write
 	movia r3, I
-	call escreve_uart
+	call uart_write
 	movia r3, P
-	call escreve_uart
+	call uart_write
 	movia r3, S
-	call escreve_uart
+	call uart_write
 	movia r3, T
-	call escreve_uart
+	call uart_write
 	movia r3, A
-	call escreve_uart
+	call uart_write
 	movia r3, R
-	call escreve_uart
+	call uart_write
 	movia r3, T
-	call escreve_uart
+	call uart_write
 	movia r3, igual
-	call escreve_uart
+	call uart_write
 	movia r3, aspas
-	call escreve_uart
+	call uart_write
 	movia r3, T
-	call escreve_uart
+	call uart_write
 	movia r3, C
-	call escreve_uart
+	call uart_write
 	movia r3, P	
-	call escreve_uart
+	call uart_write
 	movia r3, aspas
-	call escreve_uart
+	call uart_write
 	movia r3, virgula
-	call escreve_uart
+	call uart_write
 	movia r3, aspas
-	call escreve_uart
+	call uart_write
 
-	#COLOCAR AQ O IP
+	#IP (192.168.1.201)
+	movia r3, Um
+	call uart_write
+	movia r3, Nove
+	call uart_write
+	movia r3, Dois
+	call uart_write
+	movia r3, ponto
+	call uart_write
+	movia r3, Um
+	call uart_write
+	movia r3, Seis
+	call uart_write
+	movia r3, Oito
+	call uart_write
+	movia r3, ponto
+	call uart_write
+	movia r3, Um
+	call uart_write
+	movia r3, ponto
+	call uart_write
+	movia r3, Dois
+	call uart_write
+	movia r3, Zero
+	call uart_write
+	movia r3, Um
+	call uart_write
 
 	movia r3, aspas
-	call escreve_uart
+	call uart_write
 	movia r3, virgula
-	call escreve_uart
+	call uart_write
+	movia r3, aspas
+	call uart_write
 	
-	#COLOCAR AQ A PORTA
+	#PORTA (1886)
+	movia r3, Um
+	call uart_write
+	movia r3, Oito
+	call uart_write
+	movia r3, Oito
+	call uart_write
+	movia r3, Seis
+	call uart_write
+	movia r3, aspas
+	call uart_write
 
 	#/r/n para marcar o fim do comando AT
 	movia r3, barra
-	call escreve_uart
+	call uart_write
 	movia r3, r
-	call escreve_uart
+	call uart_write
 	movia r3, barra
-	call escreve_uart
+	call uart_write
 	movia r3, n
+	call uart_write
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
 	ret
 
+#Envia mensagens através do ESP
+# r13 deve conter o tamanho em bytes da mensagem a ser enviada
 esp_send:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
-	movi r3, r0 #Limpa o r3
 
 	movia r3, A
-	call escreve_uart
+	call uart_write
 	movia r3, T
-	call escreve_uart
+	call uart_write
 	movia r3, mais
-	call escreve_uart
+	call uart_write
 	movia r3, C
-	call escreve_uart
+	call uart_write
 	movia r3, I
-	call escreve_uart
+	call uart_write
 	movia r3, P
-	call escreve_uart
+	call uart_write
 	movia r3, S
-	call escreve_uart
+	call uart_write
 	movia r3, E
-	call escreve_uart
+	call uart_write
 	movia r3, N
-	call escreve_uart
+	call uart_write
 	movia r3, D
-	call escreve_uart
+	call uart_write
 	movia r3, igual
-	call escreve_uart
-	movia r3, Oito
-	call escreve_uart
-
-	call mqtt_pub
+	call uart_write
+	mov r3, r13    #Tamanho da mensagem que será enviada (em bytes)
+	call uart_write
 
 	#/r/n para marcar o fim do comando AT
 	movia r3, barra
-	call escreve_uart
+	call uart_write
 	movia r3, r
-	call escreve_uart
+	call uart_write
 	movia r3, barra
-	call escreve_uart
+	call uart_write
 	movia r3, n
+	call uart_write
 
 	ldbio ra, 0(sp)
 	addi sp, sp, 8
