@@ -67,6 +67,7 @@
 #USA r10 PARA LETRAS
 #USA r12 PARA CONTEÚDO DA MENSAGEM MQTT
 #USA r13 PARA TAMANHO DA MENSAGEM UART
+#USA r14 PARA RETORNO DA CUSTOM
 
 main:
 	movi r5, 1
@@ -84,15 +85,15 @@ menu1:
 	call limpa
 	#ESCREVE "LED 1" NO DISPLAY
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, Um
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
@@ -113,15 +114,15 @@ menu2:
 	call limpa
 	#ESCREVE "LED 2" NO DISPLAY
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, Dois
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
@@ -143,15 +144,15 @@ menu3:
 	call limpa
 	#ESCREVE "LED 3" NO DISPLAY
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, Tres
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO	
@@ -173,15 +174,15 @@ menu4:
 	call limpa
 	#ESCREVE "LED 4" NO DISPLAY
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, Quatro
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO	
@@ -203,15 +204,15 @@ menu5:
 	call limpa
 	#ESCREVE "LED 5" NO DISPLAY
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	movia r10, Cinco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	call delay
 	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
@@ -231,37 +232,37 @@ led1:
 	call limpa
 
 	movia r10, A
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r10, C
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, S
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, O
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, Um
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r6, mled_coluna
 	mov r7, r0
@@ -287,37 +288,37 @@ led2:
 	call limpa
 	
 	movia r10, A
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r10, C
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, S
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, O
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, Dois
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r6, mled_coluna
 	mov r7, r0
@@ -343,37 +344,37 @@ led3:
 	call limpa
 	
 	movia r10, A
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r10, C
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, S
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, O
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, Tres
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r6, mled_coluna
 	mov r7, r0
@@ -399,37 +400,37 @@ led4:
 	call limpa
 	
 	movia r10, A
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r10, C
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, S
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, O
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, Quatro
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r6, mled_coluna
 	mov r7, r0
@@ -455,37 +456,37 @@ led5:
 	call limpa
 	
 	movia r10, A
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r10, C
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, S
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, O
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, L
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, E
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, D
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, espaco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 	
 	movia r10, Cinco
-	custom 0, r3, r5, r10
+	custom 0, r14, r5, r10
 
 	movia r6, mled_coluna
 	mov r7, r0
@@ -516,7 +517,7 @@ wait:
 
 limpa: #Limpa o display para uma nova escrita e apaga a matriz de LED
 	movi r11, 00000001 #Valor dos pinos para limpar o display
-	custom 0, r10, r0, r11
+	custom 0, r14, r0, r11
 
 	movia r6, mled_coluna
 	movi r7, 31
@@ -530,32 +531,33 @@ limpa: #Limpa o display para uma nova escrita e apaga a matriz de LED
 	
 lcd_init:
 	movia r3, 0x30 
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 	movia r3, 0x30
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 	movia r3, 0x39
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 	movia r3, 0x14
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 	movia r3, 0x56
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 	movia r3, 0x6D
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 
 	movia r3, 0x70
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 	movia r3, 0x0C
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 	movia r3, 0x06
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 	movia r3, 0x01
-	custom 0, r10, r0, r3
+	custom 0, r14, r0, r3
 
 	ret
 
 #Envia o dado presente em r3 para a UART
 #r9 contém o endereço base da UART
 uart_write:
+	mov r10, r0
 	ldwio r10, 4(r9)
 	andhi r10, r10, 0x00ff
 	beq r10, r0, uart_write
@@ -569,6 +571,7 @@ mqtt_connect:
 
 	movi r13, 19
 	call esp_send
+	mov r3, r0
 
 	#MQTT PACKET
 
@@ -628,6 +631,7 @@ mqtt_pub:
 
 	movi r13, 10
 	call esp_send
+	mov r3, r0
 
 	#MQTT PACKET
 
@@ -665,6 +669,7 @@ mqtt_pub:
 init_wifi_mode:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
+	mov r3, r0
 
 	movia r3, A
 	call uart_write
@@ -703,6 +708,7 @@ init_wifi_mode:
 connect_wifi:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
+	mov r3, r0
 
 	movia r3, A
 	call uart_write
@@ -798,6 +804,7 @@ connect_wifi:
 init_TCP_connection:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
+	mov r3, r0
 
 	movia r3, A
 	call uart_write
@@ -896,6 +903,7 @@ init_TCP_connection:
 esp_send:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
+	mov r3, r0
 
 	movia r3, A
 	call uart_write
