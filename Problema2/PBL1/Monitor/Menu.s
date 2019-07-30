@@ -629,7 +629,7 @@ mqtt_pub:
 	subi sp, sp, 8
 	stbio ra, 0(sp) #armazena o endereço de retorno
 
-	movi r13, 10
+	movi r13, 14 #Tamanho do pacote MQTT(em bytes)
 	call esp_send
 	mov r3, r0
 
@@ -638,19 +638,27 @@ mqtt_pub:
 	#FIXED HEADER
 	movia r3, 0x30 #PUBLISH = 00110000
 	call uart_write
-	movia r3, 0x08 #REMAIN BYTES = 00001000
+	movia r3, 0x0C #REMAIN BYTES = 00001100
 	call uart_write
 
 	#VARIABLE HEADER
 	movia r3, 0x00 #Length MSB = 00000000
 	call uart_write
-	movia r3, 0x03 #Length LSB = 00000011
+	movia r3, 0x07 #Length LSB = 00000111
 	call uart_write
-	movia r3, S    #Topic name = S/D
-	call uart_write
-	movia r3, barra
+	movia r3, S    #Topic name = SDTopic
 	call uart_write
 	movia r3, D
+	call uart_write
+	movia r3, T
+	call uart_write
+	movia r3, o
+	call uart_write
+	movia r3, p
+	call uart_write
+	movia r3, i
+	call uart_write
+	movia r3, c
 	call uart_write
 
 	#PAYLOAD
