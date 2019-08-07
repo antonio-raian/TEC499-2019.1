@@ -27,7 +27,9 @@
 	.equ R, 0x52
 	.equ S, 0x53
 	.equ T, 0x54
+	.equ U, 0x55
 	.equ W, 0x57
+	.equ X, 0x58
 	.equ Zero, 0x30
 	.equ Um, 0x31
 	.equ Dois, 0x32
@@ -55,6 +57,7 @@
 	.equ igual, 0x3D
 	.equ ponto, 0x2E
 	.equ barra, 0x2F
+	.equ underline, 0x5F
 .text
 
 # REGISTRADORES UTILIZADOS
@@ -563,13 +566,15 @@ uart_write:
 	beq r10, r0, uart_write
 	stwio r3, 0(r9)
 
+	#custom 0, r14, r5, r3 #escreve no lcd
+
 	ret
 
 mqtt_connect:
-	subi sp, sp, 8
-	stbio ra, 0(sp) #armazena o endereço de retorno
+	subi sp, sp, 4
+	stw ra, 0(sp) #armazena o endereço de retorno
 
-	movi r13, 19
+	movi r13, 17
 	call esp_send
 	mov r3, r0
 
@@ -578,25 +583,21 @@ mqtt_connect:
 	#FIXED HEADER
 	movia r3, 0x10 #CONNECT = 00010000
 	call uart_write
-	movia r3, 0x11 #REMAIN BYTES(17) = 00010001 
+	movia r3, 0x0F #REMAIN BYTES(15)  
 	call uart_write
 	
 	#VARIABLE HEADER
 	movia r3, 0x00 #Length MSB = 00000000 
 	call uart_write
-	movia r3, 0x06 #Length LSB = 00000110 (6)
+	movia r3, 0x04 #Length LSB = 00000100 (4)
 	call uart_write
 	movia r3, M    #Protocol Name
 	call uart_write
 	movia r3, Q
 	call uart_write
-	movia r3, I
+	movia r3, T
 	call uart_write
-	movia r3, s
-	call uart_write
-	movia r3, d
-	call uart_write
-	movia r3, p
+	movia r3, T
 	call uart_write
 	movia r3, 0x03 #Protocol Version Number (Version 3)
 	call uart_write
@@ -619,15 +620,20 @@ mqtt_connect:
 	movia r3, Um
 	call uart_write
 
-	ldbio ra, 0(sp)
-	addi sp, sp, 8
+	movi r3, 13 # /r
+	call uart_write
+	movi r3, 10 # /n
+	call uart_write
+
+	ldw ra, 0(sp)
+	addi sp, sp, 4
 	ret
 
 #Envia os dados de publicação do mqtt para a UART
 #r12 deve conter o conteúdo da mensagem
 mqtt_pub:
-	subi sp, sp, 8
-	stbio ra, 0(sp) #armazena o endereço de retorno
+	subi sp, sp, 4
+	stw ra, 0(sp) #armazena o endereço de retorno
 
 	movi r13, 14 #Tamanho do pacote MQTT(em bytes)
 	call esp_send
@@ -669,16 +675,51 @@ mqtt_pub:
 	mov r3, r12    #Número que será enviado
 	call uart_write
 
-	ldbio ra, 0(sp)
-	addi sp, sp, 8
+	movi r3, 13 # /r
+	call uart_write
+	movi r3, 10 # /n
+	call uart_write
+
+	ldw ra, 0(sp)
+	addi sp, sp, 4
 	ret
 
 #Inicia o ESP em modo wifi
 init_wifi_mode:
-	subi sp, sp, 8
-	stbio ra, 0(sp) #armazena o endereço de retorno
+	subi sp, sp, 4
+	stw ra, 0(sp) #armazena o endereço de retorno
 	mov r3, r0
 
+	#AT
+	movia r3, A
+	call uart_write
+	movia r3, T
+	call uart_write
+	movi r3, 13 # /r
+	call uart_write
+	movi r3, 10 # /n
+	call uart_write
+
+	#AT+RST
+	movia r3, A
+	call uart_write
+	movia r3, T
+	call uart_write
+	movia r3, mais
+	call uart_write
+	movia r3, R
+	call uart_write
+	movia r3, S
+	call uart_write
+	movia r3, T
+	call uart_write
+	movi r3, 13 # /r
+	call uart_write
+	movi r3, 10 # /n
+	call uart_write
+
+
+	#AT+CWMODE_CUR=1
 	movia r3, A
 	call uart_write
 	movia r3, T
@@ -697,25 +738,60 @@ init_wifi_mode:
 	call uart_write
 	movia r3, E
 	call uart_write
+	movia r3, underline
+	call uart_write
+	movia r3, C
+	call uart_write
+	movia r3, U
+	call uart_write
+	movia r3, R
+	call uart_write
 	movia r3, igual
 	call uart_write
 	movia r3, Um
 	call uart_write
-
 	movi r3, 13 # /r
 	call uart_write
 	movi r3, 10 # /n
 	call uart_write
 
-	ldbio ra, 0(sp)
-	addi sp, sp, 8
+	#AT+CIPMUX=0
+	movia r3, A
+	call uart_write
+	movia r3, T
+	call uart_write
+	movia r3, mais
+	call uart_write
+	movia r3, C
+	call uart_write
+	movia r3, I
+	call uart_write
+	movia r3, P
+	call uart_write
+	movia r3, M
+	call uart_write
+	movia r3, U
+	call uart_write
+	movia r3, X
+	call uart_write
+	movia r3, igual
+	call uart_write
+	movia r3, Zero
+	call uart_write
+	movi r3, 13 # /r
+	call uart_write
+	movi r3, 10 # /n
+	call uart_write
+
+	ldw ra, 0(sp)
+	addi sp, sp, 4
 	ret
 
 #Conecta à rede do broker
 #Esse tem que ser feito no lab
 connect_wifi:
-	subi sp, sp, 8
-	stbio ra, 0(sp) #armazena o endereço de retorno
+	subi sp, sp, 4
+	stw ra, 0(sp) #armazena o endereço de retorno
 	mov r3, r0
 
 	movia r3, A
@@ -739,24 +815,24 @@ connect_wifi:
 	movia r3, aspas
 	call uart_write
 	
-	#SSID (WLessLEDS)
+	#SSID (WWWWWWWWW)
 	movia r3, W
 	call uart_write
-	movia r3, L
+	movia r3, W
 	call uart_write
-	movia r3, e
+	movia r3, W
 	call uart_write
-	movia r3, s
+	movia r3, W
 	call uart_write
-	movia r3, s
+	movia r3, W
 	call uart_write
-	movia r3, L
+	movia r3, W
 	call uart_write
-	movia r3, E
+	movia r3, W
 	call uart_write
-	movia r3, D
+	movia r3, W
 	call uart_write
-	movia r3, S
+	movia r3, W
 	call uart_write
 
 
@@ -805,13 +881,13 @@ connect_wifi:
 	movi r3, 10 # /n
 	call uart_write
 
-	ldbio ra, 0(sp)
-	addi sp, sp, 8
+	ldw ra, 0(sp)
+	addi sp, sp, 4
 	ret
 
 init_TCP_connection:
-	subi sp, sp, 8
-	stbio ra, 0(sp) #armazena o endereço de retorno
+	subi sp, sp, 4
+	stw ra, 0(sp) #armazena o endereço de retorno
 	mov r3, r0
 
 	movia r3, A
@@ -853,7 +929,7 @@ init_TCP_connection:
 	movia r3, aspas
 	call uart_write
 
-	#IP (192.168.1.201)
+	#IP (192.168.43.200)
 	movia r3, Um
 	call uart_write
 	movia r3, Nove
@@ -870,7 +946,9 @@ init_TCP_connection:
 	call uart_write
 	movia r3, ponto
 	call uart_write
-	movia r3, Um
+	movia r3, Quatro
+	call uart_write
+	movia r3, Tres
 	call uart_write
 	movia r3, ponto
 	call uart_write
@@ -878,7 +956,7 @@ init_TCP_connection:
 	call uart_write
 	movia r3, Zero
 	call uart_write
-	movia r3, Um
+	movia r3, Zero
 	call uart_write
 
 	movia r3, aspas
@@ -886,14 +964,14 @@ init_TCP_connection:
 	movia r3, virgula
 	call uart_write
 	
-	#PORTA (1886)
+	#PORTA (1883)
 	movia r3, Um
 	call uart_write
 	movia r3, Oito
 	call uart_write
 	movia r3, Oito
 	call uart_write
-	movia r3, Seis
+	movia r3, Tres
 	call uart_write
 
 	#/r/n para marcar o fim do comando AT
@@ -902,15 +980,15 @@ init_TCP_connection:
 	movi r3, 10 # /n
 	call uart_write
 
-	ldbio ra, 0(sp)
-	addi sp, sp, 8
+	ldw ra, 0(sp)
+	addi sp, sp, 4
 	ret
 
 #Envia mensagens através do ESP
 # r13 deve conter o tamanho em bytes da mensagem a ser enviada
 esp_send:
-	subi sp, sp, 8
-	stbio ra, 0(sp) #armazena o endereço de retorno
+	subi sp, sp, 4
+	stw ra, 0(sp) #armazena o endereço de retorno
 	mov r3, r0
 
 	movia r3, A
@@ -944,8 +1022,8 @@ esp_send:
 	movi r3, 10 # /n
 	call uart_write
 
-	ldbio ra, 0(sp)
-	addi sp, sp, 8
+	ldw ra, 0(sp)
+	addi sp, sp, 4
 	ret
 
 .end

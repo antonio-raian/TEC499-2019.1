@@ -1,6 +1,6 @@
 Analysis & Synthesis report for problema1
-Tue Jul 30 23:44:12 2019
-Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Wed Jul 31 10:17:40 2019
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -215,13 +215,13 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jul 30 23:44:11 2019           ;
-; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Analysis & Synthesis Status        ; Successful - Wed Jul 31 10:17:40 2019           ;
+; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; problema1                                       ;
 ; Top-level Entity Name              ; Problema1                                       ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 2,212                                           ;
-;     Total combinational functions  ; 2,009                                           ;
+; Total logic elements               ; 2,213                                           ;
+;     Total combinational functions  ; 2,010                                           ;
 ;     Dedicated logic registers      ; 1,185                                           ;
 ; Total registers                    ; 1185                                            ;
 ; Total pins                         ; 29                                              ;
@@ -319,98 +319,108 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
-+-------------------------------------+
-; Parallel Compilation                ;
-+----------------------------+--------+
-; Processors                 ; Number ;
-+----------------------------+--------+
-; Number detected on machine ; 8      ;
-; Maximum allowed            ; 1      ;
-+----------------------------+--------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ; < 0.1%      ;
++----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                                                                ;
-+---------------------------------------------------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
-; File Name with User-Entered Path                                                                  ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                                         ; Library   ;
-+---------------------------------------------------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
-; Problema1/synthesis/Problema1.v                                                                   ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/Problema1.v                                                                   ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_irq_mapper.sv                                            ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_irq_mapper.sv                                            ; Problema1 ;
-; Problema1/synthesis/submodules/altera_merlin_arbitrator.sv                                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_arbitrator.sv                                        ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_rsp_xbar_mux.sv                                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_rsp_xbar_mux.sv                                          ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_rsp_xbar_demux.sv                                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_rsp_xbar_demux.sv                                        ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_cmd_xbar_mux.sv                                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_cmd_xbar_mux.sv                                          ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_cmd_xbar_demux.sv                                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_cmd_xbar_demux.sv                                        ; Problema1 ;
-; Problema1/synthesis/submodules/altera_reset_controller.v                                          ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_reset_controller.v                                          ; Problema1 ;
-; Problema1/synthesis/submodules/altera_reset_synchronizer.v                                        ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_reset_synchronizer.v                                        ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_id_router.sv                                             ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_id_router.sv                                             ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_addr_router.sv                                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_addr_router.sv                                           ; Problema1 ;
-; Problema1/synthesis/submodules/altera_avalon_sc_fifo.v                                            ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_avalon_sc_fifo.v                                            ; Problema1 ;
-; Problema1/synthesis/submodules/altera_merlin_slave_agent.sv                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_slave_agent.sv                                       ; Problema1 ;
-; Problema1/synthesis/submodules/altera_merlin_burst_uncompressor.sv                                ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_burst_uncompressor.sv                                ; Problema1 ;
-; Problema1/synthesis/submodules/altera_merlin_master_agent.sv                                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_master_agent.sv                                      ; Problema1 ;
-; Problema1/synthesis/submodules/altera_merlin_slave_translator.sv                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_slave_translator.sv                                  ; Problema1 ;
-; Problema1/synthesis/submodules/altera_merlin_master_translator.sv                                 ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_master_translator.sv                                 ; Problema1 ;
-; Problema1/synthesis/submodules/altera_customins_slave_translator.sv                               ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_customins_slave_translator.sv                               ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_custom_instruction_master_multi_xconnect.sv ; yes             ; User SystemVerilog HDL File  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_custom_instruction_master_multi_xconnect.sv ; Problema1 ;
-; Problema1/synthesis/submodules/altera_customins_master_translator.v                               ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_customins_master_translator.v                               ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_jtag_uart_0.v                                            ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_jtag_uart_0.v                                            ; Problema1 ;
-; Problema1/synthesis/submodules/altera_up_rs232_counters.v                                         ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_up_rs232_counters.v                                         ; Problema1 ;
-; Problema1/synthesis/submodules/altera_up_rs232_in_deserializer.v                                  ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_up_rs232_in_deserializer.v                                  ; Problema1 ;
-; Problema1/synthesis/submodules/altera_up_rs232_out_serializer.v                                   ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_up_rs232_out_serializer.v                                   ; Problema1 ;
-; Problema1/synthesis/submodules/altera_up_sync_fifo.v                                              ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/altera_up_sync_fifo.v                                              ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_UART.v                                                   ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_UART.v                                                   ; Problema1 ;
-; Problema1/synthesis/submodules/LCD_Controll.v                                                     ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/LCD_Controll.v                                                     ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_onchip_memory2_0.v                                       ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_onchip_memory2_0.v                                       ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_Botoes.v                                                 ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_Botoes.v                                                 ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_LedColuna.v                                              ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_LedColuna.v                                              ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_nios2_qsys_0.v                                           ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0.v                                           ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_sysclk.v                  ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_sysclk.v                  ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_tck.v                     ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_tck.v                     ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_wrapper.v                 ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_wrapper.v                 ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_oci_test_bench.v                            ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_oci_test_bench.v                            ; Problema1 ;
-; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_test_bench.v                                ; yes             ; User Verilog HDL File        ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_test_bench.v                                ; Problema1 ;
-; altsyncram.tdf                                                                                    ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf                                                                                                     ;           ;
-; stratix_ram_block.inc                                                                             ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                                                              ;           ;
-; lpm_mux.inc                                                                                       ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                                                                                                        ;           ;
-; lpm_decode.inc                                                                                    ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc                                                                                                     ;           ;
-; aglobal130.inc                                                                                    ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                                                                                     ;           ;
-; a_rdenreg.inc                                                                                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc                                                                                                      ;           ;
-; altrom.inc                                                                                        ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                                                                                                         ;           ;
-; altram.inc                                                                                        ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                                                                                                         ;           ;
-; altdpram.inc                                                                                      ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc                                                                                                       ;           ;
-; db/altsyncram_55h1.tdf                                                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/altsyncram_55h1.tdf                                                                            ;           ;
-; db/altsyncram_65h1.tdf                                                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/altsyncram_65h1.tdf                                                                            ;           ;
-; altera_std_synchronizer.v                                                                         ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altera_std_synchronizer.v                                                                                          ;           ;
-; db/altsyncram_9i81.tdf                                                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/altsyncram_9i81.tdf                                                                            ;           ;
-; sld_virtual_jtag_basic.v                                                                          ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/sld_virtual_jtag_basic.v                                                                                           ;           ;
-; db/altsyncram_37d1.tdf                                                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/altsyncram_37d1.tdf                                                                            ;           ;
-; scfifo.tdf                                                                                        ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/scfifo.tdf                                                                                                         ;           ;
-; a_regfifo.inc                                                                                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_regfifo.inc                                                                                                      ;           ;
-; a_dpfifo.inc                                                                                      ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_dpfifo.inc                                                                                                       ;           ;
-; a_i2fifo.inc                                                                                      ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_i2fifo.inc                                                                                                       ;           ;
-; a_fffifo.inc                                                                                      ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_fffifo.inc                                                                                                       ;           ;
-; a_f2fifo.inc                                                                                      ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_f2fifo.inc                                                                                                       ;           ;
-; db/scfifo_a341.tdf                                                                                ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/scfifo_a341.tdf                                                                                ;           ;
-; db/a_dpfifo_tq31.tdf                                                                              ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/a_dpfifo_tq31.tdf                                                                              ;           ;
-; db/altsyncram_je81.tdf                                                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/altsyncram_je81.tdf                                                                            ;           ;
-; db/cmpr_ks8.tdf                                                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/cmpr_ks8.tdf                                                                                   ;           ;
-; db/cntr_v9b.tdf                                                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/cntr_v9b.tdf                                                                                   ;           ;
-; db/cntr_ca7.tdf                                                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/cntr_ca7.tdf                                                                                   ;           ;
-; db/cntr_0ab.tdf                                                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/cntr_0ab.tdf                                                                                   ;           ;
-; db/scfifo_jr21.tdf                                                                                ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/scfifo_jr21.tdf                                                                                ;           ;
-; db/a_dpfifo_q131.tdf                                                                              ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/a_dpfifo_q131.tdf                                                                              ;           ;
-; db/a_fefifo_7cf.tdf                                                                               ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/a_fefifo_7cf.tdf                                                                               ;           ;
-; db/cntr_do7.tdf                                                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/cntr_do7.tdf                                                                                   ;           ;
-; db/dpram_nl21.tdf                                                                                 ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/dpram_nl21.tdf                                                                                 ;           ;
-; db/altsyncram_r1m1.tdf                                                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/altsyncram_r1m1.tdf                                                                            ;           ;
-; db/cntr_1ob.tdf                                                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/db/cntr_1ob.tdf                                                                                   ;           ;
-; alt_jtag_atlantic.v                                                                               ; yes             ; Encrypted Megafunction       ; c:/altera/13.0sp1/quartus/libraries/megafunctions/alt_jtag_atlantic.v                                                                                                ;           ;
-; sld_hub.vhd                                                                                       ; yes             ; Encrypted Megafunction       ; c:/altera/13.0sp1/quartus/libraries/megafunctions/sld_hub.vhd                                                                                                        ;           ;
-; sld_jtag_hub.vhd                                                                                  ; yes             ; Encrypted Megafunction       ; c:/altera/13.0sp1/quartus/libraries/megafunctions/sld_jtag_hub.vhd                                                                                                   ;           ;
-; sld_rom_sr.vhd                                                                                    ; yes             ; Encrypted Megafunction       ; c:/altera/13.0sp1/quartus/libraries/megafunctions/sld_rom_sr.vhd                                                                                                     ;           ;
-+---------------------------------------------------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                                      ;
++---------------------------------------------------------------------------------------------------+-----------------+---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+; File Name with User-Entered Path                                                                  ; Used in Netlist ; File Type                             ; File Name with Absolute Path                                                                                                      ; Library   ;
++---------------------------------------------------------------------------------------------------+-----------------+---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+; Problema1/synthesis/Problema1.v                                                                   ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/Problema1.v                                                                   ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_irq_mapper.sv                                            ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_irq_mapper.sv                                            ; Problema1 ;
+; Problema1/synthesis/submodules/altera_merlin_arbitrator.sv                                        ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_arbitrator.sv                                        ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_rsp_xbar_mux.sv                                          ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_rsp_xbar_mux.sv                                          ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_rsp_xbar_demux.sv                                        ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_rsp_xbar_demux.sv                                        ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_cmd_xbar_mux.sv                                          ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_cmd_xbar_mux.sv                                          ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_cmd_xbar_demux.sv                                        ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_cmd_xbar_demux.sv                                        ; Problema1 ;
+; Problema1/synthesis/submodules/altera_reset_controller.v                                          ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_reset_controller.v                                          ; Problema1 ;
+; Problema1/synthesis/submodules/altera_reset_synchronizer.v                                        ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_reset_synchronizer.v                                        ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_id_router.sv                                             ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_id_router.sv                                             ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_addr_router.sv                                           ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_addr_router.sv                                           ; Problema1 ;
+; Problema1/synthesis/submodules/altera_avalon_sc_fifo.v                                            ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_avalon_sc_fifo.v                                            ; Problema1 ;
+; Problema1/synthesis/submodules/altera_merlin_slave_agent.sv                                       ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_slave_agent.sv                                       ; Problema1 ;
+; Problema1/synthesis/submodules/altera_merlin_burst_uncompressor.sv                                ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_burst_uncompressor.sv                                ; Problema1 ;
+; Problema1/synthesis/submodules/altera_merlin_master_agent.sv                                      ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_master_agent.sv                                      ; Problema1 ;
+; Problema1/synthesis/submodules/altera_merlin_slave_translator.sv                                  ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_slave_translator.sv                                  ; Problema1 ;
+; Problema1/synthesis/submodules/altera_merlin_master_translator.sv                                 ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_merlin_master_translator.sv                                 ; Problema1 ;
+; Problema1/synthesis/submodules/altera_customins_slave_translator.sv                               ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_customins_slave_translator.sv                               ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_custom_instruction_master_multi_xconnect.sv ; yes             ; User SystemVerilog HDL File           ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_custom_instruction_master_multi_xconnect.sv ; Problema1 ;
+; Problema1/synthesis/submodules/altera_customins_master_translator.v                               ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_customins_master_translator.v                               ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_jtag_uart_0.v                                            ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_jtag_uart_0.v                                            ; Problema1 ;
+; Problema1/synthesis/submodules/altera_up_rs232_counters.v                                         ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_up_rs232_counters.v                                         ; Problema1 ;
+; Problema1/synthesis/submodules/altera_up_rs232_in_deserializer.v                                  ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_up_rs232_in_deserializer.v                                  ; Problema1 ;
+; Problema1/synthesis/submodules/altera_up_rs232_out_serializer.v                                   ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_up_rs232_out_serializer.v                                   ; Problema1 ;
+; Problema1/synthesis/submodules/altera_up_sync_fifo.v                                              ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/altera_up_sync_fifo.v                                              ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_UART.v                                                   ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_UART.v                                                   ; Problema1 ;
+; Problema1/synthesis/submodules/LCD_Controll.v                                                     ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/LCD_Controll.v                                                     ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_onchip_memory2_0.hex                                     ; yes             ; User Hexadecimal (Intel-Format) File  ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_onchip_memory2_0.hex                                     ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_onchip_memory2_0.v                                       ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_onchip_memory2_0.v                                       ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_Botoes.v                                                 ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_Botoes.v                                                 ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_LedColuna.v                                              ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_LedColuna.v                                              ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0.v                                           ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0.v                                           ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_sysclk.v                  ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_sysclk.v                  ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_tck.v                     ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_tck.v                     ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_wrapper.v                 ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_wrapper.v                 ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_ociram_default_contents.mif                 ; yes             ; User Memory Initialization File       ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_ociram_default_contents.mif                 ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_oci_test_bench.v                            ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_oci_test_bench.v                            ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_rf_ram_a.mif                                ; yes             ; User Memory Initialization File       ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_rf_ram_a.mif                                ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_rf_ram_b.mif                                ; yes             ; User Memory Initialization File       ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_rf_ram_b.mif                                ; Problema1 ;
+; Problema1/synthesis/submodules/Problema1_nios2_qsys_0_test_bench.v                                ; yes             ; User Verilog HDL File                 ; /home/aluno/Iago/Problema2/PBL1/Problema1/synthesis/submodules/Problema1_nios2_qsys_0_test_bench.v                                ; Problema1 ;
+; altsyncram.tdf                                                                                    ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/altsyncram.tdf                                                                ;           ;
+; stratix_ram_block.inc                                                                             ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/stratix_ram_block.inc                                                         ;           ;
+; lpm_mux.inc                                                                                       ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/lpm_mux.inc                                                                   ;           ;
+; lpm_decode.inc                                                                                    ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/lpm_decode.inc                                                                ;           ;
+; aglobal130.inc                                                                                    ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/aglobal130.inc                                                                ;           ;
+; a_rdenreg.inc                                                                                     ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/a_rdenreg.inc                                                                 ;           ;
+; altrom.inc                                                                                        ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/altrom.inc                                                                    ;           ;
+; altram.inc                                                                                        ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/altram.inc                                                                    ;           ;
+; altdpram.inc                                                                                      ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/altdpram.inc                                                                  ;           ;
+; db/altsyncram_55h1.tdf                                                                            ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/altsyncram_55h1.tdf                                                                            ;           ;
+; db/altsyncram_65h1.tdf                                                                            ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/altsyncram_65h1.tdf                                                                            ;           ;
+; altera_std_synchronizer.v                                                                         ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/altera_std_synchronizer.v                                                     ;           ;
+; db/altsyncram_9i81.tdf                                                                            ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/altsyncram_9i81.tdf                                                                            ;           ;
+; sld_virtual_jtag_basic.v                                                                          ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/sld_virtual_jtag_basic.v                                                      ;           ;
+; db/altsyncram_37d1.tdf                                                                            ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/altsyncram_37d1.tdf                                                                            ;           ;
+; scfifo.tdf                                                                                        ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/scfifo.tdf                                                                    ;           ;
+; a_regfifo.inc                                                                                     ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/a_regfifo.inc                                                                 ;           ;
+; a_dpfifo.inc                                                                                      ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/a_dpfifo.inc                                                                  ;           ;
+; a_i2fifo.inc                                                                                      ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/a_i2fifo.inc                                                                  ;           ;
+; a_fffifo.inc                                                                                      ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/a_fffifo.inc                                                                  ;           ;
+; a_f2fifo.inc                                                                                      ; yes             ; Megafunction                          ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/a_f2fifo.inc                                                                  ;           ;
+; db/scfifo_a341.tdf                                                                                ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/scfifo_a341.tdf                                                                                ;           ;
+; db/a_dpfifo_tq31.tdf                                                                              ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/a_dpfifo_tq31.tdf                                                                              ;           ;
+; db/altsyncram_je81.tdf                                                                            ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/altsyncram_je81.tdf                                                                            ;           ;
+; db/cmpr_ks8.tdf                                                                                   ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/cmpr_ks8.tdf                                                                                   ;           ;
+; db/cntr_v9b.tdf                                                                                   ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/cntr_v9b.tdf                                                                                   ;           ;
+; db/cntr_ca7.tdf                                                                                   ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/cntr_ca7.tdf                                                                                   ;           ;
+; db/cntr_0ab.tdf                                                                                   ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/cntr_0ab.tdf                                                                                   ;           ;
+; db/scfifo_jr21.tdf                                                                                ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/scfifo_jr21.tdf                                                                                ;           ;
+; db/a_dpfifo_q131.tdf                                                                              ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/a_dpfifo_q131.tdf                                                                              ;           ;
+; db/a_fefifo_7cf.tdf                                                                               ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/a_fefifo_7cf.tdf                                                                               ;           ;
+; db/cntr_do7.tdf                                                                                   ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/cntr_do7.tdf                                                                                   ;           ;
+; db/dpram_nl21.tdf                                                                                 ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/dpram_nl21.tdf                                                                                 ;           ;
+; db/altsyncram_r1m1.tdf                                                                            ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/altsyncram_r1m1.tdf                                                                            ;           ;
+; db/cntr_1ob.tdf                                                                                   ; yes             ; Auto-Generated Megafunction           ; /home/aluno/Iago/Problema2/PBL1/db/cntr_1ob.tdf                                                                                   ;           ;
+; alt_jtag_atlantic.v                                                                               ; yes             ; Encrypted Megafunction                ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/alt_jtag_atlantic.v                                                           ;           ;
+; sld_hub.vhd                                                                                       ; yes             ; Encrypted Megafunction                ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/sld_hub.vhd                                                                   ;           ;
+; sld_jtag_hub.vhd                                                                                  ; yes             ; Encrypted Megafunction                ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/sld_jtag_hub.vhd                                                              ;           ;
+; sld_rom_sr.vhd                                                                                    ; yes             ; Encrypted Megafunction                ; /opt/altera/13.0sp2/quartus/libraries/megafunctions/sld_rom_sr.vhd                                                                ;           ;
++---------------------------------------------------------------------------------------------------+-----------------+---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
 
 
 +-------------------------------------------------------------+
@@ -418,16 +428,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+---------------+
 ; Resource                                    ; Usage         ;
 +---------------------------------------------+---------------+
-; Estimated Total logic elements              ; 2,212         ;
+; Estimated Total logic elements              ; 2,213         ;
 ;                                             ;               ;
-; Total combinational functions               ; 2009          ;
+; Total combinational functions               ; 2010          ;
 ; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 953           ;
-;     -- 3 input functions                    ; 581           ;
-;     -- <=2 input functions                  ; 475           ;
+;     -- 4 input functions                    ; 958           ;
+;     -- 3 input functions                    ; 580           ;
+;     -- <=2 input functions                  ; 472           ;
 ;                                             ;               ;
 ; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 1784          ;
+;     -- normal mode                          ; 1785          ;
 ;     -- arithmetic mode                      ; 225           ;
 ;                                             ;               ;
 ; Total registers                             ; 1185          ;
@@ -439,7 +449,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Embedded Multiplier 9-bit elements          ; 0             ;
 ; Maximum fan-out node                        ; clk_clk~input ;
 ; Maximum fan-out                             ; 1162          ;
-; Total fan-out                               ; 12799         ;
+; Total fan-out                               ; 12810         ;
 ; Average fan-out                             ; 3.74          ;
 +---------------------------------------------+---------------+
 
@@ -449,7 +459,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                 ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                                                 ; Library Name ;
 +----------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |Problema1                                                                                                                 ; 2009 (1)          ; 1185 (0)     ; 46080       ; 0            ; 0       ; 0         ; 29   ; 0            ; |Problema1                                                                                                                                                                                                                                                                                                                                                                          ; Problema1    ;
+; |Problema1                                                                                                                 ; 2010 (1)          ; 1185 (0)     ; 46080       ; 0            ; 0       ; 0         ; 29   ; 0            ; |Problema1                                                                                                                                                                                                                                                                                                                                                                          ; Problema1    ;
 ;    |LCD_Controll:lcd_controller_0|                                                                                         ; 66 (66)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|LCD_Controll:lcd_controller_0                                                                                                                                                                                                                                                                                                                                            ; Problema1    ;
 ;    |Problema1_Botoes:botoes|                                                                                               ; 5 (5)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|Problema1_Botoes:botoes                                                                                                                                                                                                                                                                                                                                                  ; Problema1    ;
 ;    |Problema1_LedColuna:ledcoluna|                                                                                         ; 8 (8)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|Problema1_LedColuna:ledcoluna                                                                                                                                                                                                                                                                                                                                            ; Problema1    ;
@@ -577,9 +587,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;    |altera_merlin_slave_translator:uart_avalon_rs232_slave_translator|                                                     ; 2 (2)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|altera_merlin_slave_translator:uart_avalon_rs232_slave_translator                                                                                                                                                                                                                                                                                                        ; Problema1    ;
 ;    |altera_reset_controller:rst_controller|                                                                                ; 2 (2)             ; 9 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|altera_reset_controller:rst_controller                                                                                                                                                                                                                                                                                                                                   ; Problema1    ;
 ;       |altera_reset_synchronizer:alt_rst_sync_uq1|                                                                         ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1                                                                                                                                                                                                                                                                                        ; Problema1    ;
-;    |sld_hub:auto_hub|                                                                                                      ; 158 (1)           ; 97 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                                                         ; work         ;
-;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                                                                       ; 157 (117)         ; 97 (69)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                                                                                                                                                                                                                            ; work         ;
-;          |sld_rom_sr:hub_info_reg|                                                                                         ; 23 (23)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                                                                                                                                                                                                                                    ; work         ;
+;    |sld_hub:auto_hub|                                                                                                      ; 159 (1)           ; 97 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                                                         ; work         ;
+;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                                                                       ; 158 (117)         ; 97 (69)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                                                                                                                                                                                                                            ; work         ;
+;          |sld_rom_sr:hub_info_reg|                                                                                         ; 24 (24)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                                                                                                                                                                                                                                    ; work         ;
 ;          |sld_shadow_jsm:shadow_jsm|                                                                                       ; 17 (17)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_shadow_jsm:shadow_jsm                                                                                                                                                                                                                                                                                  ; work         ;
 +----------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -1251,6 +1261,16 @@ Encoding Type:  One-Hot
 ; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; No         ; |Problema1|Problema1_addr_router:addr_router|src_channel[0]                                                                                                                                                                                                                                                                     ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; No         ; |Problema1|Problema1_addr_router:addr_router_001|src_channel[0]                                                                                                                                                                                                                                                                 ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |Problema1|LCD_Controll:lcd_controller_0|state                                                                                                                                                                                                                                                                                  ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|hub_minor_ver_reg[1]                                                                                                                                                                                                                                   ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|mixer_addr_reg[0]                                                                                                                                                                                                                                      ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irf_reg[2][0]                                                                                                                                                                                                                                          ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irf_reg[1][0]                                                                                                                                                                                                                                          ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|word_counter[4]                                                                                                                                                                                                                ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|shadow_irf_reg[2][1]                                                                                                                                                                                                                                   ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|shadow_irf_reg[1][3]                                                                                                                                                                                                                                   ;
+; 8:1                ; 5 bits    ; 25 LEs        ; 10 LEs               ; 15 LEs                 ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irsr_reg[3]                                                                                                                                                                                                                                            ;
+; 34:1               ; 4 bits    ; 88 LEs        ; 56 LEs               ; 32 LEs                 ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[1]                                                                                                                                                                                                                                     ;
+; 28:1               ; 4 bits    ; 72 LEs        ; 48 LEs               ; 24 LEs                 ; Yes        ; |Problema1|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|WORD_SR[0]                                                                                                                                                                                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -4345,93 +4365,94 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:04     ;
-+----------------+--------------+
++---------------------------------+
+; Elapsed Time Per Partition      ;
++------------------+--------------+
+; Partition Name   ; Elapsed Time ;
++------------------+--------------+
+; Top              ; 00:00:19     ;
+; sld_hub:auto_hub ; 00:00:03     ;
++------------------+--------------+
 
 
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 64-Bit Analysis & Synthesis
+Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Jul 30 23:43:57 2019
+    Info: Processing started: Wed Jul 31 10:16:50 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off problema1 -c problema1
-Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/problema1.v
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/Problema1.v
     Info (12023): Found entity 1: Problema1
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_irq_mapper.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_irq_mapper.sv
     Info (12023): Found entity 1: Problema1_irq_mapper
-Info (12021): Found 2 design units, including 2 entities, in source file problema1/synthesis/submodules/altera_merlin_arbitrator.sv
+Info (12021): Found 2 design units, including 2 entities, in source file Problema1/synthesis/submodules/altera_merlin_arbitrator.sv
     Info (12023): Found entity 1: altera_merlin_arbitrator
     Info (12023): Found entity 2: altera_merlin_arb_adder
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_rsp_xbar_mux.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_rsp_xbar_mux.sv
     Info (12023): Found entity 1: Problema1_rsp_xbar_mux
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_rsp_xbar_demux.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_rsp_xbar_demux.sv
     Info (12023): Found entity 1: Problema1_rsp_xbar_demux
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_cmd_xbar_mux.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_cmd_xbar_mux.sv
     Info (12023): Found entity 1: Problema1_cmd_xbar_mux
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_cmd_xbar_demux.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_cmd_xbar_demux.sv
     Info (12023): Found entity 1: Problema1_cmd_xbar_demux
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_reset_controller.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_reset_controller.v
     Info (12023): Found entity 1: altera_reset_controller
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_reset_synchronizer.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_reset_synchronizer.v
     Info (12023): Found entity 1: altera_reset_synchronizer
-Info (12021): Found 2 design units, including 2 entities, in source file problema1/synthesis/submodules/problema1_id_router.sv
+Info (12021): Found 2 design units, including 2 entities, in source file Problema1/synthesis/submodules/Problema1_id_router.sv
     Info (12023): Found entity 1: Problema1_id_router_default_decode
     Info (12023): Found entity 2: Problema1_id_router
-Info (12021): Found 2 design units, including 2 entities, in source file problema1/synthesis/submodules/problema1_addr_router.sv
+Info (12021): Found 2 design units, including 2 entities, in source file Problema1/synthesis/submodules/Problema1_addr_router.sv
     Info (12023): Found entity 1: Problema1_addr_router_default_decode
     Info (12023): Found entity 2: Problema1_addr_router
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_avalon_sc_fifo.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_avalon_sc_fifo.v
     Info (12023): Found entity 1: altera_avalon_sc_fifo
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_merlin_slave_agent.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_merlin_slave_agent.sv
     Info (12023): Found entity 1: altera_merlin_slave_agent
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_merlin_burst_uncompressor.sv
     Info (12023): Found entity 1: altera_merlin_burst_uncompressor
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_merlin_master_agent.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_merlin_master_agent.sv
     Info (12023): Found entity 1: altera_merlin_master_agent
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_merlin_slave_translator.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_merlin_slave_translator.sv
     Info (12023): Found entity 1: altera_merlin_slave_translator
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_merlin_master_translator.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_merlin_master_translator.sv
     Info (12023): Found entity 1: altera_merlin_master_translator
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_customins_slave_translator.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_customins_slave_translator.sv
     Info (12023): Found entity 1: altera_customins_slave_translator
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_nios2_qsys_0_custom_instruction_master_multi_xconnect.sv
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_nios2_qsys_0_custom_instruction_master_multi_xconnect.sv
     Info (12023): Found entity 1: Problema1_nios2_qsys_0_custom_instruction_master_multi_xconnect
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_customins_master_translator.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_customins_master_translator.v
     Info (12023): Found entity 1: altera_customins_master_translator
-Info (12021): Found 5 design units, including 5 entities, in source file problema1/synthesis/submodules/problema1_jtag_uart_0.v
+Info (12021): Found 5 design units, including 5 entities, in source file Problema1/synthesis/submodules/Problema1_jtag_uart_0.v
     Info (12023): Found entity 1: Problema1_jtag_uart_0_sim_scfifo_w
     Info (12023): Found entity 2: Problema1_jtag_uart_0_scfifo_w
     Info (12023): Found entity 3: Problema1_jtag_uart_0_sim_scfifo_r
     Info (12023): Found entity 4: Problema1_jtag_uart_0_scfifo_r
     Info (12023): Found entity 5: Problema1_jtag_uart_0
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_up_rs232_counters.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_up_rs232_counters.v
     Info (12023): Found entity 1: altera_up_rs232_counters
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_up_rs232_in_deserializer.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_up_rs232_in_deserializer.v
     Info (12023): Found entity 1: altera_up_rs232_in_deserializer
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_up_rs232_out_serializer.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_up_rs232_out_serializer.v
     Info (12023): Found entity 1: altera_up_rs232_out_serializer
 Warning (10275): Verilog HDL Module Instantiation warning at altera_up_sync_fifo.v(157): ignored dangling comma in List of Port Connections
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/altera_up_sync_fifo.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/altera_up_sync_fifo.v
     Info (12023): Found entity 1: altera_up_sync_fifo
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_uart.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_UART.v
     Info (12023): Found entity 1: Problema1_UART
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/lcd_controll.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/LCD_Controll.v
     Info (12023): Found entity 1: LCD_Controll
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_onchip_memory2_0.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_onchip_memory2_0.v
     Info (12023): Found entity 1: Problema1_onchip_memory2_0
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_botoes.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_Botoes.v
     Info (12023): Found entity 1: Problema1_Botoes
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_ledcoluna.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_LedColuna.v
     Info (12023): Found entity 1: Problema1_LedColuna
-Info (12021): Found 21 design units, including 21 entities, in source file problema1/synthesis/submodules/problema1_nios2_qsys_0.v
+Info (12021): Found 21 design units, including 21 entities, in source file Problema1/synthesis/submodules/Problema1_nios2_qsys_0.v
     Info (12023): Found entity 1: Problema1_nios2_qsys_0_register_bank_a_module
     Info (12023): Found entity 2: Problema1_nios2_qsys_0_register_bank_b_module
     Info (12023): Found entity 3: Problema1_nios2_qsys_0_nios2_oci_debug
@@ -4453,15 +4474,15 @@ Info (12021): Found 21 design units, including 21 entities, in source file probl
     Info (12023): Found entity 19: Problema1_nios2_qsys_0_nios2_performance_monitors
     Info (12023): Found entity 20: Problema1_nios2_qsys_0_nios2_oci
     Info (12023): Found entity 21: Problema1_nios2_qsys_0
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_nios2_qsys_0_jtag_debug_module_sysclk.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_sysclk.v
     Info (12023): Found entity 1: Problema1_nios2_qsys_0_jtag_debug_module_sysclk
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_nios2_qsys_0_jtag_debug_module_tck.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_tck.v
     Info (12023): Found entity 1: Problema1_nios2_qsys_0_jtag_debug_module_tck
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_nios2_qsys_0_jtag_debug_module_wrapper.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_nios2_qsys_0_jtag_debug_module_wrapper.v
     Info (12023): Found entity 1: Problema1_nios2_qsys_0_jtag_debug_module_wrapper
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_nios2_qsys_0_oci_test_bench.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_nios2_qsys_0_oci_test_bench.v
     Info (12023): Found entity 1: Problema1_nios2_qsys_0_oci_test_bench
-Info (12021): Found 1 design units, including 1 entities, in source file problema1/synthesis/submodules/problema1_nios2_qsys_0_test_bench.v
+Info (12021): Found 1 design units, including 1 entities, in source file Problema1/synthesis/submodules/Problema1_nios2_qsys_0_test_bench.v
     Info (12023): Found entity 1: Problema1_nios2_qsys_0_test_bench
 Info (12127): Elaborating entity "Problema1" for the top level hierarchy
 Info (12128): Elaborating entity "Problema1_nios2_qsys_0" for hierarchy "Problema1_nios2_qsys_0:nios2_qsys_0"
@@ -4543,6 +4564,7 @@ Info (12128): Elaborating entity "Problema1_nios2_qsys_0_nios2_oci_compute_tm_co
 Info (12128): Elaborating entity "Problema1_nios2_qsys_0_nios2_oci_fifowp_inc" for hierarchy "Problema1_nios2_qsys_0:nios2_qsys_0|Problema1_nios2_qsys_0_nios2_oci:the_Problema1_nios2_qsys_0_nios2_oci|Problema1_nios2_qsys_0_nios2_oci_fifo:the_Problema1_nios2_qsys_0_nios2_oci_fifo|Problema1_nios2_qsys_0_nios2_oci_fifowp_inc:Problema1_nios2_qsys_0_nios2_oci_fifowp_inc_fifowp"
 Info (12128): Elaborating entity "Problema1_nios2_qsys_0_nios2_oci_fifocount_inc" for hierarchy "Problema1_nios2_qsys_0:nios2_qsys_0|Problema1_nios2_qsys_0_nios2_oci:the_Problema1_nios2_qsys_0_nios2_oci|Problema1_nios2_qsys_0_nios2_oci_fifo:the_Problema1_nios2_qsys_0_nios2_oci_fifo|Problema1_nios2_qsys_0_nios2_oci_fifocount_inc:Problema1_nios2_qsys_0_nios2_oci_fifocount_inc_fifocount"
 Info (12128): Elaborating entity "Problema1_nios2_qsys_0_oci_test_bench" for hierarchy "Problema1_nios2_qsys_0:nios2_qsys_0|Problema1_nios2_qsys_0_nios2_oci:the_Problema1_nios2_qsys_0_nios2_oci|Problema1_nios2_qsys_0_nios2_oci_fifo:the_Problema1_nios2_qsys_0_nios2_oci_fifo|Problema1_nios2_qsys_0_oci_test_bench:the_Problema1_nios2_qsys_0_oci_test_bench"
+Warning (12158): Entity "Problema1_nios2_qsys_0_oci_test_bench" contains only dangling pins
 Info (12128): Elaborating entity "Problema1_nios2_qsys_0_nios2_oci_pib" for hierarchy "Problema1_nios2_qsys_0:nios2_qsys_0|Problema1_nios2_qsys_0_nios2_oci:the_Problema1_nios2_qsys_0_nios2_oci|Problema1_nios2_qsys_0_nios2_oci_pib:the_Problema1_nios2_qsys_0_nios2_oci_pib"
 Info (12128): Elaborating entity "Problema1_nios2_qsys_0_nios2_oci_im" for hierarchy "Problema1_nios2_qsys_0:nios2_qsys_0|Problema1_nios2_qsys_0_nios2_oci:the_Problema1_nios2_qsys_0_nios2_oci|Problema1_nios2_qsys_0_nios2_oci_im:the_Problema1_nios2_qsys_0_nios2_oci_im"
 Info (12128): Elaborating entity "Problema1_nios2_qsys_0_jtag_debug_module_wrapper" for hierarchy "Problema1_nios2_qsys_0:nios2_qsys_0|Problema1_nios2_qsys_0_nios2_oci:the_Problema1_nios2_qsys_0_nios2_oci|Problema1_nios2_qsys_0_jtag_debug_module_wrapper:the_Problema1_nios2_qsys_0_jtag_debug_module_wrapper"
@@ -4710,7 +4732,12 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "lcd_controller_rw" is stuck at GND
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Info (17049): 11 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/output_files/problema1.map.smsg
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "sld_hub:auto_hub|receive[0][0]" is stuck at GND
+Info (286031): Timing-Driven Synthesis is running on partition "sld_hub:auto_hub"
+Info (144001): Generated suppressed messages file /home/aluno/Iago/Problema2/PBL1/output_files/problema1.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 2484 device resources after synthesis - the final resource count might be different
@@ -4718,16 +4745,16 @@ Info (21057): Implemented 2484 device resources after synthesis - the final reso
     Info (21059): Implemented 23 output pins
     Info (21061): Implemented 2290 logic cells
     Info (21064): Implemented 160 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 4743 megabytes
-    Info: Processing ended: Tue Jul 30 23:44:12 2019
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:11
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 13 warnings
+    Info: Peak virtual memory: 432 megabytes
+    Info: Processing ended: Wed Jul 31 10:17:40 2019
+    Info: Elapsed time: 00:00:50
+    Info: Total CPU time (on all processors): 00:00:48
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/iagom/Documents/Repositorios/TEC499-2019.1/Problema2/PBL1/output_files/problema1.map.smsg.
+The suppressed messages can be found in /home/aluno/Iago/Problema2/PBL1/output_files/problema1.map.smsg.
 
 

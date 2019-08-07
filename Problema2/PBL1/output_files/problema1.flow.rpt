@@ -1,6 +1,6 @@
 Flow report for problema1
-Tue Jul 30 23:44:37 2019
-Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Wed Jul 31 10:19:29 2019
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -40,15 +40,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Tue Jul 30 23:44:32 2019           ;
-; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Flow Status                        ; Successful - Wed Jul 31 10:19:09 2019           ;
+; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; problema1                                       ;
 ; Top-level Entity Name              ; Problema1                                       ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Device                             ; EP4CE30F23C7                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 2,120 / 28,848 ( 7 % )                          ;
-;     Total combinational functions  ; 2,013 / 28,848 ( 7 % )                          ;
+; Total logic elements               ; 2,115 / 28,848 ( 7 % )                          ;
+;     Total combinational functions  ; 2,014 / 28,848 ( 7 % )                          ;
 ;     Dedicated logic registers      ; 1,177 / 28,848 ( 4 % )                          ;
 ; Total registers                    ; 1177                                            ;
 ; Total pins                         ; 29 / 329 ( 9 % )                                ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/30/2019 23:43:58 ;
+; Start date & time ; 07/31/2019 10:16:51 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; problema1           ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
 ; Assignment Name                     ; Value                                                       ; Default Value ; Entity Name                                                     ; Section Id ;
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 167304660809379.156454103712756                             ; --            ; --                                                              ; --         ;
+; COMPILER_SIGNATURE_ID               ; 105425942609.156457901103289                                ; --            ; --                                                              ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1                                                       ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_Botoes                                                ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_LedColuna                                             ; --         ;
@@ -163,24 +163,24 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 4743 MB             ; 00:00:10                           ;
-; Fitter                    ; 00:00:14     ; 1.0                     ; 5042 MB             ; 00:00:13                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 4572 MB             ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 4690 MB             ; 00:00:03                           ;
-; Total                     ; 00:00:33     ; --                      ; --                  ; 00:00:28                           ;
+; Analysis & Synthesis      ; 00:00:46     ; 1.0                     ; 426 MB              ; 00:00:44                           ;
+; Fitter                    ; 00:00:59     ; 1.2                     ; 616 MB              ; 00:01:03                           ;
+; Assembler                 ; 00:00:09     ; 1.0                     ; 353 MB              ; 00:00:08                           ;
+; TimeQuest Timing Analyzer ; 00:00:12     ; 1.2                     ; 416 MB              ; 00:00:12                           ;
+; Total                     ; 00:02:06     ; --                      ; --                  ; 00:02:07                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                        ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
-+---------------------------+------------------+-----------+------------+----------------+
++-----------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                               ;
++---------------------------+------------------+------------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name          ; OS Version ; Processor type ;
++---------------------------+------------------+------------------+------------+----------------+
+; Analysis & Synthesis      ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
+; Fitter                    ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
+; Assembler                 ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
+; TimeQuest Timing Analyzer ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
++---------------------------+------------------+------------------+------------+----------------+
 
 
 ------------
