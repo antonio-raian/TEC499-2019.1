@@ -2,6 +2,7 @@ Info (10281): Verilog HDL Declaration information at Problema1_id_router.sv(48):
 Info (10281): Verilog HDL Declaration information at Problema1_id_router.sv(49): object "DEFAULT_RD_CHANNEL" differs only in case from object "default_rd_channel" in the same scope
 Info (10281): Verilog HDL Declaration information at Problema1_addr_router.sv(48): object "DEFAULT_WR_CHANNEL" differs only in case from object "default_wr_channel" in the same scope
 Info (10281): Verilog HDL Declaration information at Problema1_addr_router.sv(49): object "DEFAULT_RD_CHANNEL" differs only in case from object "default_rd_channel" in the same scope
+Warning (10236): Verilog HDL Implicit Net warning at vga640x480.v(38): created implicit net for "out_ative"
 Warning (10037): Verilog HDL or VHDL warning at Problema1_nios2_qsys_0.v(1567): conditional expression evaluates to a constant
 Warning (10037): Verilog HDL or VHDL warning at Problema1_nios2_qsys_0.v(1569): conditional expression evaluates to a constant
 Warning (10037): Verilog HDL or VHDL warning at Problema1_nios2_qsys_0.v(1725): conditional expression evaluates to a constant
