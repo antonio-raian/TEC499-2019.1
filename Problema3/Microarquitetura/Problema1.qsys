@@ -113,22 +113,6 @@
          type = "int";
       }
    }
-   element Botoes.s1
-   {
-      datum baseAddress
-      {
-         value = "8256";
-         type = "String";
-      }
-   }
-   element LedLinha.s1
-   {
-      datum baseAddress
-      {
-         value = "8240";
-         type = "String";
-      }
-   }
    element onchip_memory2_0.s1
    {
       datum _lockedAddress
@@ -147,6 +131,22 @@
       datum baseAddress
       {
          value = "8272";
+         type = "String";
+      }
+   }
+   element Botoes.s1
+   {
+      datum baseAddress
+      {
+         value = "8256";
+         type = "String";
+      }
+   }
+   element LedLinha.s1
+   {
+      datum baseAddress
+      {
+         value = "8240";
          type = "String";
       }
    }
@@ -173,7 +173,7 @@
  <parameter name="projectName" value="Problema1.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1567469894115" />
+ <parameter name="timeStamp" value="1567708088231" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
@@ -432,7 +432,9 @@
   <parameter name="writeIRQThreshold" value="8" />
   <parameter name="avalonSpec" value="2.0" />
  </module>
- <module kind="vga" version="1.0" enabled="1" name="vga_0" />
+ <module kind="vga" version="1.0" enabled="1" name="vga_0">
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+ </module>
  <connection
    kind="avalon"
    version="13.0"

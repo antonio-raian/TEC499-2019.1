@@ -1,5 +1,5 @@
 Assembler report for problema1
-Mon Sep 02 21:27:39 2019
+Thu Sep 05 16:17:21 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Sep 02 21:27:39 2019 ;
+; Assembler Status      ; Successful - Thu Sep 05 16:17:21 2019 ;
 ; Revision Name         ; problema1                             ;
 ; Top-level Entity Name ; Problema1                             ;
 ; Family                ; Cyclone IV E                          ;
@@ -103,8 +103,8 @@ applicable agreement for further details.
 ; Option         ; Setting                                                                                                            ;
 +----------------+--------------------------------------------------------------------------------------------------------------------+
 ; Device         ; EP4CE30F23C7                                                                                                       ;
-; JTAG usercode  ; 0x00354F9C                                                                                                         ;
-; Checksum       ; 0x00354F9C                                                                                                         ;
+; JTAG usercode  ; 0x00364978                                                                                                         ;
+; Checksum       ; 0x00364978                                                                                                         ;
 +----------------+--------------------------------------------------------------------------------------------------------------------+
 
 
@@ -114,14 +114,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Sep 02 21:27:36 2019
+    Info: Processing started: Thu Sep 05 16:17:17 2019
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off problema1 -c problema1
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4589 megabytes
-    Info: Processing ended: Mon Sep 02 21:27:39 2019
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 4585 megabytes
+    Info: Processing ended: Thu Sep 05 16:17:21 2019
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
 
 

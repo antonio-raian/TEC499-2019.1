@@ -1,0 +1,82 @@
+module top(
+	input wire CLK,				//Board clock: 50MHz
+	input wire RESET,			//Reset
+	output wire VGA_HS,			//Horizontal sync output
+	output wire VGA_VS,			//Vertical sync output
+	output wire [3:0] VGA_R,	//4-bit VGA red output
+	output wire [3:0] VGA_G,	//4-bit VGA green output
+	output wire [3:0] VGA_B		//4-bit VGA blue output
+	);
+
+	localparam bar_length = 180;
+    localparam bar_width = 20;
+    localparam ball_measures = 20;
+
+	// generate a 25 MHz pixel strobe
+    reg [15:0] cnt;
+    reg pixel_stb;
+    always @(posedge CLK)
+        {pixel_stb, cnt} <= cnt + 16'h8000;  // divide by 2: (2^16)/2 = 0x8000
+
+    wire [9:0] x;	// current pixel x position: 10-bit value: 0-1023
+    wire [8:0] y;  	// current pixel y position:  9-bit value: 0-511
+    wire animate;  	// high when we're ready to animate at end of drawing
+
+    vga640x480 display(
+    	.in_clock(CLK),
+    	.in_pixel_stb(pixel_stb),
+    	.in_reset(RESET),
+    	.out_Hsync(VGA_HS),
+    	.out_Vsync(VGA_VS),
+    	.out_x(x),
+    	.out_y(y),
+    	.out_animate(animate)
+    );
+
+    //Objects of the game
+    wire left_bar, right_bar, ball;
+    wire [11:0] left_bar_x1, left_bar_x2, left_bar_y1, left_bar_y2;  // 12-bit values: 0-4095 
+    wire [11:0] right_bar_x1, right_bar_x2, right_bar_y1, right_bar_y2;
+    wire [11:0] ball_x1, ball_x2, ball_y1, ball_y2;
+
+    object left_bar_anim (
+        .in_clock(CLK), 
+        .in_ani_stb(pixel_stb),
+        .in_reset(RESET),
+        .in_animate(animate),
+        .out_x1(left_bar_x1),
+        .out_x2(left_bar_x2),
+        .out_y1(left_bar_y1),
+        .out_y2(left_bar_y2)
+    );
+
+    object #(.IX(630), .IY_DIR(2'b01)) right_bar_anim (
+    	.in_clock(CLK), 
+        .in_ani_stb(pixel_stb),
+        .in_reset(RESET),
+        .in_animate(animate),
+        .out_x1(right_bar_x1),
+        .out_x2(right_bar_x2),
+        .out_y1(right_bar_y1),
+        .out_y2(right_bar_y2)
+    );
+
+    object #(.IX(320), .V_SIZE(10), .IX_DIR(2'b10), .IY_DIR(2'b10)) ball_anim (
+    	.in_clock(CLK), 
+        .in_ani_stb(pixel_stb),
+        .in_reset(RESET),
+        .in_animate(animate),
+        .out_x1(ball_x1),
+        .out_x2(ball_x2),
+        .out_y1(ball_y1),
+        .out_y2(ball_y2)
+    );
+
+    assign left_bar = ((x > left_bar_x1) & (x < left_bar_x2) & (y > left_bar_y1) & (y < left_bar_y2)) ? 1 : 0;
+    assign right_bar = ((x > right_bar_x1) & (x < right_bar_x2) & (y > right_bar_y1) & (y < right_bar_y2)) ? 1 : 0;
+    assign ball = ((x > ball_x1) & (x < ball_x2) & (y > ball_y1) & (y < ball_y2)) ? 1 : 0;
+
+    assign VGA_R = {4{left_bar}} | {4{right_bar}} | {4{ball}};
+    assign VGA_G = {4{left_bar}} | {4{right_bar}} | {4{ball}};
+    assign VGA_B = {4{left_bar}} | {4{right_bar}} | {4{ball}};
+endmodule

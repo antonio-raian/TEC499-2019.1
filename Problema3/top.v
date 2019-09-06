@@ -39,7 +39,7 @@ module top(
     wire [11:0] right_bar_x1, right_bar_x2, right_bar_y1, right_bar_y2;
     wire [11:0] ball_x1, ball_x2, ball_y1, ball_y2;
 
-    object left_bar_anim (
+    object #(.X_STOPED(1)) left_bar_anim (
         .in_clock(CLK), 
         .in_ani_stb(pixel_stb),
         .in_reset(RESET),
@@ -50,7 +50,7 @@ module top(
         .out_y2(left_bar_y2)
     );
 
-    object #(.IX(630), .IY_DIR(2)) right_bar_anim (
+    object #(.IX(630), .IY_DIR(0), .X_STOPED(1)) right_bar_anim (
     	.in_clock(CLK), 
         .in_ani_stb(pixel_stb),
         .in_reset(RESET),
@@ -61,7 +61,7 @@ module top(
         .out_y2(right_bar_y2)
     );
 
-    object #(.IX(320), .V_SIZE(10), .IX_DIR(1), .IY_DIR(1)) ball_anim (
+    object #(.IX(320), .V_SIZE(10), .IX_DIR(1), .IY_DIR(0)) ball_anim (
     	.in_clock(CLK), 
         .in_ani_stb(pixel_stb),
         .in_reset(RESET),

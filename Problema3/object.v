@@ -3,10 +3,11 @@ module object #(
 	V_SIZE=90,		// half object length
 	IX=10,			// initial horizontal position of object centre
 	IY=240,			// initial vertical position of object centre
-	IX_DIR=0,		// initial horizontal direction: 1 is right, 2 is left, 0 is none
-	IY_DIR=1,		// initial vertical direction: 1 is down, 2 is up, 0 is none
-	D_WIDTH=640,    // width of display
-    D_HEIGHT=480    // height of display
+	X_STOPED = 0,	// don't move in x: 0 is false, 1 is true		
+	IX_DIR = 0,		// initial horizontal direction: 0 is right, 1 is left
+	IY_DIR = 1,		// initial vertical direction: 0 is down, 1 is up
+	D_WIDTH=639,    // width of display
+    D_HEIGHT=470    // height of display
 	)
 	(
 	input wire in_clock,	// base clock
@@ -24,6 +25,7 @@ module object #(
     reg x_dir = IX_DIR;  // horizontal animation direction
     reg y_dir = IY_DIR;  // vertical animation direction
 
+
     assign out_x1 = x - H_SIZE;  // left: centre minus half horizontal size
     assign out_x2 = x + H_SIZE;  // right
     assign out_y1 = y - V_SIZE;  // top
@@ -37,29 +39,29 @@ module object #(
             y_dir <= IY_DIR;
     	end
     	if (in_animate && in_ani_stb) begin
-    		if(x_dir == 1) 
-    			x <= x + 1;
-    		else if(x_dir == 2) 
-    			x <= x - 1;
-
-    		if(y_dir == 1) 
-    			y <= y + 1;
-    		else if(y_dir == 2)
-    			y <= y - 1;
-
-    		if(x_dir != 0) begin
-    			if (x <= H_SIZE + 1)  				// edge of object is at left of screen
-                	x_dir <= 1;  					// change direction to right
-            	if (x >= (D_WIDTH - H_SIZE - 1))  	// edge of object at right
-                	x_dir <= 2;  					// change direction to left
+    		if(X_STOPED == 0) begin
+    			if(x_dir == 0) 
+    				x <= x + 3;
+    			else if(x_dir == 1) 
+    				x <= x - 3;
     		end
 
-    		if(y_dir != 0) begin
-    			if (y <= H_SIZE + 1)  				// edge of object at top of screen
-                	y_dir <= 1;  					// change direction to down
-            	if (y >= (D_HEIGHT - H_SIZE - 1))  	// edge of object at bottom
-                	y_dir <= 2;  					// change direction to up
+    		if(y_dir == 0) 
+    			y <= y + 3;
+    		else if(y_dir == 1)
+    			y <= y - 3;
+
+    		if(X_STOPED == 0) begin
+    			if (x < H_SIZE + 5)  				// edge of object is at left of screen
+                	x_dir <= 0;  					// change direction to right
+            	if (x > (D_WIDTH - H_SIZE))  	// edge of object at right
+                	x_dir <= 1;  					// change direction to left
     		end
+
+    		if (y < V_SIZE + 5)  				// edge of object at top of screen
+               	y_dir <= 0;  					// change direction to down
+            if (y > (D_HEIGHT - V_SIZE - 1))  	// edge of object at bottom
+               	y_dir <= 1;  					// change direction to up
     	end
     end
 endmodule
