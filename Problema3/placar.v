@@ -11,11 +11,15 @@ module placar(
     LCD_rs          //rs do lcd
 );
     input clock;
+    input reset;
     input [2:0] player1;
     input [2:0] player2;
+    input punch_left;
+    input punch_right;
 
     output reg [7:0] write_score;
     output reg LCD_en;
+    output reg LCD_rs;
 
     //6 arrays de 8 posições que armazena os valores dos numeros em hexa
     reg [5:0] foo [7:0];
@@ -45,6 +49,7 @@ module placar(
         state = INIT;
     end
 
+    //loop para mudança de estados
     always @(posedge clock)
     begin
         if(reset)
@@ -88,6 +93,7 @@ module placar(
         end
     end
     
+    //Loop para verificar as ações dos estados
     always @(state)
     begin
         case (state)
