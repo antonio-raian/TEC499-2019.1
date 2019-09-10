@@ -118,7 +118,7 @@ write_scoreboard:
 	custom 0, r5, r2, r5
 
 player1:
-	movia r5, 0x4A
+	movia r5, 0x0A
 	custom 0, r5, r0, r5 #Move o cursor para a posição 0x0A
 	addi r3, r3, 1  #Incrementa 1 na pontuação do player 1
 	custom 0, r5, r2, r3 #Escreve o novo valor na posição 
@@ -134,7 +134,7 @@ player1:
 	callr r6
 
 player2:
-	movia r5, 0xCA
+	movia r5, 0x4A
 	custom 0, r5, r0, r5 #Move o cursor para a posição 0x4A
 	addi r4, r4, 1  #Incrementa 1 na pontuação do player 2
 	custom 0, r5, r2, r4 #Escreve o novo valor na posição 
