@@ -41,7 +41,6 @@ module ball #(
     assign out_x2 = x + H_SIZE;  // right
     assign out_y1 = y - V_SIZE;  // top
     assign out_y2 = y + V_SIZE;  // bottom
-    
     assign out_left_score = left_score;
     assign out_right_score = right_score;
 

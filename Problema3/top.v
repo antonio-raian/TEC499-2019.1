@@ -1,6 +1,8 @@
 module top(
 	input wire CLK,				//Board clock: 50MHz
 	input wire RESET,			//Reset
+	input wire [3:0] BUTTONS,	//Controll Buttons
+	input wire START,			//Start Button
 	output wire VGA_HS,			//Horizontal sync output
 	output wire VGA_VS,			//Vertical sync output
 	output wire [3:0] VGA_R,	//4-bit VGA red output
@@ -34,7 +36,7 @@ module top(
     );
 
     //Objects of the game
-    wire left_bar, right_bar, ball;
+    wire left_bar, right_bar, ball, right_score, left_score;
     wire [11:0] left_bar_x1, left_bar_x2, left_bar_y1, left_bar_y2;  // 12-bit values: 0-4095 
     wire [11:0] right_bar_x1, right_bar_x2, right_bar_y1, right_bar_y2;
     wire [11:0] ball_x1, ball_x2, ball_y1, ball_y2;
@@ -61,15 +63,20 @@ module top(
         .out_y2(right_bar_y2)
     );
 
-    object #(.IX(320), .V_SIZE(10), .IX_DIR(1), .IY_DIR(0)) ball_anim (
+    ball ball_anim (
     	.in_clock(CLK), 
         .in_ani_stb(pixel_stb),
         .in_reset(RESET),
         .in_animate(animate),
+        .in_start(START),
+        .in_leftbar_top(left_bar_y1),
+        .in_rightbar_top(right_bar_y1),
         .out_x1(ball_x1),
         .out_x2(ball_x2),
         .out_y1(ball_y1),
-        .out_y2(ball_y2)
+        .out_y2(ball_y2),
+        .out_left_score(left_score),
+        .out_right_score(right_score)
     );
 
     assign left_bar = ((x > left_bar_x1) & (x < left_bar_x2) & (y > left_bar_y1) & (y < left_bar_y2)) ? 1 : 0;

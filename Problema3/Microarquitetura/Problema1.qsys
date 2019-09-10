@@ -126,14 +126,6 @@
          type = "String";
       }
    }
-   element LedColuna.s1
-   {
-      datum baseAddress
-      {
-         value = "8272";
-         type = "String";
-      }
-   }
    element Botoes.s1
    {
       datum baseAddress
@@ -147,6 +139,14 @@
       datum baseAddress
       {
          value = "8240";
+         type = "String";
+      }
+   }
+   element LedColuna.s1
+   {
+      datum baseAddress
+      {
+         value = "8272";
          type = "String";
       }
    }
@@ -173,7 +173,7 @@
  <parameter name="projectName" value="Problema1.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1567708088231" />
+ <parameter name="timeStamp" value="1568079513539" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
@@ -192,6 +192,11 @@
    dir="end" />
  <interface name="uart" internal="UART.external_interface" />
  <interface name="vga" internal="vga_0.conduit_end" type="conduit" dir="end" />
+ <interface
+   name="control"
+   internal="vga_0.conduit_end_1"
+   type="conduit"
+   dir="end" />
  <module kind="clock_source" version="13.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
