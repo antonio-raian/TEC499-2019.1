@@ -53,21 +53,7 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_location_assignment PIN_Y17 -to botoes_export[3]
-set_location_assignment PIN_W19 -to botoes_export[2]
-set_location_assignment PIN_U21 -to botoes_export[1]
-set_location_assignment PIN_U22 -to botoes_export[0]
 set_location_assignment PIN_T1 -to clk_clk
-set_location_assignment PIN_L8 -to ledcoluna_export[4]
-set_location_assignment PIN_J8 -to ledcoluna_export[3]
-set_location_assignment PIN_K8 -to ledcoluna_export[2]
-set_location_assignment PIN_J6 -to ledcoluna_export[1]
-set_location_assignment PIN_J7 -to ledcoluna_export[0]
-set_location_assignment PIN_F9 -to ledlinha_export[4]
-set_location_assignment PIN_G9 -to ledlinha_export[3]
-set_location_assignment PIN_E9 -to ledlinha_export[2]
-set_location_assignment PIN_C8 -to ledlinha_export[1]
-set_location_assignment PIN_F10 -to ledlinha_export[0]
 set_location_assignment PIN_V21 -to reset_reset_n
 set_location_assignment PIN_V9 -to lcd_controller_en
 set_location_assignment PIN_U9 -to lcd_controller_rs
@@ -80,20 +66,23 @@ set_location_assignment PIN_V4 -to lcd_controller_dados[4]
 set_location_assignment PIN_V5 -to lcd_controller_dados[3]
 set_location_assignment PIN_V6 -to lcd_controller_dados[2]
 set_location_assignment PIN_V7 -to lcd_controller_dados[1]
-set_location_assignment PIN_AB7 -to uart_RXD
-set_location_assignment PIN_AB8 -to uart_TXD
-set_location_assignment PIN_A16 -to vga_B[3]
-set_location_assignment PIN_B15 -to vga_B[2]
-set_location_assignment PIN_A15 -to vga_B[1]
-set_location_assignment PIN_B14 -to vga_B[0]
-set_location_assignment PIN_A14 -to vga_G[3]
-set_location_assignment PIN_B13 -to vga_G[2]
-set_location_assignment PIN_A13 -to vga_G[1]
-set_location_assignment PIN_C13 -to vga_G[0]
-set_location_assignment PIN_B16 -to vga_HS
-set_location_assignment PIN_B10 -to vga_R[3]
-set_location_assignment PIN_A10 -to vga_R[2]
-set_location_assignment PIN_C10 -to vga_R[1]
-set_location_assignment PIN_A9 -to vga_R[0]
-set_location_assignment PIN_A17 -to vga_VS
+set_location_assignment PIN_V15 -to vga_BUTTONS[0]
+set_location_assignment PIN_W15 -to vga_BUTTONS[1]
+set_location_assignment PIN_W19 -to vga_BUTTONS[2]
+set_location_assignment PIN_Y17 -to vga_BUTTONS[3]
+set_location_assignment PIN_V22 -to vga_START
+set_location_assignment PIN_A16 -to vga_VGA_B[3]
+set_location_assignment PIN_B15 -to vga_VGA_B[2]
+set_location_assignment PIN_A15 -to vga_VGA_B[1]
+set_location_assignment PIN_B14 -to vga_VGA_B[0]
+set_location_assignment PIN_A14 -to vga_VGA_G[3]
+set_location_assignment PIN_B13 -to vga_VGA_G[2]
+set_location_assignment PIN_A13 -to vga_VGA_G[1]
+set_location_assignment PIN_C13 -to vga_VGA_G[0]
+set_location_assignment PIN_B16 -to vga_VGA_HS
+set_location_assignment PIN_B10 -to vga_VGA_R[3]
+set_location_assignment PIN_A10 -to vga_VGA_R[2]
+set_location_assignment PIN_C10 -to vga_VGA_R[1]
+set_location_assignment PIN_A9 -to vga_VGA_R[0]
+set_location_assignment PIN_A17 -to vga_VGA_VS
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
