@@ -41,22 +41,26 @@ module top(
     wire [11:0] right_bar_x1, right_bar_x2, right_bar_y1, right_bar_y2;
     wire [11:0] ball_x1, ball_x2, ball_y1, ball_y2;
 
-    object #(.X_STOPED(1)) left_bar_anim (
+    bar left_bar_anim (
         .in_clock(CLK), 
         .in_ani_stb(pixel_stb),
         .in_reset(RESET),
         .in_animate(animate),
+        .in_button_up(BUTTONS[0]),
+        .in_button_down(BUTTONS[1]),
         .out_x1(left_bar_x1),
         .out_x2(left_bar_x2),
         .out_y1(left_bar_y1),
         .out_y2(left_bar_y2)
     );
 
-    object #(.IX(630), .IY_DIR(0), .X_STOPED(1)) right_bar_anim (
+    bar #(.IX(630)) right_bar_anim (
     	.in_clock(CLK), 
         .in_ani_stb(pixel_stb),
         .in_reset(RESET),
         .in_animate(animate),
+        .in_button_up(BUTTONS[2]),
+        .in_button_down(BUTTONS[3]),
         .out_x1(right_bar_x1),
         .out_x2(right_bar_x2),
         .out_y1(right_bar_y1),

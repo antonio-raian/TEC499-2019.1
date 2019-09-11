@@ -14,8 +14,8 @@
    <frequency preferredWidth="340" />
   </columns>
  </clocktable>
- <library expandedCategories="Library,Project" />
- <window x="-2" y="22" width="1366" height="680" />
+ <library expandedCategories="Project,Library" />
+ <window x="0" y="22" width="1366" height="680" />
  <generation simulation="NONE" path="_PROJECT_NAME_" block_symbol_file="1" />
  <hdlexample language="VERILOG" />
 </preferences>

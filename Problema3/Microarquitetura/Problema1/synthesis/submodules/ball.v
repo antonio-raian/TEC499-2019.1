@@ -25,11 +25,19 @@ module ball #(
     output wire out_right_score
 	);
 
+    wire [3:0] random;
+
+    LFSR #(.NUM_BITS(4)) lfsr(
+        .i_Clk(in_clock),
+        .i_Enable(1'b1),
+        .o_LFSR_Data(random)
+    );
+
 	reg [11:0] x = IX;   // horizontal position of ball centre
     reg [11:0] y = IY;   // vertical position of ball centre
-    reg x_dir = $random;  // horizontal animation direction: 0 is right, 1 is left
-    reg y_dir = $random;  // vertical animation direction: 0 is down, 1 is up
-    reg stop = 0;        // 1 when the game is paused, 0 otherwise
+    reg x_dir;  // horizontal animation direction: 0 is right, 1 is left
+    reg y_dir;  // vertical animation direction: 0 is down, 1 is up
+    reg stop = 1;        // 1 when the game is paused, 0 otherwise
     reg y_stopped = 0;
     reg left_score, right_score;
 
@@ -41,6 +49,7 @@ module ball #(
     assign out_x2 = x + H_SIZE;  // right
     assign out_y1 = y - V_SIZE;  // top
     assign out_y2 = y + V_SIZE;  // bottom
+    
     assign out_left_score = left_score;
     assign out_right_score = right_score;
 
@@ -48,8 +57,8 @@ module ball #(
     	if (in_reset) begin
     		x <= IX;
             y <= IY;
-            x_dir <= $random;
-            y_dir <= $random;
+            x_dir <= random[0];
+            y_dir <= random[1];
             y_stopped <= 0;
     	end
         if (in_start) begin
@@ -57,8 +66,8 @@ module ball #(
             stop <= 0;
             left_score <= 0;
             right_score <= 0;
-            x_dir <= $random;
-            y_dir <= $random;
+            x_dir <= random[0];
+            y_dir <= random[1];
         end
     	if (in_animate && in_ani_stb) begin
             if(out_x1 < BAR_WIDTH) begin            //Checks if the ball hit the wall in leftside
@@ -71,7 +80,7 @@ module ball #(
                 else begin
                     x_dir <= 0;                     // change direction to right
                     if(out_y2 < (in_leftbar_top + (BAR_LENGTH/3)) | out_y1 > (in_leftbar_top + (2*BAR_LENGTH/3))) begin
-                       y_dir <= $random;
+                       y_dir <= random[2];
                        y_stopped <= 0; 
                     end
                     else begin  // middle of the bar
@@ -89,7 +98,7 @@ module ball #(
                 else begin
                     x_dir <= 1;                     // change direction to left
                     if(out_y2 < (in_rightbar_top + (BAR_LENGTH/3)) | out_y1 > (in_rightbar_top + (2*BAR_LENGTH/3))) begin
-                       y_dir <= $random;
+                       y_dir <= random[3];
                        y_stopped <= 0; 
                     end
                     else begin  // middle of the bar

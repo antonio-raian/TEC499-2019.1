@@ -1,5 +1,5 @@
 Flow report for problema1
-Mon Sep 09 22:59:17 2019
+Wed Sep 11 00:31:21 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,22 +40,22 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Flow Failed - Mon Sep 09 22:59:17 2019          ;
+; Flow Status                        ; Successful - Wed Sep 11 00:31:15 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; problema1                                       ;
 ; Top-level Entity Name              ; Problema1                                       ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Device                             ; EP4CE30F23C7                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; N/A until Partition Merge                       ;
-;     Total combinational functions  ; N/A until Partition Merge                       ;
-;     Dedicated logic registers      ; N/A until Partition Merge                       ;
-; Total registers                    ; N/A until Partition Merge                       ;
-; Total pins                         ; N/A until Partition Merge                       ;
-; Total virtual pins                 ; N/A until Partition Merge                       ;
-; Total memory bits                  ; N/A until Partition Merge                       ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                       ;
-; Total PLLs                         ; N/A until Partition Merge                       ;
+; Total logic elements               ; 2,193 / 28,848 ( 8 % )                          ;
+;     Total combinational functions  ; 2,104 / 28,848 ( 7 % )                          ;
+;     Dedicated logic registers      ; 999 / 28,848 ( 3 % )                            ;
+; Total registers                    ; 999                                             ;
+; Total pins                         ; 32 / 329 ( 10 % )                               ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 44,032 / 608,256 ( 7 % )                        ;
+; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                                 ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                   ;
 +------------------------------------+-------------------------------------------------+
 
 
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/09/2019 22:59:16 ;
+; Start date & time ; 09/11/2019 00:30:43 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; problema1           ;
 +-------------------+---------------------+
@@ -75,9 +75,8 @@ applicable agreement for further details.
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
 ; Assignment Name                     ; Value                                                       ; Default Value ; Entity Name                                                     ; Section Id ;
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 167304660809379.156808075512968                             ; --            ; --                                                              ; --         ;
+; COMPILER_SIGNATURE_ID               ; 167304660809379.156817264301716                             ; --            ; --                                                              ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1                                                       ; --         ;
-; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_Botoes                                                ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_addr_router                                           ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_cmd_xbar_demux                                        ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_cmd_xbar_mux                                          ; --         ;
@@ -98,7 +97,6 @@ applicable agreement for further details.
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; altera_merlin_slave_translator                                  ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; altera_reset_controller                                         ; --         ;
 ; IP_TOOL_NAME                        ; Qsys                                                        ; --            ; Problema1                                                       ; --         ;
-; IP_TOOL_NAME                        ; altera_avalon_pio                                           ; --            ; Problema1_Botoes                                                ; --         ;
 ; IP_TOOL_NAME                        ; altera_merlin_router                                        ; --            ; Problema1_addr_router                                           ; --         ;
 ; IP_TOOL_NAME                        ; altera_merlin_demultiplexer                                 ; --            ; Problema1_cmd_xbar_demux                                        ; --         ;
 ; IP_TOOL_NAME                        ; altera_merlin_multiplexer                                   ; --            ; Problema1_cmd_xbar_mux                                          ; --         ;
@@ -119,7 +117,6 @@ applicable agreement for further details.
 ; IP_TOOL_NAME                        ; altera_merlin_slave_translator                              ; --            ; altera_merlin_slave_translator                                  ; --         ;
 ; IP_TOOL_NAME                        ; altera_reset_controller                                     ; --            ; altera_reset_controller                                         ; --         ;
 ; IP_TOOL_VERSION                     ; 13.0sp1                                                     ; --            ; Problema1                                                       ; --         ;
-; IP_TOOL_VERSION                     ; 13.0.1.99.2                                                 ; --            ; Problema1_Botoes                                                ; --         ;
 ; IP_TOOL_VERSION                     ; 13.0                                                        ; --            ; Problema1_addr_router                                           ; --         ;
 ; IP_TOOL_VERSION                     ; 13.0                                                        ; --            ; Problema1_cmd_xbar_demux                                        ; --         ;
 ; IP_TOOL_VERSION                     ; 13.0                                                        ; --            ; Problema1_cmd_xbar_mux                                          ; --         ;
@@ -149,35 +146,44 @@ applicable agreement for further details.
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                         ; --            ; --                                                              ; --         ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                       ; --            ; --                                                              ; --         ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                ; --            ; --                                                              ; --         ;
-; SLD_INFO                            ; QSYS_NAME Problema1 HAS_SOPCINFO 1 GENERATION_ID 1568080313 ; --            ; Problema1                                                       ; --         ;
+; SLD_INFO                            ; QSYS_NAME Problema1 HAS_SOPCINFO 1 GENERATION_ID 1568171883 ; --            ; Problema1                                                       ; --         ;
 ; SOPCINFO_FILE                       ; Problema1/synthesis/../../Problema1.sopcinfo                ; --            ; --                                                              ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                          ; --            ; --                                                              ; --         ;
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:02     ; 1.0                     ; 4625 MB             ; 00:00:02                           ;
-; Total                ; 00:00:02     ; --                      ; --                  ; 00:00:02                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:10     ; 1.0                     ; 4723 MB             ; 00:00:09                           ;
+; Fitter                    ; 00:00:13     ; 1.0                     ; 5041 MB             ; 00:00:13                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 4576 MB             ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 4683 MB             ; 00:00:03                           ;
+; Total                     ; 00:00:29     ; --                      ; --                  ; 00:00:27                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------+
-; Flow OS Summary                                                                   ;
-+----------------------+------------------+-----------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+----------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
-+----------------------+------------------+-----------+------------+----------------+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; LAPTOP-FA91T00U  ; Windows 7 ; 6.2        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off problema1 -c problema1
+quartus_fit --read_settings_files=off --write_settings_files=off problema1 -c problema1
+quartus_asm --read_settings_files=off --write_settings_files=off problema1 -c problema1
+quartus_sta problema1 -c problema1
 
 
 

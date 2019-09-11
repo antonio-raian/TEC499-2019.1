@@ -12,43 +12,11 @@
    element $${FILENAME}
    {
    }
-   element Botoes
-   {
-      datum _sortIndex
-      {
-         value = "4";
-         type = "int";
-      }
-   }
    element LCD_controller_0
    {
       datum _sortIndex
       {
-         value = "6";
-         type = "int";
-      }
-   }
-   element LedColuna
-   {
-      datum _sortIndex
-      {
-         value = "2";
-         type = "int";
-      }
-   }
-   element LedLinha
-   {
-      datum _sortIndex
-      {
          value = "3";
-         type = "int";
-      }
-   }
-   element UART
-   {
-      datum _sortIndex
-      {
-         value = "7";
          type = "int";
       }
    }
@@ -57,14 +25,6 @@
       datum baseAddress
       {
          value = "8304";
-         type = "String";
-      }
-   }
-   element UART.avalon_rs232_slave
-   {
-      datum baseAddress
-      {
-         value = "8312";
          type = "String";
       }
    }
@@ -93,7 +53,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "4";
          type = "int";
       }
    }
@@ -109,7 +69,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "2";
          type = "int";
       }
    }
@@ -126,35 +86,11 @@
          type = "String";
       }
    }
-   element Botoes.s1
-   {
-      datum baseAddress
-      {
-         value = "8256";
-         type = "String";
-      }
-   }
-   element LedLinha.s1
-   {
-      datum baseAddress
-      {
-         value = "8240";
-         type = "String";
-      }
-   }
-   element LedColuna.s1
-   {
-      datum baseAddress
-      {
-         value = "8272";
-         type = "String";
-      }
-   }
    element vga_0
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "5";
          type = "int";
       }
    }
@@ -173,30 +109,17 @@
  <parameter name="projectName" value="Problema1.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1568079513539" />
+ <parameter name="timeStamp" value="1568171857914" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <interface
-   name="botoes"
-   internal="Botoes.external_connection"
-   type="conduit"
-   dir="end" />
- <interface name="ledlinha" internal="LedLinha.external_connection" />
- <interface name="ledcoluna" internal="LedColuna.external_connection" />
- <interface
    name="lcd_controller"
    internal="LCD_controller_0.conduit_end"
    type="conduit"
    dir="end" />
- <interface name="uart" internal="UART.external_interface" />
  <interface name="vga" internal="vga_0.conduit_end" type="conduit" dir="end" />
- <interface
-   name="control"
-   internal="vga_0.conduit_end_1"
-   type="conduit"
-   dir="end" />
  <module kind="clock_source" version="13.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -308,8 +231,8 @@
   <parameter name="tightlyCoupledInstructionMaster1AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster2AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster3AddrWidth" value="1" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='Botoes.s1' start='0x2040' end='0x2050' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2070' end='0x2078' /></address-map>]]></parameter>
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='Botoes.s1' start='0x2040' end='0x2050' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2070' end='0x2078' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2070' end='0x2078' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2070' end='0x2078' /></address-map>]]></parameter>
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="deviceFamilyName" value="Cyclone IV E" />
   <parameter name="internalIrqMaskSystemInfo" value="32" />
@@ -323,60 +246,6 @@
   <parameter name="tightlyCoupledInstructionMaster1MapParam" value="" />
   <parameter name="tightlyCoupledInstructionMaster2MapParam" value="" />
   <parameter name="tightlyCoupledInstructionMaster3MapParam" value="" />
- </module>
- <module
-   kind="altera_avalon_pio"
-   version="13.0.1.99.2"
-   enabled="0"
-   name="LedColuna">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="5" />
-  <parameter name="clockRate" value="50000000" />
- </module>
- <module
-   kind="altera_avalon_pio"
-   version="13.0.1.99.2"
-   enabled="0"
-   name="LedLinha">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="5" />
-  <parameter name="clockRate" value="50000000" />
- </module>
- <module
-   kind="altera_avalon_pio"
-   version="13.0.1.99.2"
-   enabled="1"
-   name="Botoes">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="4" />
-  <parameter name="clockRate" value="50000000" />
  </module>
  <module
    kind="altera_avalon_onchip_memory2"
@@ -409,16 +278,6 @@
    version="1.0"
    enabled="1"
    name="LCD_controller_0" />
- <module kind="altera_up_avalon_rs232" version="13.0" enabled="0" name="UART">
-  <parameter name="avalon_bus_type" value="Memory Mapped" />
-  <parameter name="clk_rate" value="50000000" />
-  <parameter name="baud" value="115200" />
-  <parameter name="parity" value="None" />
-  <parameter name="data_bits" value="8" />
-  <parameter name="stop_bits" value="1" />
-  <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
- </module>
  <module
    kind="altera_avalon_jtag_uart"
    version="13.0.1.99.2"
@@ -458,84 +317,12 @@
   <parameter name="baseAddress" value="0x1800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection
-   kind="avalon"
-   version="13.0"
-   start="nios2_qsys_0.data_master"
-   end="LedColuna.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2050" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="13.0"
-   start="nios2_qsys_0.instruction_master"
-   end="LedColuna.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2050" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="13.0"
-   start="nios2_qsys_0.instruction_master"
-   end="Botoes.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2040" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="13.0"
-   start="nios2_qsys_0.data_master"
-   end="Botoes.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2040" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="13.0"
-   start="nios2_qsys_0.instruction_master"
-   end="LedLinha.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2030" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="13.0"
-   start="nios2_qsys_0.data_master"
-   end="LedLinha.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2030" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
  <connection kind="clock" version="13.0" start="clk_0.clk" end="nios2_qsys_0.clk" />
- <connection kind="clock" version="13.0" start="clk_0.clk" end="LedColuna.clk" />
- <connection kind="clock" version="13.0" start="clk_0.clk" end="LedLinha.clk" />
- <connection kind="clock" version="13.0" start="clk_0.clk" end="Botoes.clk" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="clk_0.clk_reset"
-   end="LedLinha.reset" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="clk_0.clk_reset"
-   end="Botoes.reset" />
  <connection
    kind="reset"
    version="13.0"
    start="clk_0.clk_reset"
    end="nios2_qsys_0.reset_n" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="clk_0.clk_reset"
-   end="LedColuna.reset" />
  <connection
    kind="avalon"
    version="13.0"
@@ -572,37 +359,6 @@
   <parameter name="CIName" value="lcd_controller_0" />
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0" />
- </connection>
- <connection kind="clock" version="13.0" start="clk_0.clk" end="UART.clock_reset" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="clk_0.clk_reset"
-   end="UART.clock_reset_reset" />
- <connection
-   kind="avalon"
-   version="13.0"
-   start="nios2_qsys_0.data_master"
-   end="UART.avalon_rs232_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2078" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="13.0"
-   start="nios2_qsys_0.instruction_master"
-   end="UART.avalon_rs232_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2078" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="interrupt"
-   version="13.0"
-   start="nios2_qsys_0.d_irq"
-   end="UART.interrupt">
-  <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="avalon"
@@ -644,27 +400,7 @@
    kind="reset"
    version="13.0"
    start="nios2_qsys_0.jtag_debug_module_reset"
-   end="LedColuna.reset" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="nios2_qsys_0.jtag_debug_module_reset"
-   end="LedLinha.reset" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="nios2_qsys_0.jtag_debug_module_reset"
-   end="UART.clock_reset_reset" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="nios2_qsys_0.jtag_debug_module_reset"
    end="onchip_memory2_0.reset1" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="nios2_qsys_0.jtag_debug_module_reset"
-   end="Botoes.reset" />
  <connection
    kind="reset"
    version="13.0"
