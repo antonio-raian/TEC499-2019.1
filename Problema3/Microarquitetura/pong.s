@@ -63,6 +63,7 @@
 # r6 -> Endereço para loops
 # r7 -> Pontuação anterior do Player1
 # r8 -> Pontuação anterior do Player2
+# r9, r10 -> Parametro
 
 main:
 	movi r2, 1
@@ -119,7 +120,7 @@ write_scoreboard:
 	movia r5, doisPontos
 	custom 0, r5, r2, r5
 	
-	movia r5, 0x4A
+	movia r5, 0x8A
 	custom 0, r5, r0, r5 #Move o cursor para a posição 0x0A
 	movia r5, Zero
 	custom 0, r5, r2, r5 #Escreve a pontuação do player 1
@@ -130,35 +131,27 @@ write_scoreboard:
 	custom 0, r5, r2, r5 #Escreve a pontuação do player 2
 
 p1_scored:
-	delay
-	ldbuio r5, 0(r3) #Armazena a pontuação do P1 em r5
-	bne r5, r7, player1
+	ldbuio r9, 0(r3) #Armazena a pontuação do P1 em r5
+	bne r9, r7, player1
 p2_scored:
-	ldbuio r5, 0(r4) #Armazena a pontuação do P2 em r5
-	bne r5, r8, player2
+	ldbuio r10, 0(r4) #Armazena a pontuação do P2 em r5
+	bne r10, r8, player2
 	br p1_scored
 
 
 player1:
-	movia r5, 0x4A
+	movia r5, 0x8A
 	custom 0, r5, r0, r5 #Move o cursor para a posição 0x0A
-	custom 0, r5, r2, r5 #Escreve a pontuação do player 1
-	mov r7, r5			 #Atualiza r7
+	custom 0, r5, r2, r9 #Escreve a pontuação do player 1
+	mov r7, r9			 #Atualiza r7
 	br p2_scored
 
 player2:
 	movia r5, 0xCA
 	custom 0, r5, r0, r5 #Move o cursor para a posição 0x4A
-	custom 0, r5, r2, r5 #Escreve a pontuação do player 2
-	mov r8, r5			 #Atualiza r8
+	custom 0, r5, r2, r10 #Escreve a pontuação do player 2
+	mov r8, r10			 #Atualiza r8
 	br p1_scored
-
-delay: #DELAY DE 10ms
-	movia r7, 500000
-wait:
-	subi r7, r7, 1
-	bne r7, r0, wait
-	ret
 
 clean: #Limpa o display para uma nova escrita
 	movi r11, 00000001 #Valor dos pinos para limpar o display
@@ -166,27 +159,27 @@ clean: #Limpa o display para uma nova escrita
 	ret
 	
 lcd_init:
-	movia r3, 0x30 
-	custom 0, r14, r0, r3
-	movia r3, 0x30
-	custom 0, r14, r0, r3
-	movia r3, 0x39
-	custom 0, r14, r0, r3
-	movia r3, 0x14
-	custom 0, r14, r0, r3
-	movia r3, 0x56
-	custom 0, r14, r0, r3
-	movia r3, 0x6D
-	custom 0, r14, r0, r3
+	movia r5, 0x30 
+	custom 0, r14, r0, r5
+	movia r5, 0x30
+	custom 0, r14, r0, r5
+	movia r5, 0x39
+	custom 0, r14, r0, r5
+	movia r5, 0x14
+	custom 0, r14, r0, r5
+	movia r5, 0x56
+	custom 0, r14, r0, r5
+	movia r5, 0x6D
+	custom 0, r14, r0, r5
 
-	movia r3, 0x70
-	custom 0, r14, r0, r3
-	movia r3, 0x0C
-	custom 0, r14, r0, r3
-	movia r3, 0x06
-	custom 0, r14, r0, r3
-	movia r3, 0x01
-	custom 0, r14, r0, r3
+	movia r5, 0x70
+	custom 0, r14, r0, r5
+	movia r5, 0x0C
+	custom 0, r14, r0, r5
+	movia r5, 0x06
+	custom 0, r14, r0, r5
+	movia r5, 0x01
+	custom 0, r14, r0, r5
 
 	ret
 .end

@@ -64,6 +64,8 @@ module ball #(
         if (in_start) begin
             y_stopped <= 0;
             stop <= 0;
+        end
+        if (left_score == 1 | right_score == 1) begin
             left_score <= 0;
             right_score <= 0;
         end

@@ -1,5 +1,5 @@
 Flow report for problema1
-Wed Sep 11 23:10:55 2019
+Thu Sep 12 11:25:27 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,15 +40,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Wed Sep 11 23:10:44 2019           ;
+; Flow Status                        ; Successful - Thu Sep 12 11:25:18 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; problema1                                       ;
 ; Top-level Entity Name              ; Problema3                                       ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Device                             ; EP4CE30F23C7                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 2,356 / 28,848 ( 8 % )                          ;
-;     Total combinational functions  ; 2,271 / 28,848 ( 8 % )                          ;
+; Total logic elements               ; 2,365 / 28,848 ( 8 % )                          ;
+;     Total combinational functions  ; 2,275 / 28,848 ( 8 % )                          ;
 ;     Dedicated logic registers      ; 1,081 / 28,848 ( 4 % )                          ;
 ; Total registers                    ; 1081                                            ;
 ; Total pins                         ; 32 / 329 ( 10 % )                               ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/11/2019 23:09:42 ;
+; Start date & time ; 09/12/2019 11:24:09 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; problema1           ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
 ; Assignment Name                     ; Value                                                       ; Default Value ; Entity Name                                                     ; Section Id ;
 +-------------------------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 167304660809379.156825418213588                             ; --            ; --                                                              ; --         ;
+; COMPILER_SIGNATURE_ID               ; 167304660809379.156829824803488                             ; --            ; --                                                              ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1                                                       ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_addr_router                                           ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                        ; --            ; Problema1_cmd_xbar_demux                                        ; --         ;
@@ -149,7 +149,7 @@ applicable agreement for further details.
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                         ; --            ; --                                                              ; --         ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                       ; --            ; --                                                              ; --         ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                ; --            ; --                                                              ; --         ;
-; SLD_INFO                            ; QSYS_NAME Problema1 HAS_SOPCINFO 1 GENERATION_ID 1568252769 ; --            ; Problema1                                                       ; --         ;
+; SLD_INFO                            ; QSYS_NAME Problema1 HAS_SOPCINFO 1 GENERATION_ID 1568298216 ; --            ; Problema1                                                       ; --         ;
 ; SOPCINFO_FILE                       ; Problema1/synthesis/../../Problema1.sopcinfo                ; --            ; --                                                              ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                          ; --            ; --                                                              ; --         ;
 ; TOP_LEVEL_ENTITY                    ; Problema3                                                   ; problema1     ; --                                                              ; --         ;
@@ -161,11 +161,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:21     ; 1.0                     ; 4735 MB             ; 00:00:21                           ;
-; Fitter                    ; 00:00:28     ; 1.0                     ; 5042 MB             ; 00:00:28                           ;
-; Assembler                 ; 00:00:06     ; 1.0                     ; 4568 MB             ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:10     ; 1.0                     ; 4686 MB             ; 00:00:07                           ;
-; Total                     ; 00:01:05     ; --                      ; --                  ; 00:01:00                           ;
+; Analysis & Synthesis      ; 00:00:26     ; 1.0                     ; 4735 MB             ; 00:00:21                           ;
+; Fitter                    ; 00:00:31     ; 1.0                     ; 5037 MB             ; 00:00:28                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 4576 MB             ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:08     ; 1.0                     ; 4686 MB             ; 00:00:07                           ;
+; Total                     ; 00:01:10     ; --                      ; --                  ; 00:01:00                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

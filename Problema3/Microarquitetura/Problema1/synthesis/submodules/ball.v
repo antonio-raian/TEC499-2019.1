@@ -64,6 +64,8 @@ module ball #(
         if (in_start) begin
             y_stopped <= 0;
             stop <= 0;
+        end
+        if (left_score == 1 | right_score == 1) begin
             left_score <= 0;
             right_score <= 0;
         end
@@ -94,8 +96,8 @@ module ball #(
                     stop <= 1;
                     x <= IX;
                     y <= IY;
-                    x_dir <= random[2];
-                    y_dir <= random[3];
+                    x_dir <= random[0];
+                    y_dir <= random[1];
                 end
                 else begin
                     x_dir <= 1;                     // change direction to left
