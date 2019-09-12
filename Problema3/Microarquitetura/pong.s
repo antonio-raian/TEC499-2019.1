@@ -61,17 +61,21 @@
 # r4 -> Endereço de memória do Player2
 # r5 -> Auxiliar
 # r6 -> Endereço para loops
+# r7 -> Pontuação anterior do Player1
+# r8 -> Pontuação anterior do Player2
 
 main:
 	movi r2, 1
 	movia r3, player1_endereco
 	movia r4, player2_endereco
+	movia r7, Zero
+	movia r8, Zero
 	call lcd_init
 	br write_scoreboard
 
 write_scoreboard:
 	#LIMPA O DISPLAY
-	call limpa
+	call clean
 	#ESCREVE "PLAYER 1:" NO DISPLAY
 	movia r5, P
 	custom 0, r5, r2, r5
@@ -114,20 +118,40 @@ write_scoreboard:
 	custom 0, r5, r2, r5
 	movia r5, doisPontos
 	custom 0, r5, r2, r5
-	nextpc r6
+	
+	movia r5, 0x4A
+	custom 0, r5, r0, r5 #Move o cursor para a posição 0x0A
+	movia r5, Zero
+	custom 0, r5, r2, r5 #Escreve a pontuação do player 1
+
+	movia r5, 0xCA
+	custom 0, r5, r0, r5 #Move o cursor para a posição 0x4A
+	movia r5, Zero
+	custom 0, r5, r2, r5 #Escreve a pontuação do player 2
+
+p1_scored:
+	delay
+	ldbuio r5, 0(r3) #Armazena a pontuação do P1 em r5
+	bne r5, r7, player1
+p2_scored:
+	ldbuio r5, 0(r4) #Armazena a pontuação do P2 em r5
+	bne r5, r8, player2
+	br p1_scored
+
 
 player1:
 	movia r5, 0x4A
 	custom 0, r5, r0, r5 #Move o cursor para a posição 0x0A
-	ldbuio r5, 0(r3)
 	custom 0, r5, r2, r5 #Escreve a pontuação do player 1
+	mov r7, r5			 #Atualiza r7
+	br p2_scored
 
 player2:
 	movia r5, 0xCA
 	custom 0, r5, r0, r5 #Move o cursor para a posição 0x4A
-	ldbuio r5, 0(r4)
 	custom 0, r5, r2, r5 #Escreve a pontuação do player 2
-	callr r6
+	mov r8, r5			 #Atualiza r8
+	br p1_scored
 
 delay: #DELAY DE 10ms
 	movia r7, 500000
