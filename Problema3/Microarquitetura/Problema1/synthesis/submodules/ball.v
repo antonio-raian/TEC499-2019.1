@@ -5,7 +5,7 @@ module ball #(
 	IY=240,			// initial vertical position of ball centre		
     BAR_WIDTH = 20, // bar width
     BAR_LENGTH = 180,   // bar length
-    SPEED = 2,          // ball speed
+    SPEED = 3,          // ball speed
 	D_WIDTH = 639,   // width of display
     D_HEIGHT=470    // height of display
 	)
@@ -35,8 +35,8 @@ module ball #(
 
 	reg [11:0] x = IX;   // horizontal position of ball centre
     reg [11:0] y = IY;   // vertical position of ball centre
-    reg x_dir;  // horizontal animation direction: 0 is right, 1 is left
-    reg y_dir;  // vertical animation direction: 0 is down, 1 is up
+    reg x_dir = 0;  // horizontal animation direction: 0 is right, 1 is left
+    reg y_dir = 0;  // vertical animation direction: 0 is down, 1 is up
     reg stop = 1;        // 1 when the game is paused, 0 otherwise
     reg y_stopped = 0;
     reg left_score, right_score;
@@ -66,8 +66,6 @@ module ball #(
             stop <= 0;
             left_score <= 0;
             right_score <= 0;
-            x_dir <= random[0];
-            y_dir <= random[1];
         end
     	if (in_animate && in_ani_stb) begin
             if(out_x1 < BAR_WIDTH) begin            //Checks if the ball hit the wall in leftside
@@ -76,11 +74,13 @@ module ball #(
                     stop <= 1;
                     x <= IX;
                     y <= IY;
+                    x_dir <= random[2];
+                    y_dir <= random[3];
                 end
                 else begin
                     x_dir <= 0;                     // change direction to right
                     if(out_y2 < (in_leftbar_top + (BAR_LENGTH/3)) | out_y1 > (in_leftbar_top + (2*BAR_LENGTH/3))) begin
-                       y_dir <= random[2];
+                       y_dir <= random[0];
                        y_stopped <= 0; 
                     end
                     else begin  // middle of the bar
@@ -94,6 +94,8 @@ module ball #(
                     stop <= 1;
                     x <= IX;
                     y <= IY;
+                    x_dir <= random[2];
+                    y_dir <= random[3];
                 end
                 else begin
                     x_dir <= 1;                     // change direction to left

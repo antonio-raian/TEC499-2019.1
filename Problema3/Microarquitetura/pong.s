@@ -1,9 +1,7 @@
 .data
 .global main
-	.equ botoes, 0x2040
-	.equ btn_sobe, 1
-	.equ btn_desce, 2
-
+	.equ player1_endereco, 0x2030
+	.equ player2_endereco, 0x2020
 
 	.equ A, 0x41
 	.equ C, 0x43
@@ -59,15 +57,15 @@
 
 # REGISTRADORES UTILIZADOS
 # r2 -> Sempre = 1
-# r3 -> Pontuação do Player1
-# r4 -> Pontuação do Player2
+# r3 -> Endereço de memória do Player1
+# r4 -> Endereço de memória do Player2
 # r5 -> Auxiliar
 # r6 -> Endereço para loops
 
 main:
 	movi r2, 1
-	movia r3, Zero
-	movia r4, Zero
+	movia r3, player1_endereco
+	movia r4, player2_endereco
 	call lcd_init
 	br write_scoreboard
 
@@ -116,37 +114,19 @@ write_scoreboard:
 	custom 0, r5, r2, r5
 	movia r5, doisPontos
 	custom 0, r5, r2, r5
+	nextpc r6
 
 player1:
-	movia r5, 0x0A
+	movia r5, 0x4A
 	custom 0, r5, r0, r5 #Move o cursor para a posição 0x0A
-	addi r3, r3, 1  #Incrementa 1 na pontuação do player 1
-	custom 0, r5, r2, r3 #Escreve o novo valor na posição 
-	call delay
-	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
-	nextpc r6
-	ldbuio r3, 0(r4)
-	movia r2, btn_sobe 	#BOTÃO SOBE 	
-	beq r2, r3, player1
-	
-	movia r2, btn_desce #BOTÃO DESCE
-	beq r2, r3, player2
-	callr r6
+	ldbuio r5, 0(r3)
+	custom 0, r5, r2, r5 #Escreve a pontuação do player 1
 
 player2:
-	movia r5, 0x4A
+	movia r5, 0xCA
 	custom 0, r5, r0, r5 #Move o cursor para a posição 0x4A
-	addi r4, r4, 1  #Incrementa 1 na pontuação do player 2
-	custom 0, r5, r2, r4 #Escreve o novo valor na posição 
-	call delay
-	#LOOP PARA VERIFICAR SE UM DOS BOTÕES FOI PRESSIONADO
-	nextpc r6
-	ldbuio r3, 0(r4)
-	movia r2, btn_sobe 	#BOTÃO SOBE 	
-	beq r2, r3, player1
-	
-	movia r2, btn_desce #BOTÃO DESCE
-	beq r2, r3, player2
+	ldbuio r5, 0(r4)
+	custom 0, r5, r2, r5 #Escreve a pontuação do player 2
 	callr r6
 
 delay: #DELAY DE 10ms
@@ -185,5 +165,4 @@ lcd_init:
 	custom 0, r14, r0, r3
 
 	ret
-
 .end
