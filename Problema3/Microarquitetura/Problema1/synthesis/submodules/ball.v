@@ -5,7 +5,7 @@ module ball #(
 	IY=240,			// initial vertical position of ball centre		
     BAR_WIDTH = 20, // bar width
     BAR_LENGTH = 180,   // bar length
-    SPEED = 3,          // ball speed
+    SPEED = 4,          // ball speed
 	D_WIDTH = 639,   // width of display
     D_HEIGHT=470    // height of display
 	)
@@ -21,8 +21,8 @@ module ball #(
 	output wire [11:0] out_x2,  // ball right edge
     output wire [11:0] out_y1,  // ball top edge
     output wire [11:0] out_y2,   // ball bottom edge
-    output wire out_left_score,
-    output wire out_right_score
+    output wire [7:0] out_Player1,
+    output wire [7:0] out_Player2
 	);
 
     wire [3:0] random;
@@ -39,7 +39,9 @@ module ball #(
     reg y_dir = 0;  // vertical animation direction: 0 is down, 1 is up
     reg stop = 1;        // 1 when the game is paused, 0 otherwise
     reg y_stopped = 0;
-    reg left_score, right_score;
+
+    reg [7:0] player1 = 8'h30;
+    reg [7:0] player2 = 8'h30;
 
     wire [11:0] leftbar_bottom, rightbar_bottom;
     assign leftbar_bottom = in_leftbar_top + BAR_LENGTH;
@@ -50,8 +52,8 @@ module ball #(
     assign out_y1 = y - V_SIZE;  // top
     assign out_y2 = y + V_SIZE;  // bottom
     
-    assign out_left_score = left_score;
-    assign out_right_score = right_score;
+    assign out_Player1 = player1;
+    assign out_Player2 = player2;
 
     always @(posedge in_clock) begin
     	if (in_reset) begin
@@ -60,19 +62,23 @@ module ball #(
             x_dir <= random[0];
             y_dir <= random[1];
             y_stopped <= 0;
+            player1 <= 8'h30;
+            player2 <= 8'h30;
     	end
         if (in_start) begin
             y_stopped <= 0;
             stop <= 0;
         end
-        if (left_score == 1 | right_score == 1) begin
-            left_score <= 0;
-            right_score <= 0;
-        end
     	if (in_animate && in_ani_stb) begin
             if(out_x1 < BAR_WIDTH) begin            //Checks if the ball hit the wall in leftside
                 if((out_y1 > leftbar_bottom) | (out_y2 < in_leftbar_top)) begin 
-                    right_score <= 1;
+                    if(player2 == 8'h34) begin
+                        player1 <= 8'h30;
+                        player2 <= 8'h30;
+                    end
+                    else begin
+                        player2 <= player2 + 8'h01;
+                    end
                     stop <= 1;
                     x <= IX;
                     y <= IY;
@@ -92,7 +98,13 @@ module ball #(
             end
             else if(out_x2 > D_WIDTH - BAR_WIDTH) begin //Checks if the ball hit the wall in rightside
                 if((out_y1 > rightbar_bottom) | (out_y2 < in_rightbar_top)) begin
-                    left_score <= 1;
+                    if(player1 == 8'h34) begin
+                        player1 <= 8'h30;
+                        player2 <= 8'h30;
+                    end
+                    else begin
+                        player1 <= player1 + 8'h01;
+                    end
                     stop <= 1;
                     x <= IX;
                     y <= IY;

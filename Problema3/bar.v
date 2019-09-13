@@ -3,7 +3,7 @@ module bar #(
 	V_SIZE=90,		// half bar length
 	IX=10,			// initial horizontal position of bar centre
 	IY=240,			// initial vertical position of bar centre
-	SPEED = 3,		// bar speed	
+	SPEED = 4,		// bar speed	
 	D_WIDTH=639,    // width of display
     D_HEIGHT=470    // height of display
 	)

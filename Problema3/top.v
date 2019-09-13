@@ -38,13 +38,13 @@ module top(
     );
 
     //Objects of the game
-    wire left_bar, right_bar, ball, right_score, left_score;
+    wire left_bar, right_bar, ball;
     wire [11:0] left_bar_x1, left_bar_x2, left_bar_y1, left_bar_y2;  // 12-bit values: 0-4095 
     wire [11:0] right_bar_x1, right_bar_x2, right_bar_y1, right_bar_y2;
     wire [11:0] ball_x1, ball_x2, ball_y1, ball_y2;
 
-    reg [7:0] player1 = 8'h30;
-    reg [7:0] player2 = 8'h30;
+    wire [7:0] player1;
+    wire [7:0] player2;
 
     bar left_bar_anim (
         .in_clock(CLK), 
@@ -84,32 +84,9 @@ module top(
         .out_x2(ball_x2),
         .out_y1(ball_y1),
         .out_y2(ball_y2),
-        .out_left_score(left_score),
-        .out_right_score(right_score)
+        .out_Player1(player1),
+        .out_Player2(player2)
     );
-
-    always @(posedge CLK or posedge RESET) begin
-    	if (RESET) begin
-    		player1 <= 8'h30;
-    		player2 <= 8'h30;
-    	end
-    	else if (left_score == 1) begin
-    		if(player1 == 8'h34) begin
-    			player1 <= 8'h30;
-    		end
-    		else begin
-    			player1 <= player1 + 8'h01;
-    		end
-    	end
-    	else if (right_score == 1) begin
-    		if(player2 == 8'h34) begin
-    			player2 <= 8'h30;
-    		end
-    		else begin
-    			player2 <= player2 + 8'h01;
-    		end
-    	end
-    end
 
     assign out_Player1 = player1;
     assign out_Player2 = player2;
